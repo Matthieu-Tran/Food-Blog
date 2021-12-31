@@ -5,5 +5,6 @@
     Connexion::connect();
     $action = isset($_GET["action"]) ? $_GET["action"] : "read";
     ControllerCommentaire::$action();
+    //Je fais un test
 
 ?>
