@@ -1,7 +1,7 @@
 <?php
 class Connexion {
     // attributs de la classe Connexion paramètres de connexion à la base
-    static private $hostname = 'localhost:8888';
+    static private $hostname = 'localhost';
     static private $database = 'mschule';
     static private $login = 'mschule';
     static private $password = 'Php12345';
@@ -21,7 +21,6 @@ class Connexion {
         try {
             self::$pdo = new PDO("mysql:host=$h;dbname=$d",$l,$p,$t);
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "connexion résussie";
         } catch(PDOException $e) {
             echo "Erreur de connexion !";
         }
