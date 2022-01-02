@@ -1,5 +1,6 @@
 <?php
-
+    require_once("conf/Connexion.php");
+    Connexion::connect();
 class Ustensile
 {
     private $pkNumUstensile;

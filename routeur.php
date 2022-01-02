@@ -1,10 +1,12 @@
 <?php
 
-    require_once("conf/Connexion.php");
-    require_once("controller/controllerCommentaire.php");
-    Connexion::connect();
-    $action = isset($_GET["action"]) ? $_GET["action"] : "read";
-    ControllerCommentaire::$action();
-    //Je fais un test
+    require_once("controller/controllerSite.php");
+
+
+    $action = "readAll";
+    if (isset($_GET["action"]) && in_array($_GET["action"],get_class_methods("ControllerVoiture")))
+        $action = $_GET["action"];
+
+    ControllerVoiture::$action();
 
 ?>
