@@ -9,6 +9,6 @@ require_once("model/Utilisateur.php");
 class controllerSite
 {
     public static function acceuil(){
-        require_once ("./view/acceuil.php");
+        require_once ("./view/acceuil.html");
     }
 }
