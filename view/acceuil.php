@@ -13,14 +13,12 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="blog.css" rel="stylesheet">
 </head>
 
 <body>
-
 <div class="container">
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
