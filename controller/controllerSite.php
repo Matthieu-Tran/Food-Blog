@@ -9,6 +9,7 @@ require_once("model/Utilisateur.php");
 class controllerSite
 {
     public static function acceuil(){
+        require_once("./view/header.html");
         require_once("./view/acceuil.php");
     }
 
@@ -29,8 +30,4 @@ class controllerSite
         }
         self::acceuil();
     }
-
-
-
-
 }
