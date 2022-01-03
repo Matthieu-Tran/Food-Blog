@@ -9,7 +9,6 @@ require_once("model/Utilisateur.php");
 class controllerSite
 {
     public static function acceuil(){
-        require_once("./view/header.html");
         require_once("./view/acceuil.php");
     }
 
@@ -91,5 +90,9 @@ class controllerSite
         $title = "La recette";
         require("view/head.php");
         require("view/found.php");
+    }
+
+    public static function seConnecter(){
+        require_once("./view/pageConnexion.php");
     }
 }
