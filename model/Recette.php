@@ -3,27 +3,31 @@
     Connexion::connect();
 class Recette
 {
-    private $pkNumRecette;
+    private $numRecette;
     private $nomRecette;
     private $difficulteRecette;
     private $descriptionRecette;
-    private $fkNumUtilisateur;
+    private $numUtilisateur;
 
-    public function getpkNumRecette(){return $this->pkNumRecette;}
+    public function getnumRecette(){return $this->numRecette;}
     public function getnomRecette(){return $this->nomRecette;}
     public function getdifficulteRecette(){return $this->difficulteRecette;}
     public function getdescriptionRecette(){return $this->descriptionRecette;}
-    public function getfkNumUtilisateur(){return $this->fkNumUtilisateur;}
+    public function getnumUtilisateur(){return $this->numUtilisateur;}
 
     public function __construct($numR = NULL,$nomR = NULL,$difR = NULL,$desR = NULL,$numU = NULL)  {
         if (!is_null($numR)) {
-            $this->pkNumRecette = $numU;
+            $this->numRecette = $numU;
             $this->nomRecette = $nomR;
             $this->difficulteRecette = $difR;
             $this->descriptionRecette = $desR;
-            $this->fkNumUtilisateur = $numU;
+            $this->numUtilisateur = $numU;
         }
     }
+    public function affichage() {
+        return "<p>Recette [numRecette = $this->numRecette, nomRecette = $this->nomRecette]</p>";
+    }
+
     public static function getAllRecettes() {
         $requete = "SELECT * FROM Recette ORDER BY NumRecette;";
         $reponse = Connexion::pdo()->query($requete);
@@ -38,7 +42,7 @@ class Recette
         $valeurs = array("tag_nomRecette" => $nomRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
+            //$req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
             $t = $req_prep->fetch();
             if (!$t)
                 return false;
@@ -56,7 +60,7 @@ class Recette
         $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
+            //$req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
             $t = $req_prep->fetchall();
             if (!$t)
                 return false;

@@ -1,16 +1,20 @@
 <?php
     require_once("conf/Connexion.php");
-
+    Connexion::connect();
+    var_dump($_POST);
     // Si les variables existent et qu'elles ne sont pas vides
-    if(!empty(!empty($_POST['Prénom']) && !empty($_POST['Nom']) && $_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_retype']) ) {
+    if(!empty(!empty($_POST['Prenom']) && !empty($_POST['Nom']) && $_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_retype']) ) {
         // Patch XSS
         $pseudo = htmlspecialchars($_POST['pseudo']);
         $nom = htmlspecialchars($_POST['Nom']);
-        $prenom = htmlspecialchars($_POST['prenom']);
+        $prenom = htmlspecialchars($_POST['Prenom']);
         $password = htmlspecialchars($_POST['password']);
         $password_retype = htmlspecialchars($_POST['password_retype']);
         // On vérifie si l'utilisateur existe
-        $check = $bdd->prepare('SELECT nomUtilisateur, prenomUtilisateur, pseudoUtilisateur, mdpUtilisateur FROM utilisateurs WHERE pseudoUtilisateur = ?');
+        //$check = Connexion::pdo()->prepare('SELECT nomUtilisateur, prenomUtilisateur, pseudoUtilisateur, mdpUtilisateur FROM Utilisateur WHERE pseudoUtilisateur = ?');
+        $requetePreparee = "SELECT * from Utilisateur where pseudoUtilisateur = :tag_pseudo;";
+        $valeurs = array("tag_pseudo" => $pseudo);
+
         $check->execute(array($pseudo));
         $data = $check->fetch();
         $row = $check->rowCount();
@@ -22,30 +26,32 @@
                     $cost = ['cost' => 12];
                     $passwordHash = password_hash($password, PASSWORD_BCRYPT, $cost);
                     // On insère dans la base de données
-
-                    $insert = $bdd->prepare('INSERT INTO Utilisateur (numUtilisateur, nomUtilisateur, prenomUtilisateur, pseudoUtilisateur, mdpUtilsateur, banUtilisateur) VALUES (NULL, :nomUtilisateur, :prenomUtilisateur, :pseudoUtilisateur, :mdpUtilsateur, 0);');
+                    $insert = Connexion::pdo()->prepare('INSERT INTO Utilisateur (numUtilisateur, nomUtilisateur, prenomUtilisateur, pseudoUtilisateur, mdpUtilsateur, banUtilisateur) VALUES (NULL, :nomUtilisateur, :prenomUtilisateur, :pseudoUtilisateur, :mdpUtilsateur, 0);');
                     $insert->execute(array(
                         'nomUtilisateur' => $nom,
                         'prenomUtilisateur' => $prenom,
                         'pseudoUtilisateur' => $pseudo,
                         'mdpUtilsateur' => $passwordHash,
-                        'token' => bin2hex(openssl_random_pseudo_bytes(64))
                     ));
+                    echo "ca marche";
                     // On redirige avec le message de succès
-                    header('inscription.php?reg_err=success');
-                    die();
+                    //header('Location: google.com');
+                    //die();
                 }
                 else{
-                        header('inscription.php?reg_err=password');
-                        die();
+                    echo "Ca marche pas";
+                        //header('Location: inscription.php?reg_err=password');
+                        //die();
                     }
                 } else {
-                    header('inscription.php?reg_err=pseudo_length');
-                    die();
+                    echo "Ca marche pas";
+                    //header('Location: inscription.php?reg_err=pseudo_length');
+                    //die();
                 }
             } else {
-                header('inscription.php?reg_err=already');
-                die();
+                echo "Ca marche pas";
+                //header('Location: inscription.php?reg_err=already');
+                //die();
             }
     }
 ?>

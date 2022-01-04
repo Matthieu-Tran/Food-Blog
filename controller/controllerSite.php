@@ -100,10 +100,12 @@ class controllerSite
     }
 
     public static function seConnecter(){
-        require_once("./view/pageConnexion.php");
+        require_once("./view/Connexion/pageConnexion.php");
     }
-
     public static function inscription(){
-        require_once("./view/inscription.php");
+        require_once("./view/inscription/inscription.php");
+    }
+    public static function inscription_traitement(){
+        require_once("./view/inscription/inscription_traitement.php");
     }
 }

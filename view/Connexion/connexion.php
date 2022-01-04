@@ -1,6 +1,7 @@
 <?php
     session_start(); // Démarrage de la session
     require_once("conf/Connexion.php"); // On inclut la connexion à la base de données
+    Connexion::connect();
     if(!empty($_POST['pseudo']) && !empty($_POST['password'])) // Si il existe les champs pseudo, password et qu'il sont pas vide
     {
         // Patch XSS
@@ -8,7 +9,7 @@
         $password = htmlspecialchars($_POST['password']);
         $pseudo = strtolower($pseudo); // pseudo transformé en minuscule
         // On regarde si l'utilisateur est inscrit dans la table utilisateurs
-        $check = $bdd->prepare('SELECT numUtilisateur, nomUtilisateur, prenomUtilisateur, pseudoUtilisateur FROM utilisateur WHERE pseudo = ?');
+        $check = Connexion::pdo()->prepare('SELECT numUtilisateur, nomUtilisateur, prenomUtilisateur, pseudoUtilisateur FROM utilisateur WHERE pseudo = ?');
         $check->execute(array($pseudo));
         $data = $check->fetch();
         $row = $check->rowCount();
@@ -18,8 +19,8 @@
             $password = hash('sha256', password);
             if($data['password'] === $password){
                 $_SESSION['user'] = $data['pseudo'];
-                header('landing.php');
-            }else{ header('pageConnexion.php?login_err=password'); die();}
-        }else{ header('pageConnexion.php?login_err=already'); die(); }
-    }else{ header('pageConnexion.php'); die();} // si le formulaire est envoyé sans aucune données
+                header('Location: ./view/Connexion/landing.php');
+            }else{ header('Location: ./view/Connexion/pageConnexion.php?login_err=password'); die();}
+        }else{ header('Location: ./view/Connexion/pageConnexion.php?login_err=already'); die(); }
+    }else{ header('Location: ./view/Connexion/pageConnexion.php'); die();} // si le formulaire est envoyé sans aucune données
 ?>
