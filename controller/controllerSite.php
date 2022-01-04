@@ -9,7 +9,9 @@ require_once("model/Utilisateur.php");
 class controllerSite
 {
     public static function acceuil(){
+        $lesRecettes = Recette::getAllRecettes();
         require_once("./view/acceuil.php");
+        require("./view/head.php");
     }
 
     public static function readAll() {
@@ -20,8 +22,8 @@ class controllerSite
     }
 
     public static function read() {
-        $nomRecette = $_GET["nomRecette"];
-        $recette = Recette::getNumRecettebyNomRecette($nomRecette);
+        $numRecette = $_GET["numRecette"];
+        $recette = Recette::getRecettesbyNumRecette($numRecette);
         $lienRetour = '<a href="routeur.php?action=readAll">retour à la liste</a>';
         $title = "Une recette";
         require("view/head.php");
@@ -35,17 +37,22 @@ class controllerSite
     }
 
     public static function created() {
-        $lesRecettes = Recette::getAllRecette();
+        $lesRecettes = Recette::getAllRecettes();
         extract($_GET);
-        if (!in_array($nomRecette, $lesRecettes)) {
+        $recette = Recette::getNumRecettebyNomRecette($nomRecette);
+        $test = Recette::getRecettesbyNumUtilisateur($numUtilisateur);
+        echo "<pre>";
+        print_r($test);
+        echo "</pre>";
+        echo "<pre>";
+        print_r($recette);
+        echo "</pre>";
+        if($recette == null){
             Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $numUtilisateur);
             echo "Recette ajoute";
         } else {
-            $numRecette = getNumRecettebyNomRecette($nomRecette);
-
-            /*
-             * Ajouter un href qui va pointer vers la recette
-             */
+            $uneRecette = Recette::getRecettesbyNumRecette($recette[0]);
+            $uneRecette->affichage();
             echo "Recette déja crée par un membre";
         }
         self::acceuil();
@@ -94,5 +101,9 @@ class controllerSite
 
     public static function seConnecter(){
         require_once("./view/pageConnexion.php");
+    }
+
+    public static function inscription(){
+        require_once("./view/inscription.php");
     }
 }

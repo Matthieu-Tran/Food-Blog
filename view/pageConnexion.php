@@ -58,7 +58,7 @@
             <button type="submit" class="btn btn-primary btn-block">Connexion</button>
         </div>
     </form>
-    <p class="text-center"><a href="view/inscription.php">Inscription</a></p>
+    <p class="text-center"><a href="routeur.php?action=inscription">Inscription</a></p>
 </div>
 <style>
     .login-form {
