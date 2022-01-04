@@ -102,6 +102,9 @@ class controllerSite
     public static function seConnecter(){
         require_once("./view/Connexion/pageConnexion.php");
     }
+    public static function connection_traitement(){
+        require_once("./view/Connexion/connexion_traitement.php");
+    }
     public static function inscription(){
         require_once("./view/inscription/inscription.php");
     }

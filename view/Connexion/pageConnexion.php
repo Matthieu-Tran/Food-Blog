@@ -21,7 +21,7 @@
             case 'password':
                 ?>
                 <div class="alert alert-danger">
-                    <strong>Erreur</strong> mot de passe incorrect
+                    <strong>Erreur</strong> Mot de passe incorrect !
                 </div>
                 <?php
                 break;
@@ -29,22 +29,14 @@
             case 'Pseudo':
                 ?>
                 <div class="alert alert-danger">
-                    <strong>Erreur</strong> Pseudo incorrect
-                </div>
-                <?php
-                break;
-
-            case 'already':
-                ?>
-                <div class="alert alert-danger">
-                    <strong>Erreur</strong> compte non existant
+                    <strong>Erreur</strong> Pseudo incorrect !
                 </div>
                 <?php
                 break;
         }
     }
     ?>
-    <form action="connexion.php" method="post">
+    <form action="routeur.php?action=connection_traitement" method="post">
         <h2 class="text-center">Connexion</h2>
         <div class="form-group">
             <input type="Pseudo" name="Pseudo" class="form-control" placeholder="Pseudo" required="required" autocomplete="off">

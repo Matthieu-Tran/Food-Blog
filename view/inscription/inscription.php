@@ -20,7 +20,7 @@
             case 'success':
                 ?>
                 <div class="alert alert-success">
-                    <strong>Succès</strong> inscription réussie !
+                    <strong>Succès</strong> Inscription réussie !
                 </div>
                 <?php
                 break;
@@ -28,7 +28,7 @@
             case 'password':
                 ?>
                 <div class="alert alert-danger">
-                    <strong>Erreur</strong> mot de passe différent
+                    <strong>Erreur</strong> Les deux mots de passe sont différents
                 </div>
                 <?php
                 break;
@@ -36,13 +36,13 @@
             case 'pseudo_length':
                 ?>
                 <div class="alert alert-danger">
-                    <strong>Erreur</strong> pseudo trop long
+                    <strong>Erreur</strong> Pseudo trop long..
                 </div>
             <?php
             case 'already':
                 ?>
                 <div class="alert alert-danger">
-                    <strong>Erreur</strong> compte deja existant
+                    <strong>Erreur</strong> Compte déjà existant
                 </div>
             <?php
 

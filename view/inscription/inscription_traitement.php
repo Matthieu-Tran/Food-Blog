@@ -32,7 +32,6 @@
                         'pseudoUtilisateur' => $pseudo,
                         'mdpUtilsateur' => $passwordHash,
                     ));
-                    echo "ca marche";
                     // On redirige avec le message de succès
                     header('Location: routeur.php?action=acceuil');
                     die();
