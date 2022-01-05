@@ -111,4 +111,7 @@ class controllerSite
     public static function inscription_traitement(){
         require_once("./view/inscription/inscription_traitement.php");
     }
+    public static function deconnexion(){
+        require_once("./view/Connexion/deconnexion.php");
+    }
 }

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -46,8 +50,24 @@
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control form-control-dark" placeholder="Rechercher..." aria-label="Search">
         </form>
-        <button onclick="window.location.href='routeur.php?action=seConnecter'" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Connexion</button>
-        <button onclick="window.location.href='routeur.php?action=inscription'" type="button" class="btn btn-warning my-2 my-lg-0" >Inscription</button>
+
+          <?php if (isset($_SESSION['user'])) { ?>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id ="navBarDropdown" role ="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">Mon Compte</a>
+                  <ul class="dropdown-menu" aria-labelledby="navBarDropdown">
+                      <li>
+                          <a href="routeur.php?action=deconnexion" class="dropdown-item">Déconnexion</a>
+                      </li>
+                      <li>
+                          <a href="#" class="dropdown-item">Mes recettes</a>
+                      </li>
+                  </ul>
+              </li>
+          <?php } else { ?>
+              <button onclick="window.location.href='routeur.php?action=seConnecter'" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Connexion</button>
+              <button onclick="window.location.href='routeur.php?action=inscription'" type="button" class="btn btn-warning my-2 my-lg-0" >Inscription</button>
+          <?php } ?>
+
       </ul>
     </div>
     </div>
