@@ -1,8 +1,19 @@
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     padding-top: 70px;
+    padding-right: 30px;
+    padding-bottom: 70px;
+    padding-left: 80px;
 }
 @media (max-width: 979px) {
     body {
         padding-top: 0px;
     }
+}
+.container.body-container {
+    padding: 0px;
+    background-color: #FFFFFF;
 }

@@ -1,6 +1,7 @@
 <?php
     require_once("conf/Connexion.php");
     Connexion::connect();
+    var_dump($_POST);
     // Si les variables existent et qu'elles ne sont pas vides
     if(!empty(!empty($_POST['Prenom']) && !empty($_POST['Nom']) && $_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_retype']) ) {
         // Patch XSS
@@ -21,30 +22,36 @@
         if ($row == 0) {
             if (strlen($pseudo) <= 20){ // On verifie que la longueur du pseudo <= 100
                 if ($password === $password_retype) { // si les deux mdp saisis sont bon
+                    echo "hello4";
                     // On hash le mot de passe avec Bcrypt, via un coût de 12
                     $cost = ['cost' => 12];
                     $passwordHash = password_hash($password, PASSWORD_BCRYPT, $cost);
                     // On insère dans la base de données
                     $insert = Connexion::pdo()->prepare('INSERT INTO Utilisateur (numUtilisateur, nomUtilisateur, prenomUtilisateur, pseudoUtilisateur, mdpUtilsateur, banUtilisateur) VALUES (NULL, :nomUtilisateur, :prenomUtilisateur, :pseudoUtilisateur, :mdpUtilsateur, 0);');
-                    $insert->execute(array(
-                        'nomUtilisateur' => $nom,
-                        'prenomUtilisateur' => $prenom,
-                        'pseudoUtilisateur' => $pseudo,
-                        'mdpUtilsateur' => $passwordHash,
-                    ));
+                    $valeur = array(
+                        "nomUtilisateur" => $nom,
+                        "prenomUtilisateur" => $prenom,
+                        "pseudoUtilisateur" => $pseudo,
+                        "mdpUtilsateur" => $passwordHash,
+                    );
+                    $insert->execute($valeur);
+                    echo "hello 5";
                     // On redirige avec le message de succès
                     header('Location: routeur.php?action=acceuil');
                     die();
                 }
                 else{
+                    echo "hello 3";
                         header('Location: routeur.php?action=inscription&reg_err=password');
                         die();
                     }
                 } else {
+                echo "hello 2";
                     header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
                     die();
                 }
             } else {
+            echo "hello 1";
                 header('Location: routeur.php?action=inscription&reg_err=already');
                 die();
             }

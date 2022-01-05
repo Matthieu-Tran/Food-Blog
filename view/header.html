@@ -10,8 +10,8 @@
   <title>Acceuil</title>
 </head>
 <body>
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color:#34495e;">
-  <div class="container">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color:#f6b93b;">
+    <div class="container">
     <a href="routeur.php"
        class="navbar-brand mb-0 h1">
       Le quartier des plaisirs
@@ -29,12 +29,8 @@
     </button>
     <div class="collapse navbar-collapse"
          id ="navbarNav">
+      <button onclick="window.location.href='routeur.php?action=seConnecter'" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Déposer une recette</button>
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a href="#" class="nav-link active">
-            Home
-          </a>
-        </li>
         <li class="nav-item active">
           <a href="#" class="nav-link active">
             Recettes
@@ -46,27 +42,17 @@
           </a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input type="text" class="form-control me-2">
-        <button type="submit" class="btn btn-outline-primary">
-          Rechercher
-        </button>
-      </form>
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a href="routeur.php?action=seConnecter" class="nav-link active">
-            Connection
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a href="routeur.php?action=inscription" class="nav-link active">
-            Inscription
-          </a>
-        </li>
+      <ul class="navbar-nav ml-auto">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Rechercher..." aria-label="Search">
+        </form>
+        <button onclick="window.location.href='routeur.php?action=seConnecter'" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Connexion</button>
+        <button onclick="window.location.href='routeur.php?action=inscription'" type="button" class="btn btn-warning my-2 my-lg-0" >Inscription</button>
       </ul>
     </div>
-  </div>
-</nav>
+    </div>
+  </nav>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
