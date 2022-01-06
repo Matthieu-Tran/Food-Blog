@@ -40,10 +40,15 @@
     <form action="routeur.php?action=connection_traitement" method="post">
         <h2 class="text-center">Connexion</h2>
         <div class="form-group">
-            <input type="Pseudo" name="Pseudo" class="form-control" placeholder="Pseudo" required="required" autocomplete="off">
+            <input type="Pseudo" name="Pseudo" class="form-control" placeholder="Pseudo" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" required="required" autocomplete="off">
         </div>
         <div class="form-group">
             <input type="password" name="password" class="form-control" placeholder="Mot de passe" required="required" autocomplete="off">
+        </div>
+        <div class="form-check mb-3">
+            <div>
+                <input type="checkbox" name="rememberme" value="1" <?php if(isset($_COOKIE["username"])) { ?> checked="true" <?php }  ?> />&nbsp;Remember username
+            </div>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Connexion</button>

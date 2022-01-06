@@ -3,6 +3,13 @@
     require_once("conf/Connexion.php"); // On inclut la connexion à la base de données
     Connexion::connect();
 
+    if(!empty($_POST["rememberme"])) {
+        setcookie ("username",$_POST["Pseudo"],time()+ 86400); // on set les cookies a un jour
+    }
+    else{
+        setcookie ("username", null, time() - 1);
+    }
+
     if(!empty($_POST['Pseudo']) && !empty($_POST['password'])) // Si il existe les champs Pseudo, password et qu'ils sont pas vide
     {
         // Patch XSS
@@ -32,7 +39,7 @@
             die();
         }
     }else{
-        header('Location: ./view/Connexion/seConnecter');
+        header('Location: routeur.php?action=seConnecter&login_err=Pseudo');
         die();
     } // si le formulaire est envoyé sans aucune données
 ?>

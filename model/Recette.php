@@ -31,7 +31,7 @@ class Recette
     public static function getAllRecettes() {
         $requete = "SELECT * FROM Recette ORDER BY NumRecette;";
         $reponse = Connexion::pdo()->query($requete);
-        $reponse->setFetchMode(PDO::FETCH_CLASS,'Recette');
+        //$reponse->setFetchMode(PDO::FETCH_CLASS,'Recette');
         $tab = $reponse->fetchAll();
         return $tab;
     }
