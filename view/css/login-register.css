@@ -19,3 +19,7 @@
     font-size: 15px;
     font-weight: bold;
 }
+
+body {
+    padding-top: 90px;
+}

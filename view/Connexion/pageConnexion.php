@@ -6,8 +6,7 @@
     <meta name="author" content="NoS1gnal"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="view/css/styleSheet.css"/>
-    <link rel="stylesheet" type="text/css" href="view/css/connexionStyleSheet.css"/>
+    <link rel="stylesheet" type="text/css" href="view/css/login-register.css"/>
     <title>Connexion</title>
 </head>
 <body>
