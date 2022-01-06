@@ -53,6 +53,60 @@ class Recette
         return false;
     }
 
+    public static function getNomRecettebyNumRecette($numRecette)
+    {
+        $requetePreparee = "SELECT nomRecette FROM Recette where numRecette = :tag_numRecette;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numRecette" => $numRecette);
+        try {
+            $req_prep->execute($valeurs);
+            //$req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
+            $t = $req_prep->fetch();
+            if (!$t)
+                return false;
+            return $t;
+        } catch (PDOException $e) {
+            echo "erreur : ".$e->getMessage()."<br>";
+        }
+        return false;
+    }
+
+    public static function getDifficultebyNumRecette($numRecette)
+    {
+        $requetePreparee = "SELECT difficulteRecette FROM Recette where numRecette = :tag_numRecette;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numRecette" => $numRecette);
+        try {
+            $req_prep->execute($valeurs);
+            //$req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
+            $t = $req_prep->fetch();
+            if (!$t)
+                return false;
+            return $t;
+        } catch (PDOException $e) {
+            echo "erreur : ".$e->getMessage()."<br>";
+        }
+        return false;
+    }
+
+    public static function getInstructionbyNumRecette($numRecette)
+    {
+        $requetePreparee = "SELECT descriptionRecette FROM Recette where numRecette = :tag_numRecette;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numRecette" => $numRecette);
+        try {
+            $req_prep->execute($valeurs);
+            //$req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
+            $t = $req_prep->fetch();
+            if (!$t)
+                return false;
+            return $t;
+        } catch (PDOException $e) {
+            echo "erreur : ".$e->getMessage()."<br>";
+        }
+        return false;
+    }
+
     public static function getRecettesbyNumUtilisateur($numUtilisateur)
     {
         $requetePreparee = "SELECT nomRecette FROM Recette where numUtilisateur = :tag_numUtilisateur;";

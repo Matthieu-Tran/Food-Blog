@@ -1,5 +1,19 @@
 <?php
     session_start();
+    $nomPage = "Le quartier des plaisirs";
+    if(isset($_GET["numRecette"])){
+        $numRecette = ($_GET['numRecette']);
+        $ArrayNomRecette = Recette::getNomRecettebyNumRecette($numRecette);
+        $nomRecette = $ArrayNomRecette['nomRecette'];
+        $nomPage= "Recette de ".$nomRecette;
+
+
+        $ArrayDiffRecette = Recette::getDifficultebyNumRecette($numRecette);
+        $difficulteRecette = $ArrayDiffRecette['difficulteRecette'];
+
+        $ArrayInstruction = Recette::getInstructionbyNumRecette($numRecette);
+        $instructionRecette = $ArrayInstruction['descriptionRecette'];
+    }
 ?>
 <!doctype html>
 <html lang="fr">
@@ -15,7 +29,7 @@
         <link rel="stylesheet" type="text/css" href="view/css/style.css" />
         <link rel="stylesheet" type="text/css" href="view/css/login-register.css"/>
 
-        <title>Le quartier des plaisirs</title>
+        <title><?php echo $nomPage;?></title>
     </head>
         <header>
           <nav class="navbar fixed-top navbar-expand-xl navbar-dark"  id="navbarHeader">
@@ -39,7 +53,7 @@
                 <div class="collapse navbar-collapse"
                      id ="navbarNav">
                     <?php if (isset($_SESSION['user'])) { ?>
-                        <button onclick="window.location.href=#" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Déposer une recette</button>
+                    <a href="#debut" class="btn btn-outline-light my-2 mr-3 my-lg-0">Déposer une recette</a>
                     <?php } else { ?>
                         <a href="#debut" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</a>
                     <?php } ?>
@@ -69,5 +83,8 @@
             </div>
           </nav>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
         </header>
     <body>

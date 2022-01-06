@@ -128,4 +128,9 @@ class controllerSite
     {
         require_once("./view/Connexion/deconnexion.php");
     }
+
+    public static function afficherRecette()
+    {
+        require_once ("./view/afficher.php");
+    }
 }
