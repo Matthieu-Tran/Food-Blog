@@ -12,10 +12,10 @@ $instructionRecette =  $ArrayInstruction['descriptionRecette'];
 
 ?>
 <div id="card">
-    <div class="card mx-auto" style="width: 70rem;">
+    <div class="card mx-auto">
         <img
                 src="view/image/<?php echo $numRecette?>"
-                class="card-img-top"
+                class="card-img-top w-100"
         />
         <div class="card-body">
             <h5 class="card-title"><?php echo $nomRecette?></h5>
