@@ -34,7 +34,7 @@
 
         <div class="col-md-4 col-sm-6">
             <div class="card mb-4 shadow-sm">
-                <img src="view/view/image/tartesPommes.png" class="image">
+                <img src="view/image/tartesPommes.png" class="image">
                 <div class="card-body">
                     <p class="card-text">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quasi dolorum, distinctio soluta accusamus numquam quas harum ex minus voluptatum.
