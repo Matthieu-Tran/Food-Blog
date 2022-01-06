@@ -4,7 +4,5 @@ html{
 
 body {
     padding-top: 70px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    background-color: black;
 }
