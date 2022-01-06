@@ -11,7 +11,6 @@ class controllerSite
     public static function acceuil()
     {
         $lesRecettes = Recette::getAllRecettes();
-        require("./view/head.php");
         require_once("./view/acceuil.php");
     }
 

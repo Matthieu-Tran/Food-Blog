@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="NoS1gnal" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="view/css/styleSheet.css" />
-    <link rel="stylesheet" type="text/css" href="view/css/style.css" />
-    <title>Connexion</title>
-</head>
-<body>
 
 <section class="accueil bg-dark d-flex w-100 h-100 flex-column justify-content-center align-items-center">
 
@@ -31,7 +17,6 @@
     <!-- 576 XS - > 576px S > 768px M > 992px L > 1200px Extra Large-->
 
     <div class="row">
-
         <div class="col-md-4 col-sm-6">
             <div class="card mb-4 shadow-sm">
                 <img src="view/image/tartesPommes.png" class="image">
@@ -132,5 +117,8 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+<nav>
+    <a href="routeur.php?action=readAll">Voici les recettes de nos membres</a>
+    <a href="routeur.php?action=create">Voulez vous ajouter une recette</a>
+    <a href="routeur.php?action=search">Chercher une recette</a>
+</nav>

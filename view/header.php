@@ -1,7 +1,6 @@
 <?php
     session_start();
 ?>
-
 <!doctype html>
 <html lang="fr">
     <head>
@@ -10,9 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="view/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="view/css/login-register.css"/>
+
         <title>Le quartier des plaisirs</title>
     </head>
-    <body>
         <header>
           <nav class="navbar fixed-top navbar-expand-xl navbar-dark" style="background-color:#ffb142;">
             <div class="container-md">
@@ -37,20 +41,8 @@
                     <?php if (isset($_SESSION['user'])) { ?>
                         <button onclick="window.location.href=#" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Déposer une recette</button>
                     <?php } else { ?>
-                        <button onclick="window.location.href=#" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</button>
+                        <button onclick="window.location.href=#home_section" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</button>
                     <?php } ?>
-                  <ul class="navbar-nav">
-                    <li class="nav-item active">
-                      <a href="#" class="nav-link active">
-                        Recettes
-                      </a>
-                    </li>
-                    <li class="nav-item active">
-                      <a href="#" class="nav-link active">
-                        Pricing
-                      </a>
-                    </li>
-                  </ul>
                   <ul class="navbar-nav ml-auto">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                       <input type="search" class="form-control form-control-dark" placeholder="Rechercher..." aria-label="Search">
@@ -78,3 +70,4 @@
           </nav>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         </header>
+    <body>
