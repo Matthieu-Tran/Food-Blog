@@ -3,7 +3,7 @@
     require_once("conf/Connexion.php"); // On inclut la connexion à la base de données
     Connexion::connect();
     if(!empty($_POST["rememberme"])) {
-        setcookie ("username",$_POST["Pseudo"],time()+ 86400); // on set les cookies a un jour
+        setcookie ("username",$_POST["Pseudo"],time()+ 5); // on set les cookies a un jour 86400
     }
     else{
         setcookie ("username", null, time() - 1);
