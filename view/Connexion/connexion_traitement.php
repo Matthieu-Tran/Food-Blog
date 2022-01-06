@@ -2,7 +2,6 @@
     //session_start(); // Démarrage de la session
     require_once("conf/Connexion.php"); // On inclut la connexion à la base de données
     Connexion::connect();
-
     if(!empty($_POST["rememberme"])) {
         setcookie ("username",$_POST["Pseudo"],time()+ 86400); // on set les cookies a un jour
     }
@@ -31,6 +30,7 @@
                 $_SESSION['user'] = $data['pseudoUtilisateur'];
                 header('Location: routeur.php?action=acceuil');
             }else{
+                setcookie ("mdpDif",$_POST["Pseudo"],time()+ 5);    // si l'utilisateur se trompe de mot de passe mais que le pseudo est bon on initialise un cookie pour sauvegarder le pseudo de l'utilisateur
                 header('Location: routeur.php?action=seConnecter&login_err=password');
                 die();
             }

@@ -40,7 +40,7 @@
     <form action="routeur.php?action=connection_traitement" method="post">
         <h2 class="text-center">Connexion</h2>
         <div class="form-group">
-            <input type="Pseudo" name="Pseudo" class="form-control" placeholder="Pseudo" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" required="required" autocomplete="off">
+            <input type="Pseudo" name="Pseudo" class="form-control" placeholder="Pseudo" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } else if (isset($_COOKIE["mdpDif"])) { echo $_COOKIE["mdpDif"]; } ?>" required="required" autocomplete="off">
         </div>
         <div class="form-group">
             <input type="password" name="password" class="form-control" placeholder="Mot de passe" required="required" autocomplete="off">

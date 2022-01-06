@@ -53,14 +53,14 @@
     <form action="routeur.php?action=inscription_traitement" method="post">
         <h2 class="text-center">Inscription</h2>
         <div class="form-group">
-            <input type="text" name="Prenom" class="form-control" placeholder="Prenom" required="required" autocomplete="off">
+            <input type="text" name="Prenom" class="form-control" placeholder="Prenom" value="<?php if(isset($_COOKIE["prenomUtilisateur"])) { echo $_COOKIE["prenomUtilisateur"]; }?>" required="required" autocomplete="off">
         </div>
         <div class="form-group">
-            <input type="text" name="Nom" class="form-control" placeholder="Nom" required="required" autocomplete="off">
+            <input type="text" name="Nom" class="form-control" placeholder="Nom" value="<?php if(isset($_COOKIE["nomUtilisateur"])) { echo $_COOKIE["nomUtilisateur"]; }?>" required="required" autocomplete="off">
         </div>
 
         <div class="form-group">
-            <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" required="required" autocomplete="off">
+            <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value="<?php if(isset($_COOKIE["pseudonyme"])) { echo $_COOKIE["pseudonyme"]; }?>" required="required" autocomplete="off">
         </div>
         <div class="form-group">
             <input type="password" name="password" class="form-control" placeholder="Mot de passe" required="required" autocomplete="off">

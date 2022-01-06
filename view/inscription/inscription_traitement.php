@@ -1,7 +1,6 @@
 <?php
     require_once("conf/Connexion.php");
     Connexion::connect();
-    var_dump($_POST);
     // Si les variables existent et qu'elles ne sont pas vides
     if(!empty(!empty($_POST['Prenom']) && !empty($_POST['Nom']) && $_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_retype']) ) {
         // Patch XSS
@@ -22,7 +21,6 @@
         if ($row == 0) {
             if (strlen($pseudo) <= 20){ // On verifie que la longueur du pseudo <= 100
                 if ($password === $password_retype) { // si les deux mdp saisis sont bon
-                    echo "hello4";
                     // On hash le mot de passe avec Bcrypt, via un coût de 12
                     $cost = ['cost' => 12];
                     $passwordHash = password_hash($password, PASSWORD_BCRYPT, $cost);
@@ -41,17 +39,21 @@
                     die();
                 }
                 else{
-                    echo "hello 3";
+                    setcookie ("pseudonyme",$_POST["pseudo"],time()+ 5);
+                    setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
+                    setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
                         header('Location: routeur.php?action=inscription&reg_err=password');
                         die();
                     }
                 } else {
-                echo "hello 2";
+                    setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
+                    setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
                     header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
                     die();
                 }
             } else {
-            echo "hello 1";
+                setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
+                setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
                 header('Location: routeur.php?action=inscription&reg_err=already');
                 die();
             }
