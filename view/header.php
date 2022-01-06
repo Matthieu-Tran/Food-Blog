@@ -18,8 +18,8 @@
         <title>Le quartier des plaisirs</title>
     </head>
         <header>
-          <nav class="navbar fixed-top navbar-expand-xl navbar-dark" style="background-color:#ffb142;">
-            <div class="container-md">
+          <nav class="navbar fixed-top navbar-expand-xl navbar-dark"  id="navbarHeader">
+            <div class="container-md" id="containerHeader">
                 <a href="routeur.php"
                    class="navbar-brand mb-0 h1">
                     <img class ="d-inline-block" src="view/image/icon.png" width="60" height="60" />
@@ -41,7 +41,7 @@
                     <?php if (isset($_SESSION['user'])) { ?>
                         <button onclick="window.location.href=#" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Déposer une recette</button>
                     <?php } else { ?>
-                        <button onclick="window.location.href=#home_section" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</button>
+                        <a href="#debut" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</a>
                     <?php } ?>
                   <ul class="navbar-nav ml-auto">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
