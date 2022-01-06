@@ -32,8 +32,8 @@
                         "mdpUtilsateur" => $passwordHash,
                     );
                     $insert->execute($valeur);
-                    echo "hello 5";
                     // On redirige avec le message de succès
+                    $_SESSION['user'] = $pseudo;
                     header('Location: routeur.php?action=acceuil');
                     die();
                 }
