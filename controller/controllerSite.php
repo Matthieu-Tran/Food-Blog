@@ -8,19 +8,23 @@ require_once("model/Ustensile.php");
 require_once("model/Utilisateur.php");
 class controllerSite
 {
-    public static function acceuil(){
+    public static function acceuil()
+    {
         $lesRecettes = Recette::getAllRecettes();
+        require("./view/head.php");
         require_once("./view/acceuil.php");
     }
 
-    public static function readAll() {
+    public static function readAll()
+    {
         $lesRecettes = Recette::getAllRecettes();
         $title = "Recettes";
         require("view/head.php");
         require("view/list.php");
     }
 
-    public static function read() {
+    public static function read()
+    {
         $numRecette = $_GET["numRecette"];
         $recette = Recette::getRecettesbyNumRecette($numRecette);
         $lienRetour = '<a href="routeur.php?action=readAll">retour à la liste</a>';
@@ -29,13 +33,15 @@ class controllerSite
         require("view/details.php");
     }
 
-    public static function create() {
+    public static function create()
+    {
         $title = "création d'une Recette";
         require("view/head.php");
         require("view/create.php");
     }
 
-    public static function created() {
+    public static function created()
+    {
         $lesRecettes = Recette::getAllRecettes();
         extract($_GET);
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
@@ -46,7 +52,7 @@ class controllerSite
         echo "<pre>";
         print_r($recette);
         echo "</pre>";
-        if($recette == null){
+        if ($recette == null) {
             Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $numUtilisateur);
             echo "Recette ajoute";
         } else {
@@ -57,13 +63,15 @@ class controllerSite
         self::acceuil();
     }
 
-    public static function delete() {
+    public static function delete()
+    {
         $numRecette = $_GET["numRecette"];
         Recette::deleteRecette($numRecette);
         self::acceuil();
     }
 
-    public static function update() {
+    public static function update()
+    {
         $numRecette = $_GET["numRecette"];
         $recette = Recette::getRecettesbyNumRecette($numRecette);
         $nomRecette = $recette->getnomRecette();
@@ -75,22 +83,25 @@ class controllerSite
         require("view/update.php");
     }
 
-    public static function updated() {
+    public static function updated()
+    {
         $nomRecette = $_GET["nomRecette"];
         $difficulteRecette = $_GET["difficulteRecette"];
         $descriptionRecette = $_GET["descriptionRecette"];
-        $recette = Recette::updateRecette($nomRecette,$difficulteRecette,$descriptionRecette);
+        $recette = Recette::updateRecette($nomRecette, $difficulteRecette, $descriptionRecette);
         self::acceuil();
     }
 
-    public static function search() {
+    public static function search()
+    {
         $uneRecette = Recette::getAllRecettes();
         $title = "recherche d'une Recette";
         require("view/head.php");
         require("view/search.php");
     }
 
-    public static function found() {
+    public static function found()
+    {
         $numRecette = $_GET["numRecette"];
         $laRecette = Recette::rechercherRecette($numRecette);
         $title = "La recette";
@@ -98,19 +109,24 @@ class controllerSite
         require("view/found.php");
     }
 
-    public static function seConnecter(){
+    public static function seConnecter()
+    {
         require_once("./view/Connexion/pageConnexion.php");
     }
-    public static function connection_traitement(){
+    public static function connection_traitement()
+    {
         require_once("./view/Connexion/connexion_traitement.php");
     }
-    public static function inscription(){
+    public static function inscription()
+    {
         require_once("./view/inscription/inscription.php");
     }
-    public static function inscription_traitement(){
+    public static function inscription_traitement()
+    {
         require_once("./view/inscription/inscription_traitement.php");
     }
-    public static function deconnexion(){
+    public static function deconnexion()
+    {
         require_once("./view/Connexion/deconnexion.php");
     }
 }

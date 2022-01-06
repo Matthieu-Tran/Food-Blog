@@ -1,49 +1,136 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="css/acceuil.css"/>
+    <meta name="author" content="NoS1gnal" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Acceuil</title>
+    <link rel="stylesheet" type="text/css" href="view/css/styleSheet.css" />
+    <link rel="stylesheet" type="text/css" href="view/css/style.css" />
+    <title>Connexion</title>
 </head>
 <body>
-<p>
-    Bonjour :) <br>
-    Be not afraid of greatness.<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    Some are born great,<br>
-    some achieve greatness,<br>
-    and others have greatness thrust upon them.</p>
+
+<section class="accueil bg-dark d-flex w-100 h-100 flex-column justify-content-center align-items-center">
+
+    <h1 class="display-1 text-white text-center">Faîtes vous plaisir</h1>
+    <p class="lead text-center text-white">Découvrez les recettes de nos membres et partagez nous vos plus belles recettes</p>
+    <p class="lead mb-1">
+        <a href="#debut" class="btn btn-lg btn-secondary">En savoir plus</a>
+    </p>
+
+</section>
+
+<!-- Grille Responsive -->
+
+<div id="debut" class="container py-5 bg-light">
+
+    <h2 class="display-6 text-center mb-5">Commencez à vous régalez</h2>
+    <!-- 576 XS - > 576px S > 768px M > 992px L > 1200px Extra Large-->
+
+    <div class="row">
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-4 shadow-sm">
+                <img src="view/view/image/tartesPommes.png" class="image">
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quasi dolorum, distinctio soluta accusamus numquam quas harum ex minus voluptatum.
+                    </p>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                            Découvrir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-4 shadow-sm">
+                <img src="view/image/gateauChocolat.png" class="image">
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quasi dolorum, distinctio soluta accusamus numquam quas harum ex minus voluptatum.
+                    </p>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                            Découvrir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-4 shadow-sm">
+                <img src="view/image/flan.png" class="image">
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quasi dolorum, distinctio soluta accusamus numquam quas harum ex minus voluptatum.
+                    </p>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                            Découvrir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-4 shadow-sm">
+                <img src="view/image/bolognaise.png" class="image">
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quasi dolorum, distinctio soluta accusamus numquam quas harum ex minus voluptatum.
+                    </p>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                            Découvrir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-4 shadow-sm">
+                <img src="view/image/tandorri.png" class="image">
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quasi dolorum, distinctio soluta accusamus numquam quas harum ex minus voluptatum.
+                    </p>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                            Découvrir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-4 shadow-sm">
+                <img src="view/image/bourguignon.png" class="image">
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quasi dolorum, distinctio soluta accusamus numquam quas harum ex minus voluptatum.
+                    </p>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                            Découvrir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

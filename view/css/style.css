@@ -1,0 +1,22 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+.accueil {
+    background: url(https://ecolebranchee.com/wp-content/webpc-passthru.php?src=https://ecolebranchee.com/wp-content/uploads/2018/11/chalk.jpg&nocache=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+
+.image {
+    width: 208px; /* You can set the dimensions to whatever you want */
+    height: 150px;
+    object-fit: cover;
+}
