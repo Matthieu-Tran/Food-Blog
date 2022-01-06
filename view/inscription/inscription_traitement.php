@@ -10,7 +10,6 @@
         $password = htmlspecialchars($_POST['password']);
         $password_retype = htmlspecialchars($_POST['password_retype']);
         // On vérifie si l'utilisateur existe
-        //$check = Connexion::pdo()->prepare('SELECT nomUtilisateur, prenomUtilisateur, pseudoUtilisateur, mdpUtilisateur FROM Utilisateur WHERE pseudoUtilisateur = ?');
         $requetePreparee = "SELECT * from Utilisateur where pseudoUtilisateur = :tag_pseudo;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_pseudo" => $pseudo);
@@ -45,17 +44,17 @@
                         header('Location: routeur.php?action=inscription&reg_err=password');
                         die();
                     }
-                } else {
-                    setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
-                    setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
-                    header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
-                    die();
-                }
             } else {
                 setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
                 setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
-                header('Location: routeur.php?action=inscription&reg_err=already');
+                header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
                 die();
             }
+        } else {
+            setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
+            setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
+            header('Location: routeur.php?action=inscription&reg_err=already');
+            die();
+        }
     }
 ?>
