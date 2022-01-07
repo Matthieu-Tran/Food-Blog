@@ -1,16 +1,3 @@
-<?php
-
-$numRecette = ($_GET['numRecette']);
-$ArrayNomRecette = Recette::getNomRecettebyNumRecette($numRecette);
-$nomRecette =  $ArrayNomRecette['nomRecette'];
-
-$ArrayDiffRecette = Recette::getDifficultebyNumRecette($numRecette);
-$difficulteRecette =  $ArrayDiffRecette['difficulteRecette'];
-
-$ArrayInstruction = Recette::getInstructionbyNumRecette($numRecette);
-$instructionRecette =  $ArrayInstruction['descriptionRecette'];
-
-?>
 <div id="card">
     <div class="card mx-auto" style="width: 70rem;">
         <img

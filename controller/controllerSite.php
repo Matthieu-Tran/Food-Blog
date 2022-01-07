@@ -212,11 +212,22 @@ class controllerSite
     }
     public static function deconnexion()
     {
-        require_once("./view/Connexion/deconnexion.php");
+        session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
+        header('Location: routeur.php?action=acceuil');// On redirige
+        die();
     }
 
     public static function afficherRecette()
     {
+        $numRecette = ($_GET['numRecette']);
+        $ArrayNomRecette = Recette::getNomRecettebyNumRecette($numRecette);
+        $nomRecette = $ArrayNomRecette['nomRecette'];
+
+        $ArrayDiffRecette = Recette::getDifficultebyNumRecette($numRecette);
+        $difficulteRecette = $ArrayDiffRecette['difficulteRecette'];
+
+        $ArrayInstruction = Recette::getInstructionbyNumRecette($numRecette);
+        $instructionRecette = $ArrayInstruction['descriptionRecette'];
         require_once ("./view/afficher.php");
     }
 }
