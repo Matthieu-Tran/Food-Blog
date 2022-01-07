@@ -231,5 +231,22 @@ class Recette
         }
         return false;
     }
+
+    public static function rechercherUstensile($numRecette){
+        $requetePreparee = "SELECT numUstensile FROM utilise where numRecette = :tag_numRecette;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numRecette" => $numRecette);
+        try {
+            $req_prep->execute($valeurs);
+            $t = $req_prep->fetchAll();
+            if (!$t)
+                return false;
+            return $t;
+        } catch (PDOException $e) {
+            echo "erreur : ".$e->getMessage()."<br>";
+        }
+        return false;
+    }
+
 }
 ?>

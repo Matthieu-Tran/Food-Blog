@@ -28,7 +28,14 @@
                     bonjour
                 </div>
                 <div class="tab-pane fade" id="tabs-ustensile" role="tabpanel" aria-labelledby="ustensile-tab">
-                    bonjour 2
+
+                    <ul class="list-group">
+                        <?php
+                        foreach($listeNomUstensile as $key=>$value){?>
+                            <li class="list-group-item"><?php echo $listeNomUstensile[$key];?></li>
+                        <?php } ?>
+                    </ul>
+
                 </div>
                 <div class="tab-pane fade" id="tabs-instruction" role="tabpanel" aria-labelledby="instruction-tab">
                     <?php echo $instructionRecette?>

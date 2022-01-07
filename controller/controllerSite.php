@@ -228,6 +228,18 @@ class controllerSite
 
         $ArrayInstruction = Recette::getInstructionbyNumRecette($numRecette);
         $instructionRecette = $ArrayInstruction['descriptionRecette'];
+
+        $listeUstensiles = Recette::rechercherUstensile($numRecette);
+        $listeNomUstensile = array();
+        foreach($listeUstensiles as $key=>$value){
+            $nomUstensile = Ustensile::getNomUstensileByNumUstensile($listeUstensiles[$key]['numUstensile']);
+            array_push($listeNomUstensile, $nomUstensile);
+         }
+
+
+
+
+
         require_once ("./view/afficher.php");
     }
 }
