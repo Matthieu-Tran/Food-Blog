@@ -26,7 +26,6 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="tabs-ingredient" role="tabpanel" aria-labelledby="ingredient-tab">
                     <ul class="list-group">
-                        <ul class="list-group">
                             <?php
                             if($nbIngredientRecette>0){
                                 for ($i =0; $i<$nbIngredientRecette; $i++){?>
@@ -37,7 +36,6 @@
                             <?php
                                 }
                             } ?>
-                        </ul>
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="tabs-ustensile" role="tabpanel" aria-labelledby="ustensile-tab">
@@ -51,7 +49,11 @@
 
                 </div>
                 <div class="tab-pane fade" id="tabs-instruction" role="tabpanel" aria-labelledby="instruction-tab">
-                    <?php echo $instructionRecette?>
+                    <?php
+                    echo "<pre>";
+                    echo $instructionRecette;
+                    echo "</pre>";
+                    ?>
                 </div>
             </div>
 
