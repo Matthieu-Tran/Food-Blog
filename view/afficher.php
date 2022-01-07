@@ -27,7 +27,7 @@ $instructionRecette =  $ArrayInstruction['descriptionRecette'];
 
             <ul class="nav nav-tabs nav-justified mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-outline-primary" id="ingredient-tab" data-bs-toggle="pill" data-bs-target="#tabs-ingredient" type="button" role="tab" aria-controls="tabs-ingredient" aria-selected="true">Ingrédients</button>
+                    <button class="nav-link btn-outline-primary active" id="ingredient-tab" data-bs-toggle="pill" data-bs-target="#tabs-ingredient" type="button" role="tab" aria-controls="tabs-ingredient" aria-selected="true">Ingrédients</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn btn-outline-primary" id="ustensile-tab" data-bs-toggle="pill" data-bs-target="#tabs-ustensile" type="button" role="tab" aria-controls="tabs-ustensile" aria-selected="false">Ustensiles</button>

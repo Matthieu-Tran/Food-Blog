@@ -36,6 +36,14 @@ class Utilisateur
         return $tab;
     }
 
+    public static function getAllUtilisateurbyPseudo($Pseudo) {
+        $requetePreparee = "SELECT * from Utilisateur where PseudoUtilisateur = :tag_Pseudo;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_Pseudo" => $Pseudo);
+        $req_prep->execute($valeurs);
+        return $req_prep;
+    }
+
     public static function getUtilisateurByNumCommentaire($numCommentaire){
         $requetePreparee =
             "SELECT DISTINCT Utilisateur.nomUtilisateur, Utilisateur.prenomUtilisateur, Utilisateur.pseudoUtilisateur
