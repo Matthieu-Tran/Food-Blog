@@ -231,14 +231,20 @@ class controllerSite
 
         $listeUstensiles = Recette::rechercherUstensile($numRecette);
         $listeNomUstensile = array();
-        foreach($listeUstensiles as $key=>$value){
+        if($listeUstensiles!=null){
+            foreach($listeUstensiles as $key=>$value){
             $nomUstensile = Ustensile::getNomUstensileByNumUstensile($listeUstensiles[$key]['numUstensile']);
             array_push($listeNomUstensile, $nomUstensile);
-         }
+            }
+        }
 
         $listeQuantite = Recette::getQuantiteIngredients($numRecette);
         $listeIngredient = Ingredient::getAllIngredientByNumRecette($numRecette);
-        $nbIngredientRecette = count($listeIngredient);
+        if ($listeIngredient!=null){
+            $nbIngredientRecette = count($listeIngredient);
+        }
+        else
+            $nbIngredientRecette =0;
 
         require_once ("./view/afficher.php");
     }

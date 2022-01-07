@@ -26,20 +26,18 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="tabs-ingredient" role="tabpanel" aria-labelledby="ingredient-tab">
                     <ul class="list-group">
-
-
                         <ul class="list-group">
                             <?php
-                            for ($i =0; $i<$nbIngredientRecette; $i++){?>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                            if($nbIngredientRecette>0){
+                                for ($i =0; $i<$nbIngredientRecette; $i++){?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center ">
                                 <?php echo $listeIngredient[$i]['nomIngredient'];?>
                                 <span class="badge badge-primary badge-pill"><?php echo $listeQuantite[$i]['quantite']; ?></span>
                             </li>
-                            <?php } ?>
-
+                            <?php
+                                }
+                            } ?>
                         </ul>
-
-
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="tabs-ustensile" role="tabpanel" aria-labelledby="ustensile-tab">
