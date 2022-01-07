@@ -164,30 +164,43 @@ class controllerSite
 
             // Si la requete renvoie un 0 alors l'utilisateur n'existe pas
             if ($row == 0) {
-                if (strlen($pseudo) <= 20){ // On verifie que la longueur du pseudo <= 100
-                    if ($password === $password_retype) { // si les deux mdp saisis sont bon
-                        // On hash le mot de passe avec Bcrypt, via un coût de 12
-                        $cost = ['cost' => 12];
-                        $passwordHash = password_hash($password, PASSWORD_BCRYPT, $cost);
-                        // On insère dans la base de données
-                        Utilisateur::addUtilisateur($nom,$prenom,$pseudo,$passwordHash);
-                        // On redirige avec le message de succès
-                        $_SESSION['user'] = $pseudo;
-                        header('Location: routeur.php?action=acceuil');
-                        die();
-                    }
-                    else{
-                        setcookie ("pseudonyme",$_POST["pseudo"],time()+ 5);
-                        setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
+                if(strlen($prenom) <=50) {
+                    if(strlen($nom) <=50) {
+                        if (strlen($pseudo) <= 20) { // On verifie que la longueur du pseudo <= 100
+                            if ($password === $password_retype) { // si les deux mdp saisis sont bon
+                                // On hash le mot de passe avec Bcrypt, via un coût de 12
+                                $cost = ['cost' => 12];
+                                $passwordHash = password_hash($password, PASSWORD_BCRYPT, $cost);
+                                // On insère dans la base de données
+                                Utilisateur::addUtilisateur($nom, $prenom, $pseudo, $passwordHash);
+                                // On redirige avec le message de succès
+                                $_SESSION['user'] = $pseudo;
+                                header('Location: routeur.php?action=acceuil');
+                                die();
+                            } else {
+                                setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
+                                setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
+                                setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
+                                header('Location: routeur.php?action=inscription&reg_err=password');
+                                die();
+                            }
+                        } else {
+                            setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
+                            setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
+                            header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
+                            die();
+                        }
+                    }else{
                         setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
-                        header('Location: routeur.php?action=inscription&reg_err=password');
+                        setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
+                        header('Location: routeur.php?action=inscription&reg_err=nom_length');
                         die();
                     }
                 } else {
-                    setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
-                    setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
-                    header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
-                    die();
+                setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
+                setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
+                header('Location: routeur.php?action=inscription&reg_err=prenom_length');
+                die();
                 }
             } else {
                 setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);

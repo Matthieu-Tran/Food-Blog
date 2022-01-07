@@ -26,13 +26,33 @@
                     <div class="alert alert-danger">
                         <strong>Erreur</strong> Pseudo trop long..
                     </div>
-                <?php
+                    <?php
+                    break;
+
+                case 'prenom_length':
+                    ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur</strong> Votre prénom est trop long..
+                    </div>
+                    <?php
+                    break;
+
+                case 'nom_length':
+                    ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur</strong> Votre nom est trop long..
+                    </div>
+                    <?php
+                    break;
+
                 case 'already':
                     ?>
                     <div class="alert alert-danger">
                         <strong>Erreur</strong> Compte déjà existant
                     </div>
                 <?php
+
+
             }
         }
         ?>
