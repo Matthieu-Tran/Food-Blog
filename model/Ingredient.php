@@ -51,12 +51,11 @@ class Ingredient
         JOIN Ingredient I ON(C.numIngredient=I.numIngredient)
         JOIN Recette R ON(R.numRecette=C.numRecette)
         JOIN Famille F ON(I.numFamille=F.numFamille)
-        WHERE numRecette = :tag_numRecette;";
+        WHERE C.numRecette = :tag_numRecette;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_numRecette" => $numRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Ingredient');
             $tab = $req_prep->fetchall();
             if (!$tab)
                 return false;

@@ -236,9 +236,9 @@ class controllerSite
             array_push($listeNomUstensile, $nomUstensile);
          }
 
-
-
-
+        $listeQuantite = Recette::getQuantiteIngredients($numRecette);
+        $listeIngredient = Ingredient::getAllIngredientByNumRecette($numRecette);
+        $nbIngredientRecette = count($listeIngredient);
 
         require_once ("./view/afficher.php");
     }
