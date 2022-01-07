@@ -36,7 +36,7 @@
             <div class="container-md" id="containerHeader">
                 <a href="routeur.php"
                    class="navbar-brand mb-0 h1">
-                    <img class ="d-inline-block" src="view/image/icon.png" width="60" height="60" />
+                    <img class ="d-inline-block" src="view/image/icon.png" width="80" height="80" />
                   Le quartier des plaisirs
                 </a>
                 <button

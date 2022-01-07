@@ -219,28 +219,30 @@ class controllerSite
 
     public static function afficherRecette()
     {
+        //Pour avoir le nom de la recette
         $numRecette = ($_GET['numRecette']);
         $ArrayNomRecette = Recette::getNomRecettebyNumRecette($numRecette);
         $nomRecette = $ArrayNomRecette['nomRecette'];
 
+        //Pour avoir la difficulte de la recette
         $ArrayDiffRecette = Recette::getDifficultebyNumRecette($numRecette);
         $difficulteRecette = $ArrayDiffRecette['difficulteRecette'];
 
+        //Pour avoir les instructions de la recette
         $ArrayInstruction = Recette::getInstructionbyNumRecette($numRecette);
         $instructionRecette = $ArrayInstruction['descriptionRecette'];
 
-        $listeUstensiles = Recette::rechercherUstensile($numRecette);
+        //Pour voir les ustensiles de la recette
         $listeNomUstensile = array();
-        if($listeUstensiles!=null){
+        if($listeUstensiles = Recette::rechercherUstensile($numRecette)){
             foreach($listeUstensiles as $key=>$value){
             $nomUstensile = Ustensile::getNomUstensileByNumUstensile($listeUstensiles[$key]['numUstensile']);
             array_push($listeNomUstensile, $nomUstensile);
             }
         }
-
+        //Pour voir les ingredients et quantite de la recette
         $listeQuantite = Recette::getQuantiteIngredients($numRecette);
-        $listeIngredient = Ingredient::getAllIngredientByNumRecette($numRecette);
-        if ($listeIngredient!=null){
+        if ($listeIngredient = Ingredient::getAllIngredientByNumRecette($numRecette)){
             $nbIngredientRecette = count($listeIngredient);
         }
         else
