@@ -1,5 +1,5 @@
 <div id="card">
-    <div class="card mx-auto" style="width: 70rem;">
+    <div class="card w-75 mx-auto">
         <img
                 src="view/image/<?php echo $numRecette?>"
                 class="card-img-top"
@@ -11,7 +11,6 @@
                 Some quick example text to build on the card title and make up the bulk of the
                 card's content.
             </p>
-
             <ul class="nav nav-tabs nav-justified mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-outline-primary active" id="ingredient-tab" data-bs-toggle="pill" data-bs-target="#tabs-ingredient" type="button" role="tab" aria-controls="tabs-ingredient" aria-selected="true">Ingrédients</button>
@@ -56,8 +55,6 @@
                     ?>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
