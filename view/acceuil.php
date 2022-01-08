@@ -1,4 +1,4 @@
- <section class="accueil bg-dark d-flex w-100 h-100 flex-column justify-content-center align-items-center">
+<section class="accueil bg-dark d-flex w-100 h-100 flex-column justify-content-center align-items-center">
 
         <h1 class="display-1 text-white text-center">Faîtes vous plaisir</h1>
         <p class="lead text-center text-white">Découvrez les recettes de nos membres et partagez nous vos plus belles recettes</p>
