@@ -28,7 +28,7 @@
                             <?php
                             if($nbIngredientRecette>0){
                                 for ($i =0; $i<$nbIngredientRecette; $i++){?>
-                            <li class="list-group-item d-flex justify-content-between align-items-center ">
+                            <li class="list-group-item">
                                 <?php echo $listeIngredient[$i]['nomIngredient'];?>
                                 <span class="badge badge-primary badge-pill"><?php echo $listeQuantite[$i]['quantite']; ?></span>
                             </li>
