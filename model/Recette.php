@@ -213,15 +213,14 @@ class Recette
     }
 
     /*
-     * méthode qui permet de rechercher une recette existante
+     * méthode qui permet de rechercher une recette en ayant soit son nom, soit un mot qui correspond a quelque chose dans la description
      */
     public static function rechercherRecette($nomRecette){
-        $requetePreparee = "SELECT nomRecette,difficulteRecette,descriptionRecette FROM Recette where nomRecette = :tag_nomRecette;";
+        $requetePreparee = "SELECT numRecette, nomRecette FROM Recette where nomRecette LIKE '%' :tag_nomRecette '%';";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_nomRecette" => $nomRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
             $tab = $req_prep->fetchAll();
             if (!$tab)
                 return false;

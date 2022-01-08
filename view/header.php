@@ -58,8 +58,9 @@
                         <a href="#debut" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</a>
                     <?php } ?>
                   <ul class="navbar-nav ml-auto">
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                      <input type="search" class="form-control form-control-dark" placeholder="Rechercher..." aria-label="Search">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="routeur.php" method="get">
+                        <input type="hidden" name="action" value="rechercher">
+                            <input type="search" class="form-control form-control-dark" placeholder="Rechercher..." aria-label="Search" name="inputClient">
                     </form>
                       <?php if (isset($_SESSION['user'])) { ?>
                           <li class="nav-item dropdown">

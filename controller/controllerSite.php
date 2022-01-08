@@ -102,6 +102,18 @@ class controllerSite
         require("view/found.php");
     }
 
+
+
+
+
+    public static function rechercher()
+    {
+        $nomRecette = $_GET["inputClient"];
+        $lesRecettes = Recette::rechercherRecette($nomRecette);
+        require("./view/search.php");
+
+    }
+
     public static function seConnecter()
     {
         require_once("./view/Connexion/pageConnexion.php");
