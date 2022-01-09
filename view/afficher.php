@@ -2,7 +2,7 @@
     <div class="card w-75 mx-auto">
         <img
                 src="view/image/<?php echo $numRecette?>"
-                class="card-img-top"
+                class="card-img-top rounded mx-auto d-block max-width: 50%;"
         />
         <div class="card-body">
             <h5 class="card-title"><?php echo $nomRecette?></h5>

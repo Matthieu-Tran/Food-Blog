@@ -137,7 +137,7 @@ class controllerSite
             $row = $requete->rowCount();
             // Si > à 0 alors l'utilisateur existe
             if ($row > 0) {
-                if (password_verify($password, $data['mdpUtilsateur'])) {
+                if (password_verify($password, $data['mdpUtilisateur'])) {
                     $_SESSION['user'] = $data['pseudoUtilisateur'];
                     header('Location: routeur.php?action=acceuil');
                 } else {
