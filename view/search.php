@@ -7,7 +7,7 @@
             foreach($lesRecettes as $key=>$value){ ?>
                 <div class="col-md-4 col-sm-6">
                     <div class="card mb-4 shadow-sm">
-                        <img src="view/image/<?php echo $lesRecettes[$key]['numRecette'];?>" class="w-100">
+                        <img src="view/image/<?php echo $lesRecettes[$key]['numRecette'];?>.png" class="w-100">
                         <div class="card-body">
                             <p class="card-title">
                             <h3><?php echo $lesRecettes[$key]['nomRecette'];?></h3>
