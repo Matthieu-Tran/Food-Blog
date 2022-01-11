@@ -1,10 +1,10 @@
 <?php
 class Connexion {
     // attributs de la classe Connexion paramètres de connexion à la base
-    static private $hostname = 'localhost';
-    static private $database = 'mtran';
-    static private $login = 'mtran';
-    static private $password = 'YMz33d?^rY4b,iER3hwl';
+    static private $hostname = 'localhost:8889';
+    static private $database = 'marmiton';
+    static private $login = 'root';
+    static private $password = 'root';
     // attribut de la classe Connexion paramètres d'encodage
     static private $tabUTF8 = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
     // attribut de la classe Connexion qui recevra l'instance PDO

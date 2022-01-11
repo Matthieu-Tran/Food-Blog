@@ -260,6 +260,48 @@ class controllerSite
         else
             $nbIngredientRecette =0;
 
+        $commentaires = Commentaire::getCommentaireByNumRecette($numRecette);
+        foreach($commentaires as $key => $val) {
+            $sommmeCommentaires += $commentaires[$key]['noteCommentaire'];
+            $nbCommentaires ++;
+            switch ($commentaires[$key]['noteCommentaire']) {
+                case 1:
+                    $nb1 ++;
+                    break;
+                case 2:
+                    $nb2 ++;
+                    break;
+                case 3:
+                    $nb3 ++;
+                    break;
+                case 4:
+                    $nb4 ++;
+                    break;
+                case 5:
+                    $nb5 ++;
+                    break;
+            }
+        }
+        $pourcentage1 = round((($nb1/$nbCommentaires)*100),2);
+        $pourcentage2 = round((($nb2/$nbCommentaires)*100),2);
+        $pourcentage3 = round((($nb3/$nbCommentaires)*100),2);
+        $pourcentage4 = round((($nb4/$nbCommentaires)*100),2);
+        $pourcentage5 = round((($nb5/$nbCommentaires)*100),2);
+        $moyenneCommentaire = $sommmeCommentaires/$nbCommentaires;
         require_once ("./view/afficher.php");
+    }
+
+
+    public static function ajoutCommentaire()
+    {
+        $pseudo = $_SESSION['user'];
+        $listeNumUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($pseudo);
+        //On recupere dans la list, le numero d'utilisateur
+        $numUtili = $listeNumUtilisateur['numUtilisateur'];
+        //On extract les donnes recuperees en GET
+        extract($_GET);
+        $alerteCommentaire = 0;
+        Commentaire::ajoutCommentaireByUser($user_review,$user_rating, $alerteCommentaire, $numRecette, $numUtili);
+        header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
     }
 }

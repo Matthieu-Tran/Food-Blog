@@ -27,11 +27,13 @@
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         <link rel="stylesheet" type="text/css" href="view/css/style.css" />
         <link rel="stylesheet" type="text/css" href="view/css/login-register.css"/>
 
         <title><?php echo $nomPage;?></title>
     </head>
+    <body style="margin-top: 50px">
         <header>
           <nav class="navbar fixed-top navbar-expand-xl navbar-dark"  id="navbarHeader">
             <div class="container-md" id="containerHeader">
@@ -86,4 +88,3 @@
           </nav>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         </header>
-    <body>

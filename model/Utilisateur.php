@@ -46,7 +46,7 @@ class Utilisateur
 
     public static function getUtilisateurByNumCommentaire($numCommentaire){
         $requetePreparee =
-            "SELECT DISTINCT Utilisateur.nomUtilisateur, Utilisateur.prenomUtilisateur, Utilisateur.pseudoUtilisateur
+            "SELECT Utilisateur.nomUtilisateur, Utilisateur.prenomUtilisateur, Utilisateur.pseudoUtilisateur
             FROM Utilisateur 
             JOIN Commentaire ON(Utilisateur.numUtilisateur=Commentaire.numUtilisateur)
             JOIN Recette ON(Commentaire.numRecette=Recette.numRecette)
@@ -94,7 +94,23 @@ class Utilisateur
         $valeurs = array("tag_PseudoUtilisateur" => $pseudoUtilisateur);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
+            $t = $req_prep->fetch();
+            if (!$t)
+                return false;
+            return $t;
+        } catch (PDOException $e) {
+            echo "erreur : ".$e->getMessage()."<br>";
+        }
+        return false;
+    }
+
+    public static function getPseudoUtilisateurbyNumUtilisateur($numUtilisateur)
+    {
+        $requetePreparee = "SELECT pseudoUtilisateur FROM Utilisateur where numUtilisateur = :tag_numUtilisateur;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
+        try {
+            $req_prep->execute($valeurs);
             $t = $req_prep->fetch();
             if (!$t)
                 return false;

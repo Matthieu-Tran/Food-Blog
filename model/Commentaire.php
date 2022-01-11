@@ -83,16 +83,13 @@ class Commentaire
 
     public static function getCommentaireByNumRecette($numRecette){
         $requetePreparee =
-            "SELECT descriptionCommentaire, noteCommentaire
+            "SELECT *
             FROM Commentaire 
-            JOIN Recette ON(Commentaire.numRecette=Recette.numRecette)
-            JOIN Utilisateur ON(Utilisateur.numUtillisateur=Commentaire.numUtillisateur)
-            Where Recette.numRecette = :tag_numRecette";
+            Where numRecette = :tag_numRecette";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_numRecette" => $numRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Commentaire');
             $tab = $req_prep->fetchall();
             if (!$tab)
                 return false;
@@ -101,6 +98,28 @@ class Commentaire
             echo "erreur : ".$e->getMessage()."<br>";
         }
         return false;
+    }
+
+    public static function ajoutCommentaireByUser($descriptionCommentaire, $noteCommentaire, $alerteCommentaire, $fkNumRecette, $fkNumUtilsateur)
+    {
+        $requetePreparee = "INSERT INTO Commentaire (descriptionCommentaire,noteCommentaire,alerteCommentaire,numRecette, numUtilisateur) VALUES(:tag_descriptionCommentaire,:tag_noteCommentaire,:tag_alerteCommentaire,:tag_fkNumRecette, :tag_fkNumUtilsateur);";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array(
+            "tag_descriptionCommentaire" => $descriptionCommentaire,
+            "tag_noteCommentaire" => $noteCommentaire,
+            "tag_alerteCommentaire" => $alerteCommentaire,
+            "tag_fkNumRecette" => $fkNumRecette,
+            "tag_fkNumUtilsateur" => $fkNumUtilsateur,
+        );
+        try {
+            $req_prep->execute($valeurs);
+        } catch (PDOException $e) {
+            echo "erreur : ".$e->getMessage()."<br>";
+        }
+    }
+
+    public static function compterCommentaire(){
+
     }
 
 }
