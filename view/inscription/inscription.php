@@ -78,4 +78,6 @@
                 <button type="submit" class="btn btn-primary btn-block">Inscription</button>
             </div>
         </form>
+        <p class="text-center">Vous avez déja un compte ?</p>
+        <p class="text-center"><a href="routeur.php?action=seConnecter">Connectez vous</a></p>
     </div>
