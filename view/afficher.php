@@ -34,14 +34,12 @@
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="tabs-ustensile" role="tabpanel" aria-labelledby="ustensile-tab">
-
                     <ul class="list-group">
                         <?php
                         foreach($listeNomUstensile as $key=>$value){?>
                             <li class="list-group-item"><?php echo $listeNomUstensile[$key];?></li>
                         <?php } ?>
                     </ul>
-
                 </div>
                 <div class="tab-pane fade" id="tabs-instruction" role="tabpanel" aria-labelledby="instruction-tab">
                     <?php
@@ -51,7 +49,6 @@
                     ?>
                 </div>
             </div>
-
             <div class="container">
                 <h1 class="mt-5 mb-5">Commentaires</h1>
                         <div class="row">
@@ -131,7 +128,15 @@
                                     </div>
                                     <div class="card-footer">
                                         <div class="float-left">
-                                            <?php echo $commentaires[$key]['noteCommentaire'];  ?>/5
+                                            <?php
+                                            $note = $commentaires[$key]['noteCommentaire'];
+                                            for ($i=0; $i<$note;$i++){
+                                                echo "<span class='fa fa-star' style='color: orange'></span>";
+                                            }
+                                            for ($i=0; $i<5-$note;$i++){
+                                                echo "<span class='fa fa-star'></span>";
+                                            }
+                                            ?>
                                         </div>
                                         <div class="float-right">
                                             <?php echo $commentaires[$key]['dateCommentaire'];  ?>
@@ -142,9 +147,7 @@
                             </div>
                         </div>
                     <?php }?>
-
             </div>
-
             <div id="review_modal" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
