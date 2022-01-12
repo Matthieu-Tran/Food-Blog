@@ -8,8 +8,7 @@
 
     </section>
     <?php
-    if(isset($_GET['ban']))
-    {?>
+    if (isset($_GET['ban'])) { ?>
         <div class="alert alert-danger">
             <strong>ATTENTION</strong> Votre compte viens d'être banni pour commentaires abusifs
         </div>
@@ -19,30 +18,27 @@
     <!-- Grille Responsive -->
     <div id="debut" class="container py-5 bg-light">
 
-        <h2 class="display-6 text-center mb-5" >Commencez à vous régalez</h2>
+        <h2 class="display-6 text-center mb-5">Commencez à vous régalez</h2>
         <!-- 576 XS - > 576px S > 768px M > 992px L > 1200px Extra Large-->
-       <div class="row">
-           <?php
-           foreach($lesRecettes as $key=>$value){ ?>
-            <div class="col-md-4 col-sm-6">
-                <div class="card mb-4 shadow-sm">
-                    <img src="view/image/<?php echo $lesRecettes[$key]['numRecette'];?>.png" class="w-100">
-                    <div class="card-body">
-                        <p class="card-title">
-                            <h3><?php echo $lesRecettes[$key]['nomRecette'];?></h3>
-                        </p>
-                        <div class="btn-group">
-                            <button onclick="window.location.href='routeur.php?action=afficherRecette&numRecette=<?php echo $lesRecettes[$key]['numRecette'];?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
-                                Découvrir
-                            </button>
+        <div class="row">
+            <?php
+            foreach ($lesRecettes as $key => $value) { ?>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="view/image/<?php echo $lesRecettes[$key]['numRecette']; ?>.png" class="w-100">
+                        <div class="card-body">
+                            <p class="card-title">
+                            <h3><?php echo $lesRecettes[$key]['nomRecette']; ?></h3>
+                            </p>
+                            <div class="btn-group">
+                                <button onclick="window.location.href='routeur.php?action=afficherRecette&numRecette=<?php echo $lesRecettes[$key]['numRecette']; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                                    Découvrir
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-           <?php }
-           ?>
+            <?php }
+            ?>
         </div>
     </div>
-
-
-

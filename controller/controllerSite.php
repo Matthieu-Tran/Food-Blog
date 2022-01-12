@@ -35,6 +35,20 @@ class controllerSite
 
     public static function create()
     {
+        $pseudo = $_SESSION['user'];
+        $listeNumUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($pseudo);
+        $numUti = $listeNumUtilisateur['numUtilisateur'];
+        // les catégories
+        $lesCategories = Categorie::getAllCategorie();
+        // les Ustensiles
+        $lesUstensiles = Ustensile::getAllUstensile();
+        // les familles
+        $lesFamilles = Famille::getAllFamille();
+        //Les recettes
+        $lesRecettes = Recette::getAllRecettes();
+        //Les Ingredients
+        $lesIngredients = Ingredient::getAllIngredient();
+
         $title = "création d'une Recette";
         require("view/create.php");
     }
@@ -272,7 +286,7 @@ class controllerSite
         $nb5 = 0;
 
         // Faire condition lorsqu'une recette n'a pas de commentaire
-        $commentaires = Commentaire::getCommentaireByNumRecette(4);
+        $commentaires = Commentaire::getCommentaireByNumRecette(5);
         echo "<pre>";
         print_r($commentaires);
         echo "</pre>";

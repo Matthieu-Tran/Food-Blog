@@ -1,6 +1,6 @@
 <?php
-    require_once("conf/Connexion.php");
-    Connexion::connect();
+require_once("conf/Connexion.php");
+Connexion::connect();
 class Utilisateur
 {
     private $pkNumUtilisateur;
@@ -10,33 +10,51 @@ class Utilisateur
     private $mdpUtilisateur;
     private $banUtilisateur;
 
-    public function getpkNumUtilisateur(){return $this->pkNumUtilisateur;}
-    public function getnomUtilisateur(){return $this->nomUtilisateur;}
-    public function getprenomUtilisateur(){return $this->prenomUtilisateur;}
-    public function getpseudoUtilisateur(){return $this->pseudoUtilisateur;}
+    public function getpkNumUtilisateur()
+    {
+        return $this->pkNumUtilisateur;
+    }
+    public function getnomUtilisateur()
+    {
+        return $this->nomUtilisateur;
+    }
+    public function getprenomUtilisateur()
+    {
+        return $this->prenomUtilisateur;
+    }
+    public function getpseudoUtilisateur()
+    {
+        return $this->pseudoUtilisateur;
+    }
     //private function getmdpUtilisateur(){return $this->mdpUtilisateur;}
-    public function getbanUtilisateur(){return $this->banUtilisateur;}
+    public function getbanUtilisateur()
+    {
+        return $this->banUtilisateur;
+    }
 
-    public function __construct($numU=NULL,$nomU=NULL,$prenomU=NULL,$pseudoU=NULL, $mdpU=NULL,$banU=NULL){
-        if(!is_null($numU)){
+    public function __construct($numU = NULL, $nomU = NULL, $prenomU = NULL, $pseudoU = NULL, $mdpU = NULL, $banU = NULL)
+    {
+        if (!is_null($numU)) {
             $this->pkNumUtilisateur = $numU;
-            $this->nomUtilisateur= $nomU;
-            $this->prenomUtilisateur=$prenomU;
+            $this->nomUtilisateur = $nomU;
+            $this->prenomUtilisateur = $prenomU;
             $this->pseudoUtilisateur = $pseudoU;
             $this->mdpUtilisateur = $mdpU;
             $this->banUtilisateur = $banU;
         }
     }
 
-    public static function getAllUtilisateur() {
+    public static function getAllUtilisateur()
+    {
         $requete = "SELECT * FROM Utilisateur ORDER BY nomUtilisateur;";
         $reponse = Connexion::pdo()->query($requete);
-        $reponse->setFetchMode(PDO::FETCH_CLASS,'Utilisateur');
+        $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
         $tab = $reponse->fetchAll();
         return $tab;
     }
 
-    public static function getAllUtilisateurbyPseudo($Pseudo) {
+    public static function getAllUtilisateurbyPseudo($Pseudo)
+    {
         $requetePreparee = "SELECT * from Utilisateur where PseudoUtilisateur = :tag_Pseudo;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_Pseudo" => $Pseudo);
@@ -44,7 +62,8 @@ class Utilisateur
         return $req_prep;
     }
 
-    public static function getUtilisateurByNumCommentaire($numCommentaire){
+    public static function getUtilisateurByNumCommentaire($numCommentaire)
+    {
         $requetePreparee =
             "SELECT Utilisateur.nomUtilisateur, Utilisateur.prenomUtilisateur, Utilisateur.pseudoUtilisateur
             FROM Utilisateur 
@@ -55,18 +74,19 @@ class Utilisateur
         $valeurs = array("tag_numCommentaire" => $numCommentaire);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Commentaire');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Commentaire');
             $tab = $req_prep->fetchall();
             if (!$tab)
                 return false;
             return $tab;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 
-    public static function getUtilisateurByNumRecette($numRecette){
+    public static function getUtilisateurByNumRecette($numRecette)
+    {
         $requetePreparee =
             "SELECT DISTINCT Utilisateur.nomUtilisateur, Utilisateur.prenomUtilisateur, Utilisateur.pseudoUtilisateur
             FROM Utilisateur 
@@ -76,13 +96,13 @@ class Utilisateur
         $valeurs = array("tag_numRecette" => $numRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Commentaire');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Commentaire');
             $tab = $req_prep->fetch();
             if (!$tab)
                 return false;
             return $tab;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -99,7 +119,7 @@ class Utilisateur
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -116,13 +136,14 @@ class Utilisateur
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 
 
-    public static function addUtilisateur($nomUtilisateur,$prenomUtilisateur,$pseudoUtilisateur,$mdpUtilisateur) {
+    public static function addUtilisateur($nomUtilisateur, $prenomUtilisateur, $pseudoUtilisateur, $mdpUtilisateur)
+    {
         $requetePreparee = "INSERT INTO Utilisateur (nomUtilisateur,prenomUtilisateur,pseudoUtilisateur,mdpUtilisateur) VALUES(:tag_nomUtilisateur,:tag_prenomUtilisateur,:tag_pseudoUtilisateur,:tag_mdpUtilisateur);";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array(
@@ -134,11 +155,12 @@ class Utilisateur
         try {
             $req_prep->execute($valeurs);
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
     }
 
-    public static function deleteUtilisateur($numUtilisateur) {
+    public static function deleteUtilisateur($numUtilisateur)
+    {
         $requetePreparee = "DELETE FROM Utilisateur WHERE numUtilisateur = :tag_numUtilisateur;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
@@ -146,7 +168,7 @@ class Utilisateur
             $req_prep->execute($valeurs);
             return true;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -154,24 +176,26 @@ class Utilisateur
     /*
      * méthode qui permet de rechercher une recette existante
      */
-    public static function rechercherUtilisateur($pseudoUtilisateur){
+    public static function rechercherUtilisateur($pseudoUtilisateur)
+    {
         $requetePreparee = "SELECT nomUtilisateur,prenomUtiisateur,pseudoUtilisateur FROM Utilisateur where pseudoUtilisateur = :tag_pseudoUtilisateur;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_pseudoUtilisateur" => $pseudoUtilisateur);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Utilisateur');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
             $tab = $req_prep->fetchAll();
             if (!$tab)
                 return false;
             return $tab;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 
-    public static function alerteUtilisateur($numUtilisateur){
+    public static function alerteUtilisateur($numUtilisateur)
+    {
         $requetePreparee = "SELECT * FROM Utilisateur where numUtilisateur = :tag_numUtilisateur;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
@@ -179,22 +203,21 @@ class Utilisateur
             $req_prep->execute($valeurs);
             $tab = $req_prep->fetch();
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
-        if($tab['banUtilisateur']==3){
+        if ($tab['banUtilisateur'] == 3) {
             return true;
-        }
-        else{
+        } else {
             $requetePreparee = "UPDATE Utilisateur SET banUtilisateur = :tag_banUtilisateur WHERE numUtilisateur = :tag_numUtilisateur;";
             $req_prep = Connexion::pdo()->prepare($requetePreparee);
             $valeurs = array(
-                "tag_banUtilisateur" => $tab['banUtilisateur']+1,
+                "tag_banUtilisateur" => $tab['banUtilisateur'] + 1,
                 "tag_numUtilisateur" => $numUtilisateur
             );
             try {
                 $req_prep->execute($valeurs);
             } catch (PDOException $e) {
-                echo "erreur : ".$e->getMessage()."<br>";
+                echo "erreur : " . $e->getMessage() . "<br>";
             }
         }
         return false;
