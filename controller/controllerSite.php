@@ -271,6 +271,7 @@ class controllerSite
         $nb4 = 0;
         $nb5 = 0;
 
+        // Faire condition lorsqu'une recette n'a pas de commentaire
         $commentaires = Commentaire::getCommentaireByNumRecette(4);
         echo "<pre>";
         print_r($commentaires);
