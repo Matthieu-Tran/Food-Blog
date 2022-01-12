@@ -46,160 +46,167 @@
                     ?>
                 </div>
             </div>
-            <div class="container">
-                <h1 class="mt-5 mb-5">Commentaires</h1>
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <h1 class="text-warning mt-4 mb-4">
-                            <b><span id="average_rating"><?php if ($moyenneCommentaire > 0) echo round($moyenneCommentaire, 2);
-                                                            else echo 0; ?> </span> / 5</b>
-                        </h1>
-                        <h3> <?php if ($nbCommentaires > 0) echo $nbCommentaires;
-                                else echo "0"; ?> Avis</h3>
-                    </div>
-                    <div class="col-sm-4">
-                        <p>
-                        <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
-
-                        <div class="progress-label-right">(<span><?php if ($nb5) echo $nb5;
-                                                                    else echo 0; ?></span>)</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage5 ?>%"></div>
-                        </div>
-                        </p>
-                        <p>
-                        <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
-
-                        <div class="progress-label-right">(<span><?php if ($nb4) echo $nb4;
-                                                                    else echo 0; ?></span>)</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage4 ?>%"></div>
-                        </div>
-                        </p>
-                        <p>
-                        <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
-
-                        <div class="progress-label-right">(<span><?php if ($nb3) echo $nb3;
-                                                                    else echo 0; ?></span>)</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage3 ?>%"></div>
-                        </div>
-                        </p>
-                        <p>
-                        <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
-
-                        <div class="progress-label-right">(<span><?php if ($nb2) echo $nb2;
-                                                                    else echo 0; ?></span>)</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage2 ?>%"></div>
-                        </div>
-                        </p>
-                        <p>
-                        <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
-
-                        <div class="progress-label-right">(<span><?php if ($nb1) echo $nb1;
-                                                                    else echo 0; ?></span>)</div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage1 ?>%"></div>
-                        </div>
-                        </p>
-                    </div>
-                    <?php if (isset($_SESSION['user'])) { ?>
-                        <div class="col-sm-4 text-center">
-                            <h3 class="mt-4 mb-3">Write Review Here</h3>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review_modal">
-                                Review
-                            </button>
-                        </div>
-                    <?php } else { ?>
-                        <div class="col-sm-4 text-center">
-                            <h5 class="mt-4 mb-3">Veuillez vous connecter pour mettre un commentaire</h5>
-                        </div>
-                    <?php } ?>
+            <?php if (!$existeCommentaire) { ?>
+                <div class="alert alert-primary" role="alert">
+                    Il n'y a pas encore de commentaire pour cette recette
                 </div>
-                <div class="mt-5" id="review_content">
-                    <?php
-                    if (isset($_GET['com_warning'])) { ?>
-                        <div class="alert alert-danger">
-                            <strong>ATTENTION</strong> Votre commentaire n'est pas conforme, vous avez reçu un avertissement, au bout de 3, votre compte sera banni et toutes vos recettes seront supprimées
+            <?php } else { ?>
+                <div class="container">
+                    <h1 class="mt-5 mb-5">Commentaires</h1>
+                    <div class="row">
+                        <div class="col-sm-4 text-center">
+                            <h1 class="text-warning mt-4 mb-4">
+                                <b><span id="average_rating"><?php if ($moyenneCommentaire > 0) echo round($moyenneCommentaire, 2);
+                                                                else echo 0; ?> </span> / 5</b>
+                            </h1>
+                            <h3> <?php if ($nbCommentaires > 0) echo $nbCommentaires;
+                                    else echo "0"; ?> Avis</h3>
                         </div>
-                    <?php }
-                    ?>
-                    <?php
-                    foreach ($commentaires as $key => $val) {
-                        $pseudo = Utilisateur::getPseudoUtilisateurbyNumUtilisateur($commentaires[$key]['numUtilisateur']);
-                        $numUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($_SESSION['user']);
-                    ?>
-                        <div class="row mb-3">
-                            <div class="col-sm-11">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="float-left">
-                                            <b> <?php echo $pseudo['pseudoUtilisateur'] ?> </b>
+                        <div class="col-sm-4">
+                            <p>
+                            <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
+
+                            <div class="progress-label-right">(<span><?php if ($nb5) echo $nb5;
+                                                                        else echo 0; ?></span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage5 ?>%"></div>
+                            </div>
+                            </p>
+                            <p>
+                            <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
+
+                            <div class="progress-label-right">(<span><?php if ($nb4) echo $nb4;
+                                                                        else echo 0; ?></span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage4 ?>%"></div>
+                            </div>
+                            </p>
+                            <p>
+                            <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
+
+                            <div class="progress-label-right">(<span><?php if ($nb3) echo $nb3;
+                                                                        else echo 0; ?></span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage3 ?>%"></div>
+                            </div>
+                            </p>
+                            <p>
+                            <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
+
+                            <div class="progress-label-right">(<span><?php if ($nb2) echo $nb2;
+                                                                        else echo 0; ?></span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage2 ?>%"></div>
+                            </div>
+                            </p>
+                            <p>
+                            <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
+
+                            <div class="progress-label-right">(<span><?php if ($nb1) echo $nb1;
+                                                                        else echo 0; ?></span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: <?php echo $pourcentage1 ?>%"></div>
+                            </div>
+                            </p>
+                        </div>
+                        <?php if (isset($_SESSION['user'])) { ?>
+                            <div class="col-sm-4 text-center">
+                                <h3 class="mt-4 mb-3">Write Review Here</h3>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review_modal">
+                                    Review
+                                </button>
+                            </div>
+                        <?php } else { ?>
+                            <div class="col-sm-4 text-center">
+                                <h5 class="mt-4 mb-3">Veuillez vous connecter pour mettre un commentaire</h5>
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <div class="mt-5" id="review_content">
+                        <?php
+                        if (isset($_GET['com_warning'])) { ?>
+                            <div class="alert alert-danger">
+                                <strong>ATTENTION</strong> Votre commentaire n'est pas conforme, vous avez reçu un avertissement, au bout de 3, votre compte sera banni et toutes vos recettes seront supprimées
+                            </div>
+                        <?php }
+                        ?>
+                        <?php
+                        foreach ($commentaires as $key => $val) {
+                            $pseudo = Utilisateur::getPseudoUtilisateurbyNumUtilisateur($commentaires[$key]['numUtilisateur']);
+                            $numUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($_SESSION['user']);
+                        ?>
+                            <div class="row mb-3">
+                                <div class="col-sm-11">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="float-left">
+                                                <b> <?php echo $pseudo['pseudoUtilisateur'] ?> </b>
+                                            </div>
+                                            <div class="float-right">
+                                                <?php if ($numUtilisateur['numUtilisateur'] == $commentaires[$key]['numUtilisateur']) { ?>
+                                                    <button onclick="window.location.href='routeur.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                                                        Supprimer
+                                                    </button>
+                                                <?php } ?>
+                                            </div>
                                         </div>
-                                        <div class="float-right">
-                                            <?php if ($numUtilisateur['numUtilisateur'] == $commentaires[$key]['numUtilisateur']) { ?>
-                                                <button onclick="window.location.href='routeur.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
-                                                    Supprimer
-                                                </button>
-                                            <?php } ?>
+                                        <div class="card-body">
+                                            <i><?php echo $commentaires[$key]['descriptionCommentaire'];  ?></i>
                                         </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <i><?php echo $commentaires[$key]['descriptionCommentaire'];  ?></i>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="float-left">
-                                            <?php
-                                            $note = $commentaires[$key]['noteCommentaire'];
-                                            for ($i = 0; $i < $note; $i++) {
-                                                echo "<span class='fa fa-star' style='color: orange'></span>";
-                                            }
-                                            for ($i = 0; $i < 5 - $note; $i++) {
-                                                echo "<span class='fa fa-star'></span>";
-                                            }
-                                            ?>
+                                        <div class="card-footer">
+                                            <div class="float-left">
+                                                <?php
+                                                $note = $commentaires[$key]['noteCommentaire'];
+                                                for ($i = 0; $i < $note; $i++) {
+                                                    echo "<span class='fa fa-star' style='color: orange'></span>";
+                                                }
+                                                for ($i = 0; $i < 5 - $note; $i++) {
+                                                    echo "<span class='fa fa-star'></span>";
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="float-right">
+                                                <?php echo $commentaires[$key]['dateCommentaire'];  ?>
+                                            </div>
+                                            <div class="clearfix"></div>
                                         </div>
-                                        <div class="float-right">
-                                            <?php echo $commentaires[$key]['dateCommentaire'];  ?>
-                                        </div>
-                                        <div class="clearfix"></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php } ?>
-                </div>
-                <div id="review_modal" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Submit Review</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="routeur.php" method="get">
-                                    <input type='hidden' name='action' value='ajoutCommentaire'>
-                                    <input type='hidden' name='numRecette' value='<?php echo $numRecette ?>'>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Note</label>
-                                        <select class="form-control" id="exampleFormControlSelect1" name="user_rating">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="user_review" id="user_review" class="form-control" placeholder="Type Review Here" required="required"></textarea>
-                                    </div>
-                                    <input type="submit" class="btn btn-primary">
-                                </form>
+                        <?php } ?>
+                    </div>
+                    <div id="review_modal" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Submit Review</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="routeur.php" method="get">
+                                        <input type='hidden' name='action' value='ajoutCommentaire'>
+                                        <input type='hidden' name='numRecette' value='<?php echo $numRecette ?>'>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Note</label>
+                                            <select class="form-control" id="exampleFormControlSelect1" name="user_rating">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="user_review" id="user_review" class="form-control" placeholder="Type Review Here" required="required"></textarea>
+                                        </div>
+                                        <input type="submit" class="btn btn-primary">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
+</div>

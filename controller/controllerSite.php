@@ -286,34 +286,39 @@ class controllerSite
         $nb5 = 0;
 
         // Faire condition lorsqu'une recette n'a pas de commentaire
-        $commentaires = Commentaire::getCommentaireByNumRecette(5);
-        foreach ($commentaires as $key => $val) {
-            $sommmeCommentaires += $commentaires[$key]['noteCommentaire'];
-            $nbCommentaires++;
-            switch ($commentaires[$key]['noteCommentaire']) {
-                case 1:
-                    $nb1++;
-                    break;
-                case 2:
-                    $nb2++;
-                    break;
-                case 3:
-                    $nb3++;
-                    break;
-                case 4:
-                    $nb4++;
-                    break;
-                case 5:
-                    $nb5++;
-                    break;
+        $commentaires = Commentaire::getCommentaireByNumRecette($numRecette);
+        if (is_bool($commentaires)) {
+            $existeCommentaire = false;
+        } else {
+            $existeCommentaire = true;
+            foreach ($commentaires as $key => $val) {
+                $sommmeCommentaires += $commentaires[$key]['noteCommentaire'];
+                $nbCommentaires++;
+                switch ($commentaires[$key]['noteCommentaire']) {
+                    case 1:
+                        $nb1++;
+                        break;
+                    case 2:
+                        $nb2++;
+                        break;
+                    case 3:
+                        $nb3++;
+                        break;
+                    case 4:
+                        $nb4++;
+                        break;
+                    case 5:
+                        $nb5++;
+                        break;
+                }
             }
+            $pourcentage1 = round((($nb1 / $nbCommentaires) * 100), 2);
+            $pourcentage2 = round((($nb2 / $nbCommentaires) * 100), 2);
+            $pourcentage3 = round((($nb3 / $nbCommentaires) * 100), 2);
+            $pourcentage4 = round((($nb4 / $nbCommentaires) * 100), 2);
+            $pourcentage5 = round((($nb5 / $nbCommentaires) * 100), 2);
+            $moyenneCommentaire = $sommmeCommentaires / $nbCommentaires;
         }
-        $pourcentage1 = round((($nb1 / $nbCommentaires) * 100), 2);
-        $pourcentage2 = round((($nb2 / $nbCommentaires) * 100), 2);
-        $pourcentage3 = round((($nb3 / $nbCommentaires) * 100), 2);
-        $pourcentage4 = round((($nb4 / $nbCommentaires) * 100), 2);
-        $pourcentage5 = round((($nb5 / $nbCommentaires) * 100), 2);
-        $moyenneCommentaire = $sommmeCommentaires / $nbCommentaires;
         require_once("./view/afficher.php");
     }
 
