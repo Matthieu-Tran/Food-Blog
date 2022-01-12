@@ -24,7 +24,7 @@ class Famille
     public static function getAllFamille() {
         $requete = "SELECT * FROM Famille ORDER BY nomFamille;";
         $reponse = Connexion::pdo()->query($requete);
-        $reponse->setFetchMode(PDO::FETCH_CLASS,'Tache');
+        $reponse->setFetchMode(PDO::FETCH_CLASS,'Famille');
         $tab = $reponse->fetchAll();
         return $tab;
     }
@@ -67,4 +67,3 @@ class Famille
         return false;
     }
 }
-?>

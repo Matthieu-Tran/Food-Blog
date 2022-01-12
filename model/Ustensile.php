@@ -17,7 +17,6 @@ class Ustensile
     public static function getAllUstensile() {
         $requete = "SELECT * FROM Ustensile ORDER BY nomUstensile;";
         $reponse = Connexion::pdo()->query($requete);
-        $reponse->setFetchMode(PDO::FETCH_CLASS,'Ustensile');
         $tab = $reponse->fetchAll();
         return $tab;
     }
@@ -60,4 +59,3 @@ class Ustensile
         return false;
     }
 }
-?>

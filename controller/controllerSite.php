@@ -32,6 +32,20 @@ class controllerSite
 
     public static function create()
     {
+        $pseudo = $_SESSION['user'];
+        $listeNumUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($pseudo);
+        $numUti = $listeNumUtilisateur['numUtilisateur'];
+        // les catégories
+        $lesCategories = Categorie::getAllCategorie();
+        // les Ustensiles
+        $lesUstensiles = Ustensile::getAllUstensile();
+        // les familles
+        $lesFamilles = Famille::getAllFamille();
+        //Les recettes
+        $lesRecettes = Recette::getAllRecettes();
+        //Les Ingredients
+        $lesIngredients = Ingredient::getAllIngredient();
+
         $title = "création d'une Recette";
         require("view/create.php");
     }
@@ -111,7 +125,6 @@ class controllerSite
         $nomRecette = $_GET["inputClient"];
         $lesRecettes = Recette::rechercherRecette($nomRecette);
         require("./view/search.php");
-
     }
 
     public static function seConnecter()
@@ -162,7 +175,7 @@ class controllerSite
     public static function inscription_traitement()
     {
         // Si les variables existent et qu'elles ne sont pas vides
-        if(!empty(!empty($_POST['Prenom']) && !empty($_POST['Nom']) && $_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_retype']) ) {
+        if (!empty(!empty($_POST['Prenom']) && !empty($_POST['Nom']) && $_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_retype'])) {
             // Patch XSS
             $pseudo = htmlspecialchars($_POST['pseudo']);
             $nom = htmlspecialchars($_POST['Nom']);
@@ -176,8 +189,8 @@ class controllerSite
 
             // Si la requete renvoie un 0 alors l'utilisateur n'existe pas
             if ($row == 0) {
-                if(strlen($prenom) <=50) {
-                    if(strlen($nom) <=50) {
+                if (strlen($prenom) <= 50) {
+                    if (strlen($nom) <= 50) {
                         if (strlen($pseudo) <= 20) { // On verifie que la longueur du pseudo <= 100
                             if ($password === $password_retype) { // si les deux mdp saisis sont bon
                                 // On hash le mot de passe avec Bcrypt, via un coût de 12
@@ -202,21 +215,21 @@ class controllerSite
                             header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
                             die();
                         }
-                    }else{
-                        setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
+                    } else {
+                        setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
                         setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
                         header('Location: routeur.php?action=inscription&reg_err=nom_length');
                         die();
                     }
                 } else {
-                setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
-                setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
-                header('Location: routeur.php?action=inscription&reg_err=prenom_length');
-                die();
+                    setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
+                    setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
+                    header('Location: routeur.php?action=inscription&reg_err=prenom_length');
+                    die();
                 }
             } else {
-                setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
-                setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
+                setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
+                setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
                 header('Location: routeur.php?action=inscription&reg_err=already');
                 die();
             }
@@ -225,7 +238,7 @@ class controllerSite
     public static function deconnexion()
     {
         session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
-        header('Location: routeur.php?action=acceuil');// On redirige
+        header('Location: routeur.php?action=acceuil'); // On redirige
         die();
     }
 
@@ -246,20 +259,19 @@ class controllerSite
 
         //Pour voir les ustensiles de la recette
         $listeNomUstensile = array();
-        if($listeUstensiles = Recette::rechercherUstensile($numRecette)){
-            foreach($listeUstensiles as $key=>$value){
-            $nomUstensile = Ustensile::getNomUstensileByNumUstensile($listeUstensiles[$key]['numUstensile']);
-            array_push($listeNomUstensile, $nomUstensile);
+        if ($listeUstensiles = Recette::rechercherUstensile($numRecette)) {
+            foreach ($listeUstensiles as $key => $value) {
+                $nomUstensile = Ustensile::getNomUstensileByNumUstensile($listeUstensiles[$key]['numUstensile']);
+                array_push($listeNomUstensile, $nomUstensile);
             }
         }
         //Pour voir les ingredients et quantite de la recette
         $listeQuantite = Recette::getQuantiteIngredients($numRecette);
-        if ($listeIngredient = Ingredient::getAllIngredientByNumRecette($numRecette)){
+        if ($listeIngredient = Ingredient::getAllIngredientByNumRecette($numRecette)) {
             $nbIngredientRecette = count($listeIngredient);
-        }
-        else
-            $nbIngredientRecette =0;
+        } else
+            $nbIngredientRecette = 0;
 
-        require_once ("./view/afficher.php");
+        require_once("./view/afficher.php");
     }
 }

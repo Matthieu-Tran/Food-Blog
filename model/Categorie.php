@@ -1,47 +1,53 @@
 <?php
-    require_once("conf/Connexion.php");
-    Connexion::connect();
+require_once("conf/Connexion.php");
+Connexion::connect();
 class Categorie
 {
-    private $pkNumCategorie;
+    private $numCategorie;
     private $nomCategorie;
     private $typeCategorie;
     private $coherenceCategorie;
 
-    public function getPkNumCategorie(){
+    public function getPkNumCategorie()
+    {
         return $this->pkNumCategorie;
     }
 
-    public function getNomCategorie(){
+    public function getNomCategorie()
+    {
         return $this->nomFamille;
     }
 
-    public function getTypeCategorie(){
+    public function getTypeCategorie()
+    {
         return $this->typeCategorie;
     }
 
-    public function getCoherenceCategorie(){
+    public function getCoherenceCategorie()
+    {
         return $this->coherenceCategorie;
     }
 
-    public function __construct($pkNumCategorie=NULL,$nomCategorie=NULL,$typeCategorie=NULL){
-        if(!is_null($pkNumCategorie)){
-            $this->pkNumCategorie = $pkNumCategorie;
-            $this->nomCategorie= $nomCategorie;
-            $this->typeCategorie=$typeCategorie;
+    public function __construct($pkNumCategorie = NULL, $nomCategorie = NULL, $typeCategorie = NULL)
+    {
+        if (!is_null($pkNumCategorie)) {
+            $this->numCategorie = $pkNumCategorie;
+            $this->nomCategorie = $nomCategorie;
+            $this->typeCategorie = $typeCategorie;
             $this->coherenceCategorie = true;
         }
     }
 
-    public static function getAllCategorie() {
-        $requete = "SELECT * FROM Categorie ORDER BY nomCategorie;";
+    public static function getAllCategorie()
+    {
+        $requete = "SELECT * FROM Categorie ORDER BY numCategorie;";
         $reponse = Connexion::pdo()->query($requete);
-        $reponse->setFetchMode(PDO::FETCH_CLASS,'Categorie');
         $tab = $reponse->fetchAll();
         return $tab;
     }
 
-    public static function getCategorieByNumRecette($numRecette) {
+    public static function getCategorieByNumRecette($numRecette)
+    {
         $requetePreparee = "SELECT R.nomRecette, C.nomCategorie, C.typeCategorie 
         FROM appartient A 
         JOIN Categorie C ON(A.numCategorrie=C.numCategorrie) 
@@ -51,15 +57,14 @@ class Categorie
         $valeurs = array("tag_numIngredient" => $numRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Categorie');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Categorie');
             $t = $req_prep->fetch();
             if (!$t)
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 }
-?>
