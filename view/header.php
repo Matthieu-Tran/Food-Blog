@@ -33,7 +33,7 @@
 
         <title><?php echo $nomPage;?></title>
     </head>
-    <body style="margin-top: 50px">
+    <body>
         <header>
           <nav class="navbar fixed-top navbar-expand-xl navbar-dark"  id="navbarHeader">
             <div class="container-md" id="containerHeader">
