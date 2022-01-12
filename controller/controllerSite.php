@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 require_once("model/Categorie.php");
 require_once("model/Commentaire.php");
 require_once("model/Famille.php");
@@ -111,7 +114,6 @@ class controllerSite
         $nomRecette = $_GET["inputClient"];
         $lesRecettes = Recette::rechercherRecette($nomRecette);
         require("./view/search.php");
-
     }
 
     public static function seConnecter()
@@ -162,7 +164,7 @@ class controllerSite
     public static function inscription_traitement()
     {
         // Si les variables existent et qu'elles ne sont pas vides
-        if(!empty(!empty($_POST['Prenom']) && !empty($_POST['Nom']) && $_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_retype']) ) {
+        if (!empty(!empty($_POST['Prenom']) && !empty($_POST['Nom']) && $_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password_retype'])) {
             // Patch XSS
             $pseudo = htmlspecialchars($_POST['pseudo']);
             $nom = htmlspecialchars($_POST['Nom']);
@@ -176,8 +178,8 @@ class controllerSite
 
             // Si la requete renvoie un 0 alors l'utilisateur n'existe pas
             if ($row == 0) {
-                if(strlen($prenom) <=50) {
-                    if(strlen($nom) <=50) {
+                if (strlen($prenom) <= 50) {
+                    if (strlen($nom) <= 50) {
                         if (strlen($pseudo) <= 20) { // On verifie que la longueur du pseudo <= 100
                             if ($password === $password_retype) { // si les deux mdp saisis sont bon
                                 // On hash le mot de passe avec Bcrypt, via un coût de 12
@@ -202,21 +204,21 @@ class controllerSite
                             header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
                             die();
                         }
-                    }else{
-                        setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
+                    } else {
+                        setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
                         setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
                         header('Location: routeur.php?action=inscription&reg_err=nom_length');
                         die();
                     }
                 } else {
-                setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
-                setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
-                header('Location: routeur.php?action=inscription&reg_err=prenom_length');
-                die();
+                    setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
+                    setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
+                    header('Location: routeur.php?action=inscription&reg_err=prenom_length');
+                    die();
                 }
             } else {
-                setcookie ("nomUtilisateur",$_POST["Nom"],time()+ 5);
-                setcookie ("prenomUtilisateur",$_POST["Prenom"],time()+ 5);
+                setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
+                setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
                 header('Location: routeur.php?action=inscription&reg_err=already');
                 die();
             }
@@ -225,7 +227,7 @@ class controllerSite
     public static function deconnexion()
     {
         session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
-        header('Location: routeur.php?action=acceuil');// On redirige
+        header('Location: routeur.php?action=acceuil'); // On redirige
         die();
     }
 
@@ -246,49 +248,61 @@ class controllerSite
 
         //Pour voir les ustensiles de la recette
         $listeNomUstensile = array();
-        if($listeUstensiles = Recette::rechercherUstensile($numRecette)){
-            foreach($listeUstensiles as $key=>$value){
-            $nomUstensile = Ustensile::getNomUstensileByNumUstensile($listeUstensiles[$key]['numUstensile']);
-            array_push($listeNomUstensile, $nomUstensile);
+        if ($listeUstensiles = Recette::rechercherUstensile($numRecette)) {
+            foreach ($listeUstensiles as $key => $value) {
+                $nomUstensile = Ustensile::getNomUstensileByNumUstensile($listeUstensiles[$key]['numUstensile']);
+                array_push($listeNomUstensile, $nomUstensile);
             }
         }
         //Pour voir les ingredients et quantite de la recette
         $listeQuantite = Recette::getQuantiteIngredients($numRecette);
-        if ($listeIngredient = Ingredient::getAllIngredientByNumRecette($numRecette)){
+        if ($listeIngredient = Ingredient::getAllIngredientByNumRecette($numRecette)) {
             $nbIngredientRecette = count($listeIngredient);
+        } else {
+            $nbIngredientRecette = 0;
         }
-        else
-            $nbIngredientRecette =0;
 
-        $commentaires = Commentaire::getCommentaireByNumRecette($numRecette);
-        foreach($commentaires as $key => $val) {
+        $commentaires = "";
+        $sommmeCommentaires = 0;
+        $nbCommentaires = 0;
+        $nb1 = 0;
+        $nb2 = 0;
+        $nb3 = 0;
+        $nb4 = 0;
+        $nb5 = 0;
+
+        $commentaires = Commentaire::getCommentaireByNumRecette(4);
+        echo "<pre>";
+        print_r($commentaires);
+        echo "</pre>";
+        foreach ($commentaires as $key => $val) {
             $sommmeCommentaires += $commentaires[$key]['noteCommentaire'];
-            $nbCommentaires ++;
+            $nbCommentaires++;
             switch ($commentaires[$key]['noteCommentaire']) {
                 case 1:
-                    $nb1 ++;
+                    $nb1++;
                     break;
                 case 2:
-                    $nb2 ++;
+                    $nb2++;
                     break;
                 case 3:
-                    $nb3 ++;
+                    $nb3++;
                     break;
                 case 4:
-                    $nb4 ++;
+                    $nb4++;
                     break;
                 case 5:
-                    $nb5 ++;
+                    $nb5++;
                     break;
             }
         }
-        $pourcentage1 = round((($nb1/$nbCommentaires)*100),2);
-        $pourcentage2 = round((($nb2/$nbCommentaires)*100),2);
-        $pourcentage3 = round((($nb3/$nbCommentaires)*100),2);
-        $pourcentage4 = round((($nb4/$nbCommentaires)*100),2);
-        $pourcentage5 = round((($nb5/$nbCommentaires)*100),2);
-        $moyenneCommentaire = $sommmeCommentaires/$nbCommentaires;
-        require_once ("./view/afficher.php");
+        $pourcentage1 = round((($nb1 / $nbCommentaires) * 100), 2);
+        $pourcentage2 = round((($nb2 / $nbCommentaires) * 100), 2);
+        $pourcentage3 = round((($nb3 / $nbCommentaires) * 100), 2);
+        $pourcentage4 = round((($nb4 / $nbCommentaires) * 100), 2);
+        $pourcentage5 = round((($nb5 / $nbCommentaires) * 100), 2);
+        $moyenneCommentaire = $sommmeCommentaires / $nbCommentaires;
+        require_once("./view/afficher.php");
     }
 
 
@@ -302,26 +316,25 @@ class controllerSite
         extract($_GET);
         $alerteCommentaire = 0;
         //On filtre le commentaire de l'utilisateur
-        if(Commentaire::filtrageCommentaire($user_review)) {
-            if(Utilisateur::alerteUtilisateur($listeNumUtilisateur['numUtilisateur'])) {
+        if (Commentaire::filtrageCommentaire($user_review)) {
+            if (Utilisateur::alerteUtilisateur($listeNumUtilisateur['numUtilisateur'])) {
                 //Si l'utilisateur a depasse son nombre d'avertissement, on le supprime
                 Utilisateur::deleteUtilisateur($listeNumUtilisateur['numUtilisateur']);
                 session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
-                header('Location: routeur.php?action=acceuil&ban=aurevoir:)');// On redirige
+                header('Location: routeur.php?action=acceuil&ban=aurevoir:)'); // On redirige
                 die();
-            }
-            else
+            } else
                 //Sinon on lui redirige avec un message d'alerte
                 header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette&com_warning=ATTENTION");
-        }
-        else {
+        } else {
             //On ajoute le commentaire a la recette
             Commentaire::ajoutCommentaireByUser($user_review, $user_rating, $alerteCommentaire, $numRecette, $numUtili);
             header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
         }
     }
 
-    public static function supprimerCommentaire(){
+    public static function supprimerCommentaire()
+    {
         extract($_GET);
         Commentaire::deleteCommentaire($numCommentaire);
         header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");

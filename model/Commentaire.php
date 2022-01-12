@@ -1,6 +1,6 @@
 <?php
-    require_once("conf/Connexion.php");
-    Connexion::connect();
+require_once("conf/Connexion.php");
+Connexion::connect();
 class Commentaire
 {
     private $pkNumCommentaire;
@@ -10,13 +10,29 @@ class Commentaire
     private $fkNumRecette;
     private $fkNumUtilsateur;
 
-    public function getpkNumCommentaire() {return $this->pkNumCommentaire;}
-    public function getNoteCommentaire() {return $this->noteCommentaire;}
-    public function getAlerteCommentaire() {return $this->alerteCommentaire;}
-    public function getfkNumRecette() {return $this->fkNumRecette;}
-    public function getfkNumUtilisateur() {return $this->fkNumUtilsateur;}
+    public function getpkNumCommentaire()
+    {
+        return $this->pkNumCommentaire;
+    }
+    public function getNoteCommentaire()
+    {
+        return $this->noteCommentaire;
+    }
+    public function getAlerteCommentaire()
+    {
+        return $this->alerteCommentaire;
+    }
+    public function getfkNumRecette()
+    {
+        return $this->fkNumRecette;
+    }
+    public function getfkNumUtilisateur()
+    {
+        return $this->fkNumUtilsateur;
+    }
 
-    public function __construct($numCom = NULL,$noteCom = NULL,$alertCom = NULL,$numRec = NULL,$numUtil = NULL)  {
+    public function __construct($numCom = NULL, $noteCom = NULL, $alertCom = NULL, $numRec = NULL, $numUtil = NULL)
+    {
         if (!is_null($numCom)) {
             $this->pkNumCommentaire = $numCom;
             $this->noteCommentaire = $noteCom;
@@ -25,18 +41,20 @@ class Commentaire
             $this->fkNumUtilsateur = $numUtil;
         }
     }
-    public static function getAllCommentaires() {
+    public static function getAllCommentaires()
+    {
         $requete = "SELECT * FROM Commentaire ORDER BY NumCommentaire;";
         $reponse = Connexion::pdo()->query($requete);
-        $reponse->setFetchMode(PDO::FETCH_CLASS,'Commentaire');
+        $reponse->setFetchMode(PDO::FETCH_CLASS, 'Commentaire');
         $tab = $reponse->fetchAll();
         return $tab;
     }
 
 
-    public static function getCommentaireByNomRecette($nomRecette) {
+    public static function getCommentaireByNomRecette($nomRecette)
+    {
         $requetePreparee =
-        "SELECT DISTINCT Utilisateur.nomUtilisateur, descriptionCommentaire, noteCommentaire
+            "SELECT DISTINCT Utilisateur.nomUtilisateur, descriptionCommentaire, noteCommentaire
         FROM Commentaire 
         JOIN Recette ON(Commentaire.numRecette=Recette.numRecette)
         JOIN Utilisateur  ON(Utilisateur.numUtillisateur=Commentaire.numUtillisateur)
@@ -45,13 +63,13 @@ class Commentaire
         $valeurs = array("tag_nomRecette" => $nomRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Ustensile');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Ustensile');
             $t = $req_prep->fetchall();
             if (!$t)
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -59,7 +77,8 @@ class Commentaire
     /*
      * ajouter une méthode qui permet de recuperer les commentaires d'un utilisateur
      */
-    public static function getCommentaireByNumUtilisateur($numUtilisateur){
+    public static function getCommentaireByNumUtilisateur($numUtilisateur)
+    {
         $requetePreparee =
             "SELECT descriptionCommentaire, noteCommentaire
             FROM Commentaire 
@@ -70,18 +89,19 @@ class Commentaire
         $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Commentaire');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Commentaire');
             $tab = $req_prep->fetch();
             if (!$tab)
                 return false;
             return $tab;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 
-    public static function getCommentaireByNumRecette($numRecette){
+    public static function getCommentaireByNumRecette($numRecette)
+    {
         $requetePreparee =
             "SELECT *
             FROM Commentaire 
@@ -95,7 +115,7 @@ class Commentaire
                 return false;
             return $tab;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -114,11 +134,12 @@ class Commentaire
         try {
             $req_prep->execute($valeurs);
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
     }
 
-    public static function deleteCommentaire($numCommentaire) {
+    public static function deleteCommentaire($numCommentaire)
+    {
         $requetePreparee = "DELETE FROM Commentaire WHERE numCommentaire = :tag_numCommentaire;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_numCommentaire" => $numCommentaire);
@@ -126,22 +147,21 @@ class Commentaire
             $req_prep->execute($valeurs);
             return true;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 
 
-    public static function filtrageCommentaire($commentaire){
+    public static function filtrageCommentaire($commentaire)
+    {
         $requete = "SELECT * FROM black_list";
         $reponse = Connexion::pdo()->query($requete);
         $tab = $reponse->fetchAll();
-        foreach($tab as $key => $val) {
-            if((strpos(($tab[$key]['nomInsulte']),$commentaire)) !== false)
+        foreach ($tab as $key => $val) {
+            if ((strpos(($tab[$key]['nomInsulte']), $commentaire)) !== false)
                 return true;
         }
         return false;
     }
-
 }
-?>
