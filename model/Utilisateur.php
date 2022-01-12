@@ -170,4 +170,33 @@ class Utilisateur
         }
         return false;
     }
+
+    public static function alerteUtilisateur($numUtilisateur){
+        $requetePreparee = "SELECT * FROM Utilisateur where numUtilisateur = :tag_numUtilisateur;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
+        try {
+            $req_prep->execute($valeurs);
+            $tab = $req_prep->fetch();
+        } catch (PDOException $e) {
+            echo "erreur : ".$e->getMessage()."<br>";
+        }
+        if($tab['banUtilisateur']==3){
+            return true;
+        }
+        else{
+            $requetePreparee = "UPDATE Utilisateur SET banUtilisateur = :tag_banUtilisateur WHERE numUtilisateur = :tag_numUtilisateur;";
+            $req_prep = Connexion::pdo()->prepare($requetePreparee);
+            $valeurs = array(
+                "tag_banUtilisateur" => $tab['banUtilisateur']+1,
+                "tag_numUtilisateur" => $numUtilisateur
+            );
+            try {
+                $req_prep->execute($valeurs);
+            } catch (PDOException $e) {
+                echo "erreur : ".$e->getMessage()."<br>";
+            }
+        }
+        return false;
+    }
 }

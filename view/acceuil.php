@@ -1,4 +1,4 @@
-<section class="accueil bg-dark d-flex w-100 h-100 flex-column justify-content-center align-items-center">
+    <section class="accueil bg-dark d-flex w-100 h-100 flex-column justify-content-center align-items-center">
 
         <h1 class="display-1 text-white text-center">Faîtes vous plaisir</h1>
         <p class="lead text-center text-white">Découvrez les recettes de nos membres et partagez nous vos plus belles recettes</p>
@@ -7,9 +7,16 @@
         </p>
 
     </section>
+    <?php
+    if(isset($_GET['ban']))
+    {?>
+        <div class="alert alert-danger">
+            <strong>ATTENTION</strong> Votre compte viens d'être banni pour commentaires abusifs
+        </div>
+    <?php }
+    ?>
 
     <!-- Grille Responsive -->
-
     <div id="debut" class="container py-5 bg-light">
 
         <h2 class="display-6 text-center mb-5" >Commencez à vous régalez</h2>

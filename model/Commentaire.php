@@ -131,5 +131,17 @@ class Commentaire
         return false;
     }
 
+
+    public static function filtrageCommentaire($commentaire){
+        $requete = "SELECT * FROM black_list";
+        $reponse = Connexion::pdo()->query($requete);
+        $tab = $reponse->fetchAll();
+        foreach($tab as $key => $val) {
+            if((strpos(($tab[$key]['nomInsulte']),$commentaire)) !== false)
+                return true;
+        }
+        return false;
+    }
+
 }
 ?>

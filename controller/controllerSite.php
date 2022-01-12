@@ -301,8 +301,24 @@ class controllerSite
         //On extract les donnes recuperees en GET
         extract($_GET);
         $alerteCommentaire = 0;
-        Commentaire::ajoutCommentaireByUser($user_review,$user_rating, $alerteCommentaire, $numRecette, $numUtili);
-        header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
+        //On filtre le commentaire de l'utilisateur
+        if(Commentaire::filtrageCommentaire($user_review)) {
+            if(Utilisateur::alerteUtilisateur($listeNumUtilisateur['numUtilisateur'])) {
+                //Si l'utilisateur a depasse son nombre d'avertissement, on le supprime
+                Utilisateur::deleteUtilisateur($listeNumUtilisateur['numUtilisateur']);
+                session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
+                header('Location: routeur.php?action=acceuil&ban=aurevoir:)');// On redirige
+                die();
+            }
+            else
+                //Sinon on lui redirige avec un message d'alerte
+                header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette&com_warning=ATTENTION");
+        }
+        else {
+            //On ajoute le commentaire a la recette
+            Commentaire::ajoutCommentaireByUser($user_review, $user_rating, $alerteCommentaire, $numRecette, $numUtili);
+            header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
+        }
     }
 
     public static function supprimerCommentaire(){

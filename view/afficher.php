@@ -115,6 +115,14 @@
                         </div>
                 <div class="mt-5" id="review_content">
                     <?php
+                    if(isset($_GET['com_warning']))
+                    {?>
+                        <div class="alert alert-danger">
+                            <strong>ATTENTION</strong> Votre commentaire n'est pas conforme, vous avez reçu un avertissement, au bout de 3, votre compte sera banni et toutes vos recettes seront supprimées
+                        </div>
+                    <?php }
+                    ?>
+                    <?php
                     foreach($commentaires as $key => $val) {
                         $pseudo = Utilisateur::getPseudoUtilisateurbyNumUtilisateur($commentaires[$key]['numUtilisateur']);
                         $numUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($_SESSION['user']);
