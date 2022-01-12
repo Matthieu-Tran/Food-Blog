@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+body {
+    height: 100vh;
+
+}
+
 .accueil {
     background: url(https://ecolebranchee.com/wp-content/webpc-passthru.php?src=https://ecolebranchee.com/wp-content/uploads/2018/11/chalk.jpg&nocache=1);
     background-repeat: no-repeat;
@@ -17,7 +22,9 @@
     object-fit: cover;
 }
 
-
+#containerHeader{
+    min-height: 90px;
+}
 
 #navbarHeader{
     background-color:#ffb142;

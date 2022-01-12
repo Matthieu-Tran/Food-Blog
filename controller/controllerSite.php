@@ -287,9 +287,6 @@ class controllerSite
 
         // Faire condition lorsqu'une recette n'a pas de commentaire
         $commentaires = Commentaire::getCommentaireByNumRecette(5);
-        echo "<pre>";
-        print_r($commentaires);
-        echo "</pre>";
         foreach ($commentaires as $key => $val) {
             $sommmeCommentaires += $commentaires[$key]['noteCommentaire'];
             $nbCommentaires++;
