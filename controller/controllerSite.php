@@ -304,4 +304,10 @@ class controllerSite
         Commentaire::ajoutCommentaireByUser($user_review,$user_rating, $alerteCommentaire, $numRecette, $numUtili);
         header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
     }
+
+    public static function supprimerCommentaire(){
+        extract($_GET);
+        Commentaire::deleteCommentaire($numCommentaire);
+        header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
+    }
 }

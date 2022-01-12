@@ -118,8 +118,17 @@ class Commentaire
         }
     }
 
-    public static function compterCommentaire(){
-
+    public static function deleteCommentaire($numCommentaire) {
+        $requetePreparee = "DELETE FROM Commentaire WHERE numCommentaire = :tag_numCommentaire;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numCommentaire" => $numCommentaire);
+        try {
+            $req_prep->execute($valeurs);
+            return true;
+        } catch (PDOException $e) {
+            echo "erreur : ".$e->getMessage()."<br>";
+        }
+        return false;
     }
 
 }

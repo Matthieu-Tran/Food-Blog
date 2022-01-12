@@ -116,12 +116,23 @@
                 <div class="mt-5" id="review_content">
                     <?php
                     foreach($commentaires as $key => $val) {
-                        $pseudo = Utilisateur::getPseudoUtilisateurbyNumUtilisateur($commentaires[$key]['numUtilisateur']);?>
+                        $pseudo = Utilisateur::getPseudoUtilisateurbyNumUtilisateur($commentaires[$key]['numUtilisateur']);
+                        $numUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($_SESSION['user']);
+                        ?>
                         <div class="row mb-3">
                             <div class="col-sm-11">
                                 <div class="card">
                                     <div class="card-header">
-                                        <b> <?php echo $pseudo['pseudoUtilisateur'] ?> </b>
+                                        <div class="float-left">
+                                            <b> <?php echo $pseudo['pseudoUtilisateur'] ?> </b>
+                                        </div>
+                                        <div class="float-right">
+                                            <?php if($numUtilisateur['numUtilisateur'] == $commentaires[$key]['numUtilisateur']){ ?>
+                                                <button onclick="window.location.href='routeur.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire'];?>&numRecette=<?php echo $numRecette;?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                                                    Supprimer
+                                                </button>
+                                            <?php }?>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <i><?php echo $commentaires[$key]['descriptionCommentaire'];  ?></i>
