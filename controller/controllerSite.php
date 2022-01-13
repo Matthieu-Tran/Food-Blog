@@ -17,22 +17,6 @@ class controllerSite
         require_once("./view/acceuil.php");
     }
 
-    public static function readAll()
-    {
-        $lesRecettes = Recette::getAllRecettes();
-        $title = "Recettes";
-        require("view/list.php");
-    }
-
-    public static function read()
-    {
-        $numRecette = $_GET["numRecette"];
-        $recette = Recette::getRecettesbyNumRecette($numRecette);
-        $lienRetour = '<a href="routeur.php?action=readAll">retour à la liste</a>';
-        $title = "Une recette";
-        require("view/details.php");
-    }
-
     public static function create()
     {
         $pseudo = $_SESSION['user'];
@@ -56,15 +40,7 @@ class controllerSite
     public static function created()
     {
         extract($_POST);
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
-        echo "<pre>";
-        print_r($_FILES);
-        echo "</pre>";
-
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
-
         if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0) {
             if (isset($_FILES['photo']['tmp_name'])) {
                 $retour = copy($_FILES['photo']['tmp_name'], 'view/image/' . $_FILES['photo']['name']);
@@ -100,42 +76,6 @@ class controllerSite
         $numRecette = $_GET["numRecette"];
         Recette::deleteRecette($numRecette);
         self::acceuil();
-    }
-
-    public static function update()
-    {
-        $numRecette = $_GET["numRecette"];
-        $recette = Recette::getRecettesbyNumRecette($numRecette);
-        $nomRecette = $recette->getnomRecette();
-        $difficulteRecette = $recette->getdifficulteRecette();
-        $descriptionRecette = $recette->getdifficulteRecette();
-        $utilisateur = $recette->getfkNumUtilisateur();
-        $title = "mise à jour d'une recette";
-        require("view/update.php");
-    }
-
-    public static function updated()
-    {
-        $nomRecette = $_GET["nomRecette"];
-        $difficulteRecette = $_GET["difficulteRecette"];
-        $descriptionRecette = $_GET["descriptionRecette"];
-        $recette = Recette::updateRecette($nomRecette, $difficulteRecette, $descriptionRecette);
-        self::acceuil();
-    }
-
-    public static function search()
-    {
-        $uneRecette = Recette::getAllRecettes();
-        $title = "recherche d'une Recette";
-        require("view/search.php");
-    }
-
-    public static function found()
-    {
-        $numRecette = $_GET["numRecette"];
-        $laRecette = Recette::rechercherRecette($numRecette);
-        $title = "La recette";
-        require("view/found.php");
     }
 
     public static function rechercher()
@@ -264,23 +204,24 @@ class controllerSite
 
     public static function afficherRecette()
     {
-        //Pour avoir le nom de la recette
+
         $numRecette = ($_GET['numRecette']);
-        $ArrayNomRecette = Recette::getNomRecettebyNumRecette($numRecette);
-        $nomRecette = $ArrayNomRecette['nomRecette'];
+
+        // On recupere la recette
+        $tabNomRecette = Recette::getRecettesbyNumRecette($numRecette);
+
+        //Pour avoir le nom de la recette
+        $nomRecette = $tabNomRecette['nomRecette'];
 
         //Pour avoir le nom de l'image
-        $tabNomRecetteImage = Recette::getRecettesbyNumRecette($numRecette);
-        $nomRecetteImage = $tabNomRecetteImage['imageRecette'];
+        $nomRecetteImage = $tabNomRecette['imageRecette'];
 
 
         //Pour avoir la difficulte de la recette
-        $ArrayDiffRecette = Recette::getDifficultebyNumRecette($numRecette);
-        $difficulteRecette = $ArrayDiffRecette['difficulteRecette'];
+        $difficulteRecette = $tabNomRecette['difficulteRecette'];
 
         //Pour avoir les instructions de la recette
-        $ArrayInstruction = Recette::getInstructionbyNumRecette($numRecette);
-        $instructionRecette = $ArrayInstruction['descriptionRecette'];
+        $instructionRecette = $tabNomRecette['descriptionRecette'];
 
         //Pour voir les ustensiles de la recette
         $listeNomUstensile = array();

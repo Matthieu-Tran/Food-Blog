@@ -1,17 +1,12 @@
 <?php
 const ingredientMax = 10;
 const ustensileMax = 10;
-
-$cpt
 ?>
-<div class="container-lg mt-4 pb-5">
+
+
+<div class="container-lg mt-4 pb-5" style="padding-top: 50px">
     <div class="mx-auto mb-4">
         <h3 class="text-center"> Partagez nous vos petits plaisirs </h3>
-        <p>
-            <?php echo "<pre>";
-            print_r($_SESSION);
-            echo "</pre>"; ?>
-        </p>
     </div>
     <div class="card border-0 shadow rounded-3 w-75 my-5 mx-auto">
         <div class="card-body p-4">
