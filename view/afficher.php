@@ -1,7 +1,7 @@
 <div id="card">
     <div class="card w-75 mx-auto">
         <div class="text-center">
-            <img src="view/image/<?php echo $numRecette ?>.png" class="reduire" />
+            <img src="view/image/<?php echo $nomRecetteImage ?>" class="reduire" />
         </div>
         <div class="card-body">
             <h5 class="card-title"><?php echo $nomRecette ?></h5>
@@ -147,7 +147,7 @@
                             <?php } else {
                             foreach ($commentaires as $key => $val) {
                                 $pseudo = Utilisateur::getPseudoUtilisateurbyNumUtilisateur($commentaires[$key]['numUtilisateur']);
-                                $numUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($_SESSION['user']);
+                                $numUtilisateur = $_SESSION['numUtilisateur'];
                             ?>
                                 <div class="row mb-3">
                                     <div class="col-sm-11">

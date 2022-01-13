@@ -55,19 +55,22 @@ class controllerSite
 
     public static function created()
     {
-        extract($_GET);
+        extract($_POST);
         echo "<pre>";
-        print_r($_GET);
+        print_r($_POST);
         echo "</pre>";
         echo "<pre>";
         print_r($_FILES);
         echo "</pre>";
-        echo $photo;
 
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
 
         if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0) {
-            Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $_SESSION['numUtilisateur']);
+            if (isset($_FILES['photo']['tmp_name'])) {
+                $retour = copy($_FILES['photo']['tmp_name'], 'view/image/ ' . $_FILES['photo']['name']);
+                $nomImage = $_FILES['photo']['name'];
+            }
+            Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $_SESSION['numUtilisateur'], $nomImage);
             $leNumRecette = Recette::getNumRecettebyNomRecette($nomRecette);
             Recette::addRecetteAppartient($numCategorie, $leNumRecette['numRecette']);
             foreach ($numIngredient as $key => $value) {
@@ -265,6 +268,11 @@ class controllerSite
         $numRecette = ($_GET['numRecette']);
         $ArrayNomRecette = Recette::getNomRecettebyNumRecette($numRecette);
         $nomRecette = $ArrayNomRecette['nomRecette'];
+
+        //Pour avoir le nom de l'image
+        $tabNomRecetteImage = Recette::getRecettesbyNumRecette($numRecette);
+        $nomRecetteImage = $tabNomRecetteImage['imageRecette'];
+
 
         //Pour avoir la difficulte de la recette
         $ArrayDiffRecette = Recette::getDifficultebyNumRecette($numRecette);

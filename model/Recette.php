@@ -150,7 +150,6 @@ class Recette
         $valeurs = array("tag_numRecette" => $numRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Recette');
             $t = $req_prep->fetch();
             if (!$t)
                 return false;
@@ -203,15 +202,16 @@ class Recette
         }
     }
 
-    public static function addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $numUtilisateur)
+    public static function addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $numUtilisateur, $imageRecette)
     {
-        $requetePreparee = "INSERT INTO Recette (nomRecette,difficulteRecette,descriptionRecette,numUtilisateur) VALUES(:tag_nomRecette,:tag_difficulteRecette,:tag_descriptionRecette,:tag_numUtilisateur);";
+        $requetePreparee = "INSERT INTO Recette (nomRecette,difficulteRecette,descriptionRecette,numUtilisateur,imageRecette) VALUES(:tag_nomRecette,:tag_difficulteRecette,:tag_descriptionRecette,:tag_numUtilisateur, :tag_imageRecette);";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array(
             "tag_nomRecette" => $nomRecette,
             "tag_difficulteRecette" => $difficulteRecette,
             "tag_descriptionRecette" => $descriptionRecette,
-            "tag_numUtilisateur" => $numUtilisateur
+            "tag_numUtilisateur" => $numUtilisateur,
+            "tag_imageRecette" => $imageRecette
         );
         try {
             $req_prep->execute($valeurs);
