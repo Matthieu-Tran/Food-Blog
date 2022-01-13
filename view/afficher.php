@@ -1,6 +1,11 @@
 <div id="card" style="padding-top: 150px">
     <div class="card w-75 mx-auto">
         <div class="text-center">
+            <?php if ($recetteExistante) { ?>
+                <div class="alert alert-primary" role="alert">
+                    Recette déjà existante !
+                </div>
+            <?php } ?>
             <img src="view/image/<?php echo $nomRecetteImage ?>" class="reduire" />
         </div>
         <div class="card-body">
@@ -157,7 +162,7 @@
                                                     <b> <?php echo $pseudo['pseudoUtilisateur'] ?> </b>
                                                 </div>
                                                 <div class="float-right">
-                                                    <?php if ($numUtilisateur['numUtilisateur'] == $commentaires[$key]['numUtilisateur']) { ?>
+                                                    <?php if ($numUtilisateur == $commentaires[$key]['numUtilisateur']) { ?>
                                                         <button onclick="window.location.href='routeur.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
                                                             Supprimer
                                                         </button>

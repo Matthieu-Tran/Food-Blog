@@ -4,8 +4,23 @@ const ustensileMax = 10;
 ?>
 
 
-<div class="container-lg mt-4 pb-5" style="padding-top: 50px">
+<div class="container-lg mt-4 pb-5" style="padding-top: 130px">
     <div class="mx-auto mb-4">
+        <?php if ($oubliIngredient && !$oubliUstensile) { ?>
+            <div class="alert alert-primary" role="alert">
+                Vous n'avez pas ajouté d'ingredients: Veuillez recommencer !
+            </div>
+        <?php } ?>
+        <?php if ($oubliUstensile && !$oubliIngredient) { ?>
+            <div class="alert alert-primary" role="alert">
+                Vous n'avez pas ajouté d'ustensiles: Veuillez recommencer !
+            </div>
+        <?php } ?>
+        <?php if ($oubliUstensile && $oubliIngredient) { ?>
+            <div class="alert alert-primary" role="alert">
+                Aucun ingredient et ustensile ajoutés: Veuillez recommencez !
+            </div>
+        <?php } ?>
         <h3 class="text-center"> Partagez nous vos petits plaisirs </h3>
     </div>
     <div class="card border-0 shadow rounded-3 w-75 my-5 mx-auto">

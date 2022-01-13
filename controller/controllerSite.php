@@ -1,5 +1,7 @@
 <?php
+
 use function PHPSTORM_META\type;
+
 require_once("model/Categorie.php");
 require_once("model/Commentaire.php");
 require_once("model/Famille.php");
@@ -17,6 +19,18 @@ class controllerSite
     }
     public static function create()
     {
+        $oubliUstensile = false;
+        $oubliIngredient = false;
+        if (isset($_GET["oubliUstensile"])) {
+            $oubliUstensile = true;
+        }
+        if (isset($_GET["oubliIngredient"])) {
+            $oubliIngredient = true;
+        }
+        if (isset($_GET["oubliIngredient"]) && isset($_GET["oubliUstensile"])) {
+            $oubliIngredient = true;
+            $oubliUstensile = true;
+        }
         $pseudo = $_SESSION['user'];
         $listeNumUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($pseudo);
         $numUti = $listeNumUtilisateur['numUtilisateur'];
@@ -46,26 +60,27 @@ class controllerSite
             }
             Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $_SESSION['numUtilisateur'], $nomImage);
             $leNumRecette = Recette::getNumRecettebyNomRecette($nomRecette);
-            Recette::addRecetteAppartient($numCategorie, $leNumRecette['numRecette']);
+            $leNumRecette = $leNumRecette['numRecette'];
+            Recette::addRecetteAppartient($numCategorie, $leNumRecette);
             foreach ($numIngredient as $key => $value) {
                 if ($numIngredient[$key] == 0 || is_null($quantite[$key]))
                     continue;
-                Recette::addRecetteCompose($leNumRecette['numRecette'], $numIngredient[$key], $quantite[$key]);
+                Recette::addRecetteCompose($leNumRecette, $numIngredient[$key], $quantite[$key]);
             }
             foreach ($numUstensile as $key => $value) {
                 if ($numUstensile[$key] == 0)
                     continue;
-                Recette::addRecetteUstensile($leNumRecette['numRecette'], $numUstensile[$key]);
+                Recette::addRecetteUstensile($leNumRecette, $numUstensile[$key]);
             }
-            echo "Recette ajoute";
-        } else if ($numIngredient[0] == 0) {
-            echo "Aucun Ingredient ajouté";
-        } else if ($numUstensile[0] == 0) {
-            echo "Aucun Ustensile ajouté";
+            header("Location: routeur.php?action=afficherRecette&numRecette=$leNumRecette");
+        } else if ($numUstensile[0] == 0 && $numIngredient[0] == 0) {
+            header("Location: routeur.php?action=create&oubliIngredient=true&oubliUstensile=true");
+        } else if ($numUstensile[0] == 0 && $numIngredient[0] != 0) {
+            header("Location: routeur.php?action=create&oubliUstensile=true");
+        } else if ($numIngredient[0] == 0 && $numUstensile[0] != 0) {
+            header("Location: routeur.php?action=create&oubliIngredient=true");
         } else {
-            $uneRecette = Recette::getRecettesbyNumRecette($recette[0]);
-            $uneRecette->affichage();
-            echo "Recette déja crée par un membre";
+            header("Location: routeur.php?action=afficherRecette&numRecette=$recette[0]&recetteExistante=true");
         }
     }
 
@@ -192,11 +207,21 @@ class controllerSite
         header('Location: routeur.php?action=acceuil'); // On redirige
         die();
     }
+    public static function afficherRecetteUtilisateur()
+    {
+        $numUtilisateurRecette = $_SESSION['numUtilisateur'];
+        $lesRecettesUtilisateurs = Recette::getAllRecettesbyNumUtilisateur($numUtilisateurRecette);
+        require("./view/afficherRecetteUtilisateur.php");
+    }
 
     public static function afficherRecette()
     {
+        $recetteExistante = false;
+        if (isset($_GET['recetteExistante'])) {
+            $recetteExistante = true;
+        }
 
-        $numRecette = ($_GET['numRecette']);
+        $numRecette = $_GET['numRecette'];
 
         // On recupere la recette
         $tabNomRecette = Recette::getRecettesbyNumRecette($numRecette);

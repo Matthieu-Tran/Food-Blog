@@ -137,6 +137,23 @@ class Recette
         return false;
     }
 
+    public static function getAllRecettesbyNumUtilisateur($numUtilisateur)
+    {
+        $requetePreparee = "SELECT * FROM Recette where numUtilisateur = :tag_numUtilisateur;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
+        try {
+            $req_prep->execute($valeurs);
+            $tab = $req_prep->fetchall();
+            if (!$tab)
+                return false;
+            return $tab;
+        } catch (PDOException $e) {
+            echo "erreur : " . $e->getMessage() . "<br>";
+        }
+        return false;
+    }
+
 
     public static function addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $numUtilisateur, $imageRecette)
     {
