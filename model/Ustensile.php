@@ -36,26 +36,4 @@ class Ustensile
         }
         return false;
     }
-
-    public static function getUstensileByNumRecette($numRecette) {
-        $requetePreparee =
-        "Select DISTINCT nomUstensile
-        FROM Ustensile U
-        JOIN utilise uT ON(U.numUstensile=uT.numUstensile) 
-        JOIN Recette R ON(uT.numRecette=R.numRecette) 
-        Where numRecette= :tag_numRecette;";
-        $req_prep = Connexion::pdo()->prepare($requetePreparee);
-        $valeurs = array("tag_numRecette" => $numRecette);
-        try {
-            $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Ustensile');
-            $tab = $req_prep->fetchAll();
-            if (!$tab)
-                return false;
-            return $tab;
-        } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
-        }
-        return false;
-    }
 }

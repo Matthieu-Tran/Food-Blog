@@ -34,13 +34,12 @@ body {
 }
 
 .reduire{
-   text-align: center;
-   width: 500px;
-   height: 500px;
-  }  
+    width: 50%;
+    height: auto;
+}
 
 .align{
     text-align: center;
     width: auto;
     height: 280px;
-   } 
+   }
