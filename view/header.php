@@ -50,7 +50,7 @@ if (isset($_GET["numRecette"])) {
                     <?php } else { ?>
                         <a href="#debut" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</a>
                     <?php } ?>
-                    <?php if (isset($_SESSION['Admin'])) { ?>
+                    <?php if ($_SESSION['Admin'] == 1) { ?>
                         <button onclick="window.location.href='routeur.php?action=ajoutMod'" type="button" class="btn btn-primary ml-2">
                             Ajouter un modérateur
                         </button>
