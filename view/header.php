@@ -8,7 +8,6 @@ if (isset($_GET["numRecette"])) {
     $nomPage = "Recette de " . $nomRecette;
     $ArrayDiffRecette = Recette::getDifficultebyNumRecette($numRecette);
     $difficulteRecette = $ArrayDiffRecette['difficulteRecette'];
-
     $ArrayInstruction = Recette::getInstructionbyNumRecette($numRecette);
     $instructionRecette = $ArrayInstruction['descriptionRecette'];
 }
@@ -50,6 +49,11 @@ if (isset($_GET["numRecette"])) {
                         </button>
                     <?php } else { ?>
                         <a href="#debut" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</a>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['Admin'])) { ?>
+                        <button onclick="window.location.href='routeur.php?action=ajoutMod'" type="button" class="btn btn-primary ml-2">
+                            Ajouter un modérateur
+                        </button>
                     <?php } ?>
                     <ul class="navbar-nav ml-auto">
                         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="routeur.php" method="get">

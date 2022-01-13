@@ -6,7 +6,7 @@
         <div class="card-body">
             <?php
             if ((($tabNomRecette[numUtilisateur]) == $_SESSION['numUtilisateur']) || $_SESSION['Admin'] || $_SESSION['Moderateur']){?>
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verification_modal" style="margin-bottom: 10px">
+                <button type="button" class="btn btn-outline-primary mb-2" data-bs-toggle="modal" data-bs-target="#verification_modal">
                     Supprimer Recette
                 </button>
             <?php } ?>

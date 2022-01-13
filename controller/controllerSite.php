@@ -30,7 +30,6 @@ class controllerSite
         $lesRecettes = Recette::getAllRecettes();
         //Les Ingredients
         $lesIngredients = Ingredient::getAllIngredient();
-
         $title = "création d'une Recette";
         require("view/create.php");
     }
@@ -316,5 +315,22 @@ class controllerSite
         extract($_GET);
         Recette::deleteRecette($numRecette);
         header('Location: routeur.php?action=acceuil');
+    }
+
+    public static function ajoutMod(){
+        $listeNumUtilisateur = Utilisateur::getAllUtilisateur();
+        require("view/moderateur.php");
+    }
+
+    public static function modifModo(){
+        extract($_GET);
+        $modo = Utilisateur::getStatutUtilisateur($numUtilisateur);
+        if ($modo[estModerateur]) {
+            Utilisateur::demoteUtilisateur($numUtilisateur);
+        }
+        else{
+            Utilisateur::promoteUtilisateur($numUtilisateur);
+        }
+        header('Location: routeur.php?action=ajoutMod');
     }
 }
