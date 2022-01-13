@@ -100,6 +100,9 @@ class controllerSite
             // Si > à 0 alors l'utilisateur existe
             if ($row > 0) {
                 if (password_verify($password, $data['mdpUtilisateur'])) {
+                    $_SESSION['Admin'] = $data['estAdmin'];
+                    $_SESSION['Moderateur'] = $data['estModerateur'];
+                    $_SESSION['numUtilisateur'] = $data['numUtilisateur'];
                     $_SESSION['user'] = $data['pseudoUtilisateur'];
                     header('Location: routeur.php?action=acceuil');
                 } else {
@@ -195,7 +198,6 @@ class controllerSite
 
     public static function afficherRecette()
     {
-
         $numRecette = ($_GET['numRecette']);
 
         // On recupere la recette
@@ -308,5 +310,11 @@ class controllerSite
         extract($_GET);
         Commentaire::deleteCommentaire($numCommentaire);
         header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
+    }
+    public static function supprimerRecette()
+    {
+        extract($_GET);
+        Recette::deleteRecette($numRecette);
+        header('Location: routeur.php?action=acceuil');
     }
 }
