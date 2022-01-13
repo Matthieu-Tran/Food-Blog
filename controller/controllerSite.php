@@ -67,7 +67,7 @@ class controllerSite
 
         if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0) {
             if (isset($_FILES['photo']['tmp_name'])) {
-                $retour = copy($_FILES['photo']['tmp_name'], 'view/image/ ' . $_FILES['photo']['name']);
+                $retour = copy($_FILES['photo']['tmp_name'], 'view/image/' . $_FILES['photo']['name']);
                 $nomImage = $_FILES['photo']['name'];
             }
             Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $_SESSION['numUtilisateur'], $nomImage);
