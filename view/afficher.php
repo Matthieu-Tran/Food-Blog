@@ -1,6 +1,8 @@
 <div id="card">
     <div class="card w-75 mx-auto">
-        <img src="view/image/<?php echo $numRecette ?>.png" class="card-img-top rounded mx-auto d-block max-width: 50%;" />
+        <div class="text-center">
+            <img src="view/image/<?php echo $numRecette ?>.png" class="reduire" />
+        </div>
         <div class="card-body">
             <h5 class="card-title"><?php echo $nomRecette ?></h5>
             <h6 class="card-subtitle mb-2 text-muted">Difficulté recette: <?php echo $difficulteRecette ?></h6>

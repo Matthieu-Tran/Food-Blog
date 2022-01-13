@@ -32,3 +32,15 @@ body {
 #card{
     padding-top: 90px;
 }
+
+.reduire{
+   text-align: center;
+   width: 500px;
+   height: 500px;
+  }  
+
+.align{
+    text-align: center;
+    width: auto;
+    height: 280px;
+   } 
