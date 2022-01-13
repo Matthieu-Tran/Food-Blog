@@ -55,25 +55,42 @@ class controllerSite
 
     public static function created()
     {
-        $lesRecettes = Recette::getAllRecettes();
         extract($_GET);
+        /* echo "<pre>";
+        print_r($nomRecette);
+        echo "</pre>";
+        echo "<pre>";
+        print_r($numIngredient);
+        echo "</pre>";
+        echo "<pre>";
+        print_r($numUstensile);
+        echo "</pre>";
+        echo $_SESSION['numUtilisateur'];
+        echo "<pre>";
+        print_r($_GET);
+        echo "</pre>";*/
+        echo "<pre>";
+        print_r($_FILES);
+        echo "</pre>";
+        echo $photo;
+        $lesRecettes = Recette::getAllRecettes();
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
-        $test = Recette::getRecettesbyNumUtilisateur($numUtilisateur);
+        $test = Recette::getRecettesbyNumUtilisateur($_SESSION['numUtilisateur']);
         echo "<pre>";
         print_r($test);
         echo "</pre>";
         echo "<pre>";
         print_r($recette);
         echo "</pre>";
+
         if ($recette == null) {
-            Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $numUtilisateur);
+            Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $_SESSION['numUtilisateur']);
             echo "Recette ajoute";
         } else {
             $uneRecette = Recette::getRecettesbyNumRecette($recette[0]);
             $uneRecette->affichage();
             echo "Recette déja crée par un membre";
         }
-        self::acceuil();
     }
 
     public static function delete()
@@ -118,10 +135,6 @@ class controllerSite
         $title = "La recette";
         require("view/found.php");
     }
-
-
-
-
 
     public static function rechercher()
     {
@@ -201,7 +214,9 @@ class controllerSite
                                 $passwordHash = password_hash($password, PASSWORD_BCRYPT, $cost);
                                 // On insère dans la base de données
                                 Utilisateur::addUtilisateur($nom, $prenom, $pseudo, $passwordHash);
+                                $numUtiInscription = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($pseudo);
                                 // On redirige avec le message de succès
+                                $_SESSION['numUtilisateur'] = $numUtiInscription['numUtilisateur'];
                                 $_SESSION['user'] = $pseudo;
                                 header('Location: routeur.php?action=acceuil');
                                 die();

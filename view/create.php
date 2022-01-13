@@ -7,6 +7,11 @@ $cpt
 <div class="container-lg mt-4 pb-5">
     <div class="mx-auto mb-4">
         <h3 class="text-center"> Partagez nous vos petits plaisirs </h3>
+        <p>
+            <?php echo "<pre>";
+            print_r($_SESSION);
+            echo "</pre>"; ?>
+        </p>
     </div>
     <div class="card border-0 shadow rounded-3 w-75 my-5 mx-auto">
         <div class="card-body p-4">
@@ -20,8 +25,8 @@ $cpt
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="numCategorie[]">Catégories</label>
-                        <select name="numCategorie[]" class="selectpicker form-control" required>
+                        <label for="numCategorie">Catégories</label>
+                        <select name="numCategorie" class="selectpicker form-control" required>
                             <option name="numCategorie" value="1"><?php echo $lesCategories[0]['1']; ?></option>
                             <?php foreach ($lesCategories as $key => $value) { ?>
                                 <option name="numCategorie" value="<?php echo $lesCategories[$key]['numCategorie']; ?>">
@@ -48,7 +53,7 @@ $cpt
                 <hr>
                 <div class="form-group">
                     <label for="instructions">Instructions</label>
-                    <textarea rows="3" class="form-control" placeholder="Instructions" name="instructions" required></textarea>
+                    <textarea rows="3" class="form-control" placeholder="Instructions" name="descriptionRecette" required></textarea>
                 </div>
                 <hr>
 
@@ -113,7 +118,7 @@ $cpt
                 </div>
                 <hr>
                 <div class="row justify-content-end">
-                    <button type="submit" class="btn btn-warning font-weight-bold">Ajouter la recette</button>
+                    <button type="submit" name="envoyer" value="creation de la recette" class="btn btn-warning font-weight-bold">Ajouter la recette</button>
                 </div>
             </form>
         </div>
