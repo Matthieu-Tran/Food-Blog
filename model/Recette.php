@@ -285,7 +285,7 @@ class Recette
      */
     public static function rechercherRecette($nomRecette)
     {
-        $requetePreparee = "SELECT numRecette, nomRecette FROM Recette where nomRecette LIKE '%' :tag_nomRecette '%';";
+        $requetePreparee = "SELECT * FROM Recette where nomRecette LIKE '%' :tag_nomRecette '%';";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_nomRecette" => $nomRecette);
         try {
