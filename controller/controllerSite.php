@@ -1,7 +1,5 @@
 <?php
-
 use function PHPSTORM_META\type;
-
 require_once("model/Categorie.php");
 require_once("model/Commentaire.php");
 require_once("model/Famille.php");
@@ -9,6 +7,7 @@ require_once("model/Ingredient.php");
 require_once("model/Recette.php");
 require_once("model/Ustensile.php");
 require_once("model/Utilisateur.php");
+
 class controllerSite
 {
     public static function acceuil()
@@ -16,7 +15,6 @@ class controllerSite
         $lesRecettes = Recette::getAllRecettes();
         require_once("./view/acceuil.php");
     }
-
     public static function create()
     {
         $pseudo = $_SESSION['user'];
@@ -69,13 +67,6 @@ class controllerSite
             $uneRecette->affichage();
             echo "Recette déja crée par un membre";
         }
-    }
-
-    public static function delete()
-    {
-        $numRecette = $_GET["numRecette"];
-        Recette::deleteRecette($numRecette);
-        self::acceuil();
     }
 
     public static function rechercher()
@@ -312,7 +303,6 @@ class controllerSite
             header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
         }
     }
-
     public static function supprimerCommentaire()
     {
         extract($_GET);

@@ -47,7 +47,7 @@ if (isset($_GET["numRecette"])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <?php if (isset($_SESSION['user'])) { ?>
-                        <button onclick="window.location.href='routeur.php?action=create'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                        <button onclick="window.location.href='routeur.php?action=create'" type="button" class="btn btn-sm btn-outline-primary ml-1">
                             Ajouter une recette
                         </button>
                     <?php } else { ?>
