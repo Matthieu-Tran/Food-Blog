@@ -66,10 +66,29 @@ $cpt
                             <label>Quantités</label>
                         </div>
                     </div>
-                    <?php for ($cpt = 0; $cpt < 10; $cpt++) { ?>
+                    <div class="form-row ingredient0">
+                        <div class="form-group col-md-5">
+                            <select id="selectIngredient0" name="numIngredient[]" class="selectpicker form-control" required>
+                                <option name="numIngredient" value="0"> Aucun Ingredient </option>
+                                <?php foreach ($lesIngredients as $key => $value) { ?>
+                                    <option name="numIngredient" value="<?php echo $lesIngredients[$key]['numIngredient']; ?>">
+                                        <?php echo $lesIngredients[$key]['nomIngredient'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <input type="number" class="form-control" name="quantite[]" min="0" max="10000" placeholder="... en g">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button class="btn btn-danger font-weight-bold mx-auto remove_ingredient">Supprimer</button>
+                        </div>
+                    </div>
+                    <?php for ($cpt = 1; $cpt < 10; $cpt++) { ?>
                         <div class="form-row d-none ingredient<?php echo $cpt ?>">
                             <div class="form-group col-md-5">
                                 <select id="selectIngredient<?php echo $cpt ?>" name="numIngredient[]" class="selectpicker form-control" required>
+                                    <option name="numIngredient" value="0"> Aucun Ingredient </option>
                                     <?php foreach ($lesIngredients as $key => $value) { ?>
                                         <option name="numIngredient" value="<?php echo $lesIngredients[$key]['numIngredient']; ?>">
                                             <?php echo $lesIngredients[$key]['nomIngredient'] ?>
@@ -96,10 +115,26 @@ $cpt
                             <label>Ustensiles</label>
                         </div>
                     </div>
-                    <?php for ($cpt = 0; $cpt < 10; $cpt++) { ?>
+                    <div class="form-row ustensile0">
+                        <div class="form-group col-md-5">
+                            <select id="selectUstensile0" name="numUstensile[]" class="selectpicker form-control">
+                                <option name="numUstensile" value="0"> Aucun Ustensiles </option>
+                                <?php foreach ($lesUstensiles as $key => $value) { ?>
+                                    <option name="numUstensiles" value="<?php echo $lesUstensiles[$key]['numUstensile']; ?>">
+                                        <?php echo $lesUstensiles[$key]['nomUstensile'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button class="btn btn-danger font-weight-bold mx-auto remove_ustensile">Supprimer</button>
+                        </div>
+                    </div>
+                    <?php for ($cpt = 1; $cpt < 10; $cpt++) { ?>
                         <div class="form-row d-none ustensile<?php echo $cpt ?>">
                             <div class="form-group col-md-5">
                                 <select id="selectUstensile<?php echo $cpt ?>" name="numUstensile[]" class="selectpicker form-control">
+                                    <option name="numUstensile" value="0"> Aucun Ustensiles </option>
                                     <?php foreach ($lesUstensiles as $key => $value) { ?>
                                         <option name="numUstensiles" value="<?php echo $lesUstensiles[$key]['numUstensile']; ?>">
                                             <?php echo $lesUstensiles[$key]['nomUstensile'] ?>
@@ -130,7 +165,7 @@ $cpt
         var max_fields_ingredients = 10;
         var add_ingredient = $(".add_ingredient");
         var remove_ingredient = $(".remove_ingredient");
-        var x = 1;
+        var x = 0;
 
         $(add_ingredient).click(function(e) {
             e.preventDefault();
@@ -145,6 +180,8 @@ $cpt
         $(remove_ingredient).click(function(e) {
             e.preventDefault();
             if (x > 0) {
+                if (x == 10)
+                    x--;
                 $('.ingredient' + x).addClass('d-none');
                 document.getElementById("selectIngredient" + x).selectedIndex = "0";
                 x--;
@@ -155,7 +192,7 @@ $cpt
         var max_fields_ustensiles = 10;
         var add_ustensile = $(".add_ustensile");
         var remove_ustensile = $(".remove_ustensile");
-        var y = 1;
+        var y = 0;
 
         $(add_ustensile).click(function(e) {
             e.preventDefault();
@@ -170,6 +207,8 @@ $cpt
         $(remove_ustensile).click(function(e) {
             e.preventDefault();
             if (y > 0) {
+                if (y == 10)
+                    y--;
                 $('.ustensile' + y).addClass('d-none');
                 document.getElementById("selectUstensile" + x).selectedIndex = "0";
                 y--;

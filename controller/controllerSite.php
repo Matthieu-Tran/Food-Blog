@@ -66,14 +66,25 @@ class controllerSite
 
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
 
-        if ($recette == null) {
+        if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0) {
             Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $_SESSION['numUtilisateur']);
             $leNumRecette = Recette::getNumRecettebyNomRecette($nomRecette);
             Recette::addRecetteAppartient($numCategorie, $leNumRecette['numRecette']);
-            Recette::addRecetteCompose($leNumRecette['numRecette'], $numIngredient[0], $quantite[2]);
-            Recette::addRecetteUstensile($leNumRecette['numRecette'], $numUstensile[2]);
-
+            foreach ($numIngredient as $key => $value) {
+                if ($numIngredient[$key] == 0 || is_null($quantite[$key]))
+                    continue;
+                Recette::addRecetteCompose($leNumRecette['numRecette'], $numIngredient[$key], $quantite[$key]);
+            }
+            foreach ($numUstensile as $key => $value) {
+                if ($numUstensile[$key] == 0)
+                    continue;
+                Recette::addRecetteUstensile($leNumRecette['numRecette'], $numUstensile[$key]);
+            }
             echo "Recette ajoute";
+        } else if ($numIngredient[0] == 0) {
+            echo "Aucun Ingredient ajouté";
+        } else if ($numUstensile[0] == 0) {
+            echo "Aucun Ustensile ajouté";
         } else {
             $uneRecette = Recette::getRecettesbyNumRecette($recette[0]);
             $uneRecette->affichage();
