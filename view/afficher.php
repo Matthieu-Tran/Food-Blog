@@ -49,9 +49,6 @@
                 </div>
             </div>
             <?php if (!$existeCommentaire) { ?>
-                <div class="alert alert-primary" role="alert">
-                    Il n'y a pas encore de commentaire pour cette recette
-                </div>
             <?php } else { ?>
                 <div class="container">
                     <h1 class="mt-5 mb-5">Commentaires</h1>
@@ -111,18 +108,32 @@
                             </div>
                             </p>
                         </div>
-                        <?php if (isset($_SESSION['user'])) { ?>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <?php if (!$existeCommentaire) { ?>
+                            <div class="text-center">
+                                <h3 class="mt-4 mb-3">Write Review Here</h3>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review_modal">
+                                    Review
+                                </button>
+                                <hr>
+                                <div class="alert alert-primary" role="alert">
+                                    Il n'y a pas encore de commentaire pour cette recette
+                                </div>
+                            </div>
+                        <?php } else { ?>
                             <div class="col-sm-4 text-center">
                                 <h3 class="mt-4 mb-3">Write Review Here</h3>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review_modal">
                                     Review
                                 </button>
                             </div>
-                        <?php } else { ?>
-                            <div class="col-sm-4 text-center">
-                                <h5 class="mt-4 mb-3">Veuillez vous connecter pour mettre un commentaire</h5>
-                            </div>
                         <?php } ?>
+                    <?php } else { ?>
+                        <div class="col-sm-4 text-center">
+                            <h5 class="mt-4 mb-3">Veuillez vous connecter pour mettre un commentaire</h5>
+                        </div>
+                    <?php } ?>
                     </div>
                     <div class="mt-5" id="review_content">
                         <?php
@@ -132,49 +143,51 @@
                             </div>
                         <?php }
                         ?>
-                        <?php
-                        foreach ($commentaires as $key => $val) {
-                            $pseudo = Utilisateur::getPseudoUtilisateurbyNumUtilisateur($commentaires[$key]['numUtilisateur']);
-                            $numUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($_SESSION['user']);
-                        ?>
-                            <div class="row mb-3">
-                                <div class="col-sm-11">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <div class="float-left">
-                                                <b> <?php echo $pseudo['pseudoUtilisateur'] ?> </b>
+                        <?php if (!$existeCommentaire) { ?>
+                            <?php } else {
+                            foreach ($commentaires as $key => $val) {
+                                $pseudo = Utilisateur::getPseudoUtilisateurbyNumUtilisateur($commentaires[$key]['numUtilisateur']);
+                                $numUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($_SESSION['user']);
+                            ?>
+                                <div class="row mb-3">
+                                    <div class="col-sm-11">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="float-left">
+                                                    <b> <?php echo $pseudo['pseudoUtilisateur'] ?> </b>
+                                                </div>
+                                                <div class="float-right">
+                                                    <?php if ($numUtilisateur['numUtilisateur'] == $commentaires[$key]['numUtilisateur']) { ?>
+                                                        <button onclick="window.location.href='routeur.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                                                            Supprimer
+                                                        </button>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
-                                            <div class="float-right">
-                                                <?php if ($numUtilisateur['numUtilisateur'] == $commentaires[$key]['numUtilisateur']) { ?>
-                                                    <button onclick="window.location.href='routeur.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
-                                                        Supprimer
-                                                    </button>
-                                                <?php } ?>
+                                            <div class="card-body">
+                                                <i><?php echo $commentaires[$key]['descriptionCommentaire'];  ?></i>
                                             </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <i><?php echo $commentaires[$key]['descriptionCommentaire'];  ?></i>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="float-left">
-                                                <?php
-                                                $note = $commentaires[$key]['noteCommentaire'];
-                                                for ($i = 0; $i < $note; $i++) {
-                                                    echo "<span class='fa fa-star' style='color: orange'></span>";
-                                                }
-                                                for ($i = 0; $i < 5 - $note; $i++) {
-                                                    echo "<span class='fa fa-star'></span>";
-                                                }
-                                                ?>
+                                            <div class="card-footer">
+                                                <div class="float-left">
+                                                    <?php
+                                                    $note = $commentaires[$key]['noteCommentaire'];
+                                                    for ($i = 0; $i < $note; $i++) {
+                                                        echo "<span class='fa fa-star' style='color: orange'></span>";
+                                                    }
+                                                    for ($i = 0; $i < 5 - $note; $i++) {
+                                                        echo "<span class='fa fa-star'></span>";
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div class="float-right">
+                                                    <?php echo $commentaires[$key]['dateCommentaire'];  ?>
+                                                </div>
+                                                <div class="clearfix"></div>
                                             </div>
-                                            <div class="float-right">
-                                                <?php echo $commentaires[$key]['dateCommentaire'];  ?>
-                                            </div>
-                                            <div class="clearfix"></div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                         <?php } ?>
                     </div>
                     <div id="review_modal" class="modal" tabindex="-1" role="dialog">
@@ -208,7 +221,6 @@
                         </div>
                     </div>
                 </div>
-            <?php } ?>
         </div>
     </div>
 </div>
