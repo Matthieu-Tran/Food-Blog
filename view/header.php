@@ -6,8 +6,6 @@ if (isset($_GET["numRecette"])) {
     $ArrayNomRecette = Recette::getNomRecettebyNumRecette($numRecette);
     $nomRecette = $ArrayNomRecette['nomRecette'];
     $nomPage = "Recette de " . $nomRecette;
-
-
     $ArrayDiffRecette = Recette::getDifficultebyNumRecette($numRecette);
     $difficulteRecette = $ArrayDiffRecette['difficulteRecette'];
 

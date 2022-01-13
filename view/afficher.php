@@ -9,6 +9,12 @@
             <img src="view/image/<?php echo $nomRecetteImage ?>" class="reduire" />
         </div>
         <div class="card-body">
+            <?php
+            if ((($tabNomRecette['numUtilisateur']) == $_SESSION['numUtilisateur']) || $_SESSION['Admin'] || $_SESSION['Moderateur']) { ?>
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verification_modal" style="margin-bottom: 10px">
+                    Supprimer Recette
+                </button>
+            <?php } ?>
             <h5 class="card-title"><?php echo $nomRecette ?></h5>
             <h6 class="card-subtitle mb-2 text-muted">Difficulté recette: <?php echo $difficulteRecette ?></h6>
             <ul class="nav nav-tabs nav-justified mb-3" id="pills-tab" role="tablist">
@@ -222,6 +228,24 @@
                                         <input type="submit" class="btn btn-primary">
                                     </form>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" tabindex="-1" role="dialog" id="verification_modal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Attention !</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Voulez vous vraiment supprimer votre recette ?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="window.location.href='routeur.php?action=supprimerRecette&numRecette=<?php echo $numRecette ?>'" class="btn btn-primary">Oui</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Non</button>
                             </div>
                         </div>
                     </div>
