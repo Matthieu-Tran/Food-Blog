@@ -71,7 +71,7 @@ $cpt
                             <div class="form-group col-md-5">
                                 <select id="selectIngredient<?php echo $cpt ?>" name="numIngredient[]" class="selectpicker form-control" required>
                                     <?php foreach ($lesIngredients as $key => $value) { ?>
-                                        <option name="numIngredient" value="'<?php echo $lesIngredients[$key]['nomIngredient']; ?>'">
+                                        <option name="numIngredient" value="<?php echo $lesIngredients[$key]['numIngredient']; ?>">
                                             <?php echo $lesIngredients[$key]['nomIngredient'] ?>
                                         </option>
                                     <?php } ?>
@@ -101,7 +101,7 @@ $cpt
                             <div class="form-group col-md-5">
                                 <select id="selectUstensile<?php echo $cpt ?>" name="numUstensile[]" class="selectpicker form-control">
                                     <?php foreach ($lesUstensiles as $key => $value) { ?>
-                                        <option name="numUstensiles" value="'<?php echo $lesUstensiles[$key]['nomUstensile']; ?>'">
+                                        <option name="numUstensiles" value="<?php echo $lesUstensiles[$key]['numUstensile']; ?>">
                                             <?php echo $lesUstensiles[$key]['nomUstensile'] ?>
                                         </option>
                                     <?php } ?>

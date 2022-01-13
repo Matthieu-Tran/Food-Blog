@@ -53,7 +53,7 @@ class Ingredient
 
     public static function getAllIngredientByNumRecette($numRecette)
     {
-        $requetePreparee = "SELECT R.nomRecette, I.nomIngredient, F.nomFamille
+        $requetePreparee = "SELECT I.nomIngredient, F.nomFamille
         FROM compose C 
         JOIN Ingredient I ON(C.numIngredient=I.numIngredient)
         JOIN Recette R ON(R.numRecette=C.numRecette)
@@ -85,6 +85,23 @@ class Ingredient
             if (!$tab)
                 return false;
             return $tab;
+        } catch (PDOException $e) {
+            echo "erreur : " . $e->getMessage() . "<br>";
+        }
+        return false;
+    }
+
+    public static function getNumIngredientbyNomIngredient($nomIngredient)
+    {
+        $requetePreparee = "SELECT numIngredient FROM Ingredient where nomIngredient = :tag_nomIngredient;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_nomIngredient" => $nomIngredient);
+        try {
+            $req_prep->execute($valeurs);
+            $t = $req_prep->fetch();
+            if (!$t)
+                return false;
+            return $t;
         } catch (PDOException $e) {
             echo "erreur : " . $e->getMessage() . "<br>";
         }

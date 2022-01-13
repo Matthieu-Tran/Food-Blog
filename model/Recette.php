@@ -1,6 +1,6 @@
 <?php
-    require_once("conf/Connexion.php");
-    Connexion::connect();
+require_once("conf/Connexion.php");
+Connexion::connect();
 class Recette
 {
     private $numRecette;
@@ -9,13 +9,29 @@ class Recette
     private $descriptionRecette;
     private $numUtilisateur;
 
-    public function getnumRecette(){return $this->numRecette;}
-    public function getnomRecette(){return $this->nomRecette;}
-    public function getdifficulteRecette(){return $this->difficulteRecette;}
-    public function getdescriptionRecette(){return $this->descriptionRecette;}
-    public function getnumUtilisateur(){return $this->numUtilisateur;}
+    public function getnumRecette()
+    {
+        return $this->numRecette;
+    }
+    public function getnomRecette()
+    {
+        return $this->nomRecette;
+    }
+    public function getdifficulteRecette()
+    {
+        return $this->difficulteRecette;
+    }
+    public function getdescriptionRecette()
+    {
+        return $this->descriptionRecette;
+    }
+    public function getnumUtilisateur()
+    {
+        return $this->numUtilisateur;
+    }
 
-    public function __construct($numR = NULL,$nomR = NULL,$difR = NULL,$desR = NULL,$numU = NULL)  {
+    public function __construct($numR = NULL, $nomR = NULL, $difR = NULL, $desR = NULL, $numU = NULL)
+    {
         if (!is_null($numR)) {
             $this->numRecette = $numU;
             $this->nomRecette = $nomR;
@@ -24,11 +40,13 @@ class Recette
             $this->numUtilisateur = $numU;
         }
     }
-    public function affichage() {
+    public function affichage()
+    {
         return "<p>Recette [numRecette = $this->numRecette, nomRecette = $this->nomRecette]</p>";
     }
 
-    public static function getAllRecettes() {
+    public static function getAllRecettes()
+    {
         $requete = "SELECT * FROM Recette ORDER BY NumRecette;";
         $reponse = Connexion::pdo()->query($requete);
         //$reponse->setFetchMode(PDO::FETCH_CLASS,'Recette');
@@ -48,7 +66,7 @@ class Recette
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -66,7 +84,7 @@ class Recette
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -84,7 +102,7 @@ class Recette
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -102,7 +120,7 @@ class Recette
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -120,7 +138,7 @@ class Recette
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -132,18 +150,19 @@ class Recette
         $valeurs = array("tag_numRecette" => $numRecette);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Recette');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Recette');
             $t = $req_prep->fetch();
             if (!$t)
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 
-    public static function getRecetteByNumCommentaire($numCommentaire){
+    public static function getRecetteByNumCommentaire($numCommentaire)
+    {
         $requetePreparee =
             "SELECT nomRecette
             FROM Recette 
@@ -154,19 +173,20 @@ class Recette
         $valeurs = array("tag_numCommentaire" => $numCommentaire);
         try {
             $req_prep->execute($valeurs);
-            $req_prep->setFetchMode(PDO::FETCH_CLASS,'Commentaire');
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Commentaire');
             $tab = $req_prep->fetchall();
             if (!$tab)
                 return false;
             return $tab;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 
 
-    public static function updateRecette($nomRecette,$difficulteRecette,$descriptionRecette) {
+    public static function updateRecette($nomRecette, $difficulteRecette, $descriptionRecette)
+    {
         $requetePreparee = "UPDATE Recette SET difficulteRecette = :tag_difficulteRecette, descriptionRecette = :tag_descriptionRecette WHERE nomRecette = :tag_nomRecette;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array(
@@ -178,12 +198,13 @@ class Recette
             $req_prep->execute($valeurs);
             return true;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
             return false;
         }
     }
 
-    public static function addRecette($nomRecette,$difficulteRecette,$descriptionRecette,$numUtilisateur) {
+    public static function addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $numUtilisateur)
+    {
         $requetePreparee = "INSERT INTO Recette (nomRecette,difficulteRecette,descriptionRecette,numUtilisateur) VALUES(:tag_nomRecette,:tag_difficulteRecette,:tag_descriptionRecette,:tag_numUtilisateur);";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array(
@@ -195,11 +216,58 @@ class Recette
         try {
             $req_prep->execute($valeurs);
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
     }
 
-    public static function deleteRecette($numRecette) {
+    public static function addRecetteCompose($numRecette, $numIngredient, $quantite)
+    {
+        $requetePreparee = "INSERT INTO compose VALUES(:tag_numRecette,:tag_numIngredient,:tag_quantite);";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array(
+            "tag_numRecette" => $numRecette,
+            "tag_numIngredient" => $numIngredient,
+            "tag_quantite" => $quantite
+        );
+        try {
+            $req_prep->execute($valeurs);
+        } catch (PDOException $e) {
+            echo "erreur : " . $e->getMessage() . "<br>";
+        }
+    }
+
+    public static function addRecetteAppartient($numCategorie, $numRecette)
+    {
+        $requetePreparee = "INSERT INTO appartient VALUES (:tag_numCategorie,:tag_numRecette);";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array(
+            "tag_numCategorie" => $numCategorie,
+            "tag_numRecette" => $numRecette
+        );
+        try {
+            $req_prep->execute($valeurs);
+        } catch (PDOException $e) {
+            echo "erreur : " . $e->getMessage() . "<br>";
+        }
+    }
+
+    public static function addRecetteUstensile($numRecette, $numUstensile)
+    {
+        $requetePreparee = "INSERT INTO utilise VALUES (:tag_numRecette, :tag_numUstensile);";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array(
+            "tag_numRecette" => $numRecette,
+            "tag_numUstensile" => $numUstensile
+        );
+        try {
+            $req_prep->execute($valeurs);
+        } catch (PDOException $e) {
+            echo "erreur : " . $e->getMessage() . "<br>";
+        }
+    }
+
+    public static function deleteRecette($numRecette)
+    {
         $requetePreparee = "DELETE FROM Recette WHERE numRecette = :tag_numRecette;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_numRecette" => $numRecette);
@@ -207,7 +275,7 @@ class Recette
             $req_prep->execute($valeurs);
             return true;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -215,7 +283,8 @@ class Recette
     /*
      * méthode qui permet de rechercher une recette en ayant soit son nom, soit un mot qui correspond a quelque chose dans la description
      */
-    public static function rechercherRecette($nomRecette){
+    public static function rechercherRecette($nomRecette)
+    {
         $requetePreparee = "SELECT numRecette, nomRecette FROM Recette where nomRecette LIKE '%' :tag_nomRecette '%';";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_nomRecette" => $nomRecette);
@@ -226,7 +295,7 @@ class Recette
                 return false;
             return $tab;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
@@ -238,7 +307,8 @@ class Recette
      */
 
 
-    public static function rechercherUstensile($numRecette){
+    public static function rechercherUstensile($numRecette)
+    {
         $requetePreparee = "SELECT numUstensile FROM utilise where numRecette = :tag_numRecette;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_numRecette" => $numRecette);
@@ -249,12 +319,13 @@ class Recette
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
 
-    public static function getQuantiteIngredients($numRecette){
+    public static function getQuantiteIngredients($numRecette)
+    {
         $requetePreparee = "SELECT quantite FROM compose where numRecette = :tag_numRecette;";
         $req_prep = Connexion::pdo()->prepare($requetePreparee);
         $valeurs = array("tag_numRecette" => $numRecette);
@@ -265,13 +336,8 @@ class Recette
                 return false;
             return $t;
         } catch (PDOException $e) {
-            echo "erreur : ".$e->getMessage()."<br>";
+            echo "erreur : " . $e->getMessage() . "<br>";
         }
         return false;
     }
-
-
-
-
 }
-?>

@@ -56,35 +56,23 @@ class controllerSite
     public static function created()
     {
         extract($_GET);
-        /* echo "<pre>";
-        print_r($nomRecette);
-        echo "</pre>";
-        echo "<pre>";
-        print_r($numIngredient);
-        echo "</pre>";
-        echo "<pre>";
-        print_r($numUstensile);
-        echo "</pre>";
-        echo $_SESSION['numUtilisateur'];
         echo "<pre>";
         print_r($_GET);
-        echo "</pre>";*/
+        echo "</pre>";
         echo "<pre>";
         print_r($_FILES);
         echo "</pre>";
         echo $photo;
-        $lesRecettes = Recette::getAllRecettes();
+
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
-        $test = Recette::getRecettesbyNumUtilisateur($_SESSION['numUtilisateur']);
-        echo "<pre>";
-        print_r($test);
-        echo "</pre>";
-        echo "<pre>";
-        print_r($recette);
-        echo "</pre>";
 
         if ($recette == null) {
             Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $_SESSION['numUtilisateur']);
+            $leNumRecette = Recette::getNumRecettebyNomRecette($nomRecette);
+            Recette::addRecetteAppartient($numCategorie, $leNumRecette['numRecette']);
+            Recette::addRecetteCompose($leNumRecette['numRecette'], $numIngredient[0], $quantite[2]);
+            Recette::addRecetteUstensile($leNumRecette['numRecette'], $numUstensile[2]);
+
             echo "Recette ajoute";
         } else {
             $uneRecette = Recette::getRecettesbyNumRecette($recette[0]);
