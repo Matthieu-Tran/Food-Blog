@@ -1,4 +1,4 @@
-<div id="card">
+<div id="card" style="padding-top: 150px">
     <div class="card w-75 mx-auto">
         <div class="text-center">
             <img src="view/image/<?php echo $nomRecetteImage ?>" class="reduire" />
