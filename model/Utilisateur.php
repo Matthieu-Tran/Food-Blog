@@ -48,7 +48,6 @@ class Utilisateur
     {
         $requete = "SELECT * FROM Utilisateur ORDER BY nomUtilisateur;";
         $reponse = Connexion::pdo()->query($requete);
-        $reponse->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
         $tab = $reponse->fetchAll();
         return $tab;
     }
@@ -222,4 +221,46 @@ class Utilisateur
         }
         return false;
     }
+    public static function getStatutUtilisateur($numUtilisateur)
+    {
+        $requetePreparee = "SELECT estModerateur from Utilisateur where numUtilisateur = :tag_numUtilisateur;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
+        try {
+            $req_prep->execute($valeurs);
+            $t = $req_prep->fetch();
+            if (!$t)
+                return false;
+            return $t;
+        } catch (PDOException $e) {
+            echo "erreur : " . $e->getMessage() . "<br>";
+        }
+        return false;
+    }
+
+    public static function promoteUtilisateur($numUtilisateur)
+    {
+        $requetePreparee = "UPDATE Utilisateur SET estModerateur = 1 where numUtilisateur = :tag_numUtilisateur;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
+        try {
+            $req_prep->execute($valeurs);
+        } catch (PDOException $e) {
+            echo "erreur : " . $e->getMessage() . "<br>";
+        }
+    }
+
+    public static function demoteUtilisateur($numUtilisateur)
+    {
+        $requetePreparee = "UPDATE Utilisateur SET estModerateur = 0 where numUtilisateur = :tag_numUtilisateur;";
+        $req_prep = Connexion::pdo()->prepare($requetePreparee);
+        $valeurs = array("tag_numUtilisateur" => $numUtilisateur);
+        try {
+            $req_prep->execute($valeurs);
+        } catch (PDOException $e) {
+            echo "erreur : " . $e->getMessage() . "<br>";
+        }
+    }
+
+
 }

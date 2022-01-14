@@ -10,10 +10,12 @@
         </div>
         <div class="card-body">
             <?php
-            if ((($tabNomRecette['numUtilisateur']) == $_SESSION['numUtilisateur']) || $_SESSION['Admin'] || $_SESSION['Moderateur']) { ?>
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verification_modal" style="margin-bottom: 10px">
-                    Supprimer Recette
-                </button>
+            if (isset($_SESSION['numUtilisateur']) && isset($_SESSION['Admin']) && isset($_SESSION['Moderateur'])) {
+                if ((($tabNomRecette['numUtilisateur']) == $_SESSION['numUtilisateur']) || $_SESSION['Admin'] || $_SESSION['Moderateur']) { ?>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verification_modal" style="margin-bottom: 10px">
+                        Supprimer Recette
+                    </button>
+                <?php } ?>
             <?php } ?>
             <h5 class="card-title"><?php echo $nomRecette ?></h5>
             <h6 class="card-subtitle mb-2 text-muted">Difficulté recette: <?php echo $difficulteRecette ?></h6>
