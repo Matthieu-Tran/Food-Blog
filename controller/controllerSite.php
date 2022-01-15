@@ -343,18 +343,19 @@ class controllerSite
         header('Location: routeur.php?action=acceuil');
     }
 
-    public static function ajoutMod(){
+    public static function ajoutMod()
+    {
         $listeNumUtilisateur = Utilisateur::getAllUtilisateur();
         require("view/moderateur.php");
     }
 
-    public static function modifModo(){
+    public static function modifModo()
+    {
         extract($_GET);
         $modo = Utilisateur::getStatutUtilisateur($numUtilisateur);
         if ($modo[estModerateur]) {
             Utilisateur::demoteUtilisateur($numUtilisateur);
-        }
-        else{
+        } else {
             Utilisateur::promoteUtilisateur($numUtilisateur);
         }
         header('Location: routeur.php?action=ajoutMod');

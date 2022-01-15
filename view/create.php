@@ -193,7 +193,8 @@ const ustensileMax = 10;
                 if (x == 10)
                     x--;
                 $('.ingredient' + x).addClass('d-none');
-                document.getElementById("selectIngredient" + x).selectedIndex = "0";
+                var id = document.getElementById("selectIngredient" + x).selectedIndex;
+                id = "0";
                 x--;
             }
         });
@@ -220,7 +221,8 @@ const ustensileMax = 10;
                 if (y == 10)
                     y--;
                 $('.ustensile' + y).addClass('d-none');
-                document.getElementById("selectUstensile" + x).selectedIndex = "0";
+                var id = document.getElementById("selectUstensile" + x).selectedIndex;
+                id = "0";
                 y--;
             }
         });
