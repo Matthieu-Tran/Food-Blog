@@ -113,9 +113,6 @@ const ustensileMax = 10;
                         <div class="form-group col-md-5">
                             <input type="number" class="form-control" name="quantite[]" min="0" max="10000" placeholder="... en g">
                         </div>
-                        <div class="form-group col-md-2">
-                            <button class="btn btn-danger font-weight-bold mx-auto remove_ingredient">Supprimer</button>
-                        </div>
                     </div>
                     <?php for ($cpt = 1; $cpt < 10; $cpt++) { ?>
                         <div class="form-row d-none ingredient<?php echo $cpt ?>">
@@ -158,9 +155,6 @@ const ustensileMax = 10;
                                     </option>
                                 <?php } ?>
                             </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <button class="btn btn-danger font-weight-bold mx-auto remove_ustensile">Supprimer</button>
                         </div>
                     </div>
                     <?php for ($cpt = 1; $cpt < 10; $cpt++) { ?>
