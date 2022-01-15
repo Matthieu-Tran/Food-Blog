@@ -14,7 +14,6 @@ class controllerSite
 {
     public static function acceuil()
     {
-        $lesRecettes = Recette::getAllRecettes();
         require_once("./view/acceuil.php");
     }
     public static function create()
@@ -54,7 +53,7 @@ class controllerSite
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
         if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0) {
             if (isset($_FILES['photo']['tmp_name'])) {
-                $retour = copy($_FILES['photo']['tmp_name'], 'view/image/' . $_FILES['photo']['name']);
+                copy($_FILES['photo']['tmp_name'], 'view/image/' . $_FILES['photo']['name']);
                 $nomImage = $_FILES['photo']['name'];
             }
             Recette::addRecette($nomRecette, $difficulteRecette, $descriptionRecette, $_SESSION['numUtilisateur'], $nomImage);
@@ -72,14 +71,19 @@ class controllerSite
                 Recette::addRecetteUstensile($leNumRecette, $numUstensile[$key]);
             }
             header("Location: routeur.php?action=afficherRecette&numRecette=$leNumRecette");
-        } else if ($numUstensile[0] == 0 && $numIngredient[0] == 0) {
+            exit;
+        }if ($numUstensile[0] == 0 && $numIngredient[0] == 0) {
             header("Location: routeur.php?action=create&oubliIngredient=true&oubliUstensile=true");
-        } else if ($numUstensile[0] == 0) {
+            exit;
+        }if ($numUstensile[0] == 0) {
             header("Location: routeur.php?action=create&oubliUstensile=true");
-        } else if ($numIngredient[0] == 0) {
+            exit;
+        }if ($numIngredient[0] == 0) {
             header("Location: routeur.php?action=create&oubliIngredient=true");
+            exit;
         } else {
             header("Location: routeur.php?action=afficherRecette&numRecette=$recette[0]&recetteExistante=true");
+            exit;
         }
     }
 
@@ -114,8 +118,10 @@ class controllerSite
             // Si > à 0 alors l'utilisateur existe
             if ($row > 0) {
                 if (password_verify($password, $data['mdpUtilisateur'])) {
-                    $_SESSION['Admin'] = $data['estAdmin'];
-                    $_SESSION['Moderateur'] = $data['estModerateur'];
+                    if($data['estAdmin']==1)
+                        $_SESSION['Admin'] = 1;
+                    else if($data['Moderateur']==1)
+                        $_SESSION['Moderateur'] = 1;
                     $_SESSION['numUtilisateur'] = $data['numUtilisateur'];
                     $_SESSION['user'] = $data['pseudoUtilisateur'];
                     header('Location: routeur.php?action=acceuil');
@@ -218,6 +224,7 @@ class controllerSite
 
     public static function afficherRecette()
     {
+
         $recetteExistante = false;
         if (isset($_GET['recetteExistante'])) {
             $recetteExistante = true;
@@ -324,10 +331,12 @@ class controllerSite
             } else
                 //Sinon on lui redirige avec un message d'alerte
                 header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette&com_warning=ATTENTION");
+                die();
         } else {
             //On ajoute le commentaire a la recette
             Commentaire::ajoutCommentaireByUser($user_review, $user_rating, $alerteCommentaire, $numRecette, $numUtili);
             header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
+            die();
         }
     }
     public static function supprimerCommentaire()
@@ -335,12 +344,14 @@ class controllerSite
         extract($_GET);
         Commentaire::deleteCommentaire($numCommentaire);
         header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
+        die();
     }
     public static function supprimerRecette()
     {
         extract($_GET);
         Recette::deleteRecette($numRecette);
         header('Location: routeur.php?action=acceuil');
+        die();
     }
 
     public static function ajoutMod()
@@ -353,11 +364,12 @@ class controllerSite
     {
         extract($_GET);
         $modo = Utilisateur::getStatutUtilisateur($numUtilisateur);
-        if ($modo[estModerateur]) {
+        if ($modo['estModerateur']) {
             Utilisateur::demoteUtilisateur($numUtilisateur);
         } else {
             Utilisateur::promoteUtilisateur($numUtilisateur);
         }
         header('Location: routeur.php?action=ajoutMod');
+        die();
     }
 }
