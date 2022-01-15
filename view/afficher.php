@@ -6,7 +6,7 @@
                     Recette déjà existante !
                 </div>
             <?php } ?>
-            <img src="view/image/<?php echo $nomRecetteImage ?>" class="reduire" />
+            <img src="view/image/<?php echo $nomRecetteImage ?>" alt="..." class="reduire" />
         </div>
         <div class="card-body">
             <?php
