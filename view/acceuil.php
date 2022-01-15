@@ -25,11 +25,9 @@
             foreach ($lesRecettes as $key => $value) { ?>
                 <div class="col-md-4 col-sm-6">
                     <div class="card mb-4 shadow-sm">
-                        <img src="view/image/<?php echo $lesRecettes[$key]['imageRecette']; ?>" class="w-100 align">
+                        <img src="view/image/<?php echo $lesRecettes[$key]['imageRecette']; ?>" class="w-100 align" alt="Photos">
                         <div class="card-body">
-                            <p class="card-title">
                             <h3><?php echo $lesRecettes[$key]['nomRecette']; ?></h3>
-                            </p>
                             <div class="btn-group">
                                 <button onclick="window.location.href='routeur.php?action=afficherRecette&numRecette=<?php echo $lesRecettes[$key]['numRecette']; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
                                     Découvrir

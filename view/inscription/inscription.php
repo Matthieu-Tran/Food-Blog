@@ -1,4 +1,4 @@
-    <div class="login-form" style="min-height: 60vh; margin-top: 150px;">
+    <div class="login-form" style="min-height: 80vh; margin-top: 200px;">
         <?php
         if(isset($_GET['reg_err']))
         {
