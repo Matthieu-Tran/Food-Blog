@@ -64,7 +64,7 @@ if (isset($_GET["numRecette"])) {
                                     <a href="routeur.php?action=deconnexion" class="dropdown-item">Déconnexion</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="dropdown-item">Mes recettes</a>
+                                    <a href="routeur.php?action=afficherRecetteUtilisateur" class="dropdown-item">Mes recettes</a>
                                 </li>
                             </ul>
                         </li>

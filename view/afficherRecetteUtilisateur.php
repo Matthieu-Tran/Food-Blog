@@ -1,4 +1,4 @@
-<div id="debut" class="container py-5 bg-light">
+<div id="debut" class="container py-5 bg-light" style="margin-top: 150px;">
     <?php
     if ($lesRecettesUtilisateurs != null) { ?>
         <h2 class="display-6 text-center mb-5">Voici vos Recettes</h2>
