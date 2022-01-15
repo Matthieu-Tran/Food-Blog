@@ -22,7 +22,6 @@
         <!-- 576 XS - > 576px S > 768px M > 992px L > 1200px Extra Large-->
         <div class="row">
             <?php
-            $lesRecettes = Recette::getAllRecettes();
             foreach ($lesRecettes as $key => $value) { ?>
                 <div class="col-md-4 col-sm-6">
                     <div class="card mb-4 shadow-sm">

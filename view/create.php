@@ -38,7 +38,7 @@ const ustensileMax = 10;
                 case 'oubliQuantite':
                     ?>
                     <div class="alert alert-primary" role="alert">
-                        <Aucunes quantitées ajoutées: Veuillez recommencez !
+                        Aucunes quantitées ajoutées: Veuillez recommencez !
                     </div>
                 <?php
             }

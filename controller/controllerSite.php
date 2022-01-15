@@ -14,6 +14,7 @@ class controllerSite
 {
     public static function acceuil()
     {
+        $lesRecettes = Recette::getAllRecettes();
         require_once("./view/acceuil.php");
     }
     public static function create()
@@ -38,8 +39,16 @@ class controllerSite
     public static function created()
     {
         extract($_POST);
+        $cptIngredient =0;
+        $cptQuantite =0;
+        foreach ($quantite as $key => $value){
+            if($numIngredient[$key] != 0 )
+                $cptIngredient++;
+            if ($quantite[$key]!=null)
+                $cptQuantite++;
+        }
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
-        if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0) {
+        if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0 && $cptQuantite !=0 && $cptQuantite==$cptIngredient) {
             if (isset($_FILES['photo']['tmp_name'])) {
                 copy($_FILES['photo']['tmp_name'], 'view/image/' . $_FILES['photo']['name']);
                 $nomImage = $_FILES['photo']['name'];
@@ -49,8 +58,6 @@ class controllerSite
             $leNumRecette = $leNumRecette['numRecette'];
             Recette::addRecetteAppartient($numCategorie, $leNumRecette);
             foreach ($numIngredient as $key => $value) {
-                if (($quantite[$key])== null)
-                    echo "test";
                 if ($numIngredient[$key] == 0 || is_null($quantite[$key]))
                     continue;
                 Recette::addRecetteCompose($leNumRecette, $numIngredient[$key], $quantite[$key]);
@@ -71,6 +78,10 @@ class controllerSite
             die();
         }else if ($numIngredient[0] == 0) {
             header("Location: routeur.php?action=create&ajout_err=oubliIngredient");
+            die();
+        }
+        else if($cptQuantite==0 || $cptQuantite!=$cptIngredient){
+            header("Location: routeur.php?action=create&ajout_err=oubliQuantite");
             die();
         }
         else {
@@ -216,7 +227,6 @@ class controllerSite
 
     public static function afficherRecette()
     {
-
         $recetteExistante = false;
         if (isset($_GET['recetteExistante'])) {
             $recetteExistante = true;

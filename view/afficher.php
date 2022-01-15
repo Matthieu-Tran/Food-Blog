@@ -229,9 +229,9 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <textarea name="user_review" id="user_review" class="form-control" placeholder="Type Review Here" required="required"></textarea>
+                                            <textarea name="user_review" id="user_review" class="form-control" placeholder="Votre avis" required="required"></textarea>
                                         </div>
-                                        <input type="submit" class="btn btn-primary">
+                                        <input type="submit" class="btn btn-primary" value="Envoyer">
                                     </form>
                                 </div>
                             </div>
