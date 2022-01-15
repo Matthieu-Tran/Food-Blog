@@ -1,4 +1,4 @@
-<div id="debut" class="container py-5 bg-light">
+<div id="debut" class="container py-5 bg-light" style="margin-top: 150px; margin-bottom: 700px;">
     <?php
     if ($lesRecettes != null) { ?>
         <h2 class="display-6 text-center mb-5">Voici des résulats selon votre recherche</h2>
@@ -7,10 +7,9 @@
             foreach ($lesRecettes as $key => $value) { ?>
                 <div class="col-md-4 col-sm-6">
                     <div class="card mb-4 shadow-sm">
-                        <img src="view/image/<?php echo $lesRecettes[$key]['imageRecette']; ?>" class="w-100 align">
+                        <img src="view/image/<?php echo $lesRecettes[$key]['imageRecette']; ?>" class="w-100 align" alt="photo">
                         <div class="card-body">
-                            <p class="card-title">
-                            <h3><?php echo $lesRecettes[$key]['nomRecette']; ?></h3>
+                            <p class="card-title"> <h3><?php echo $lesRecettes[$key]['nomRecette']; ?></h3>
                             </p>
                             <div class="btn-group">
                                 <button onclick="window.location.href='routeur.php?action=afficherRecette&numRecette=<?php echo $lesRecettes[$key]['numRecette']; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">

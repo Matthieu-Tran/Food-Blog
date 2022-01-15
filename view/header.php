@@ -15,15 +15,15 @@ if (isset($_GET["numRecette"])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="view/image/icon.png" type="image/icon type">
+    <link rel="icon" href="view/image/icon.png" type="image/icontype">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="view/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="view/css/login-register.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="view/css/style.css">
+    <link rel="stylesheet" type="text/css" href="view/css/login-register.css">
     <title><?php echo $nomPage; ?></title>
 </head>
 
@@ -32,7 +32,7 @@ if (isset($_GET["numRecette"])) {
     <nav class="navbar fixed-top navbar-expand-xl navbar-dark" id="navbarHeader">
         <div class="container-md" id="containerHeader">
             <a href="routeur.php" class="navbar-brand mb-0 h1">
-                <img class="d-inline-block" src="view/image/icon.png" width="80" height="80" />
+                <img class="d-inline-block" src="view/image/icon.png" width="80" height="80" alt="icon"/>
                 Le quartier des plaisirs
             </a>
             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,11 +51,11 @@ if (isset($_GET["numRecette"])) {
                         Ajouter un modérateur
                     </button>
                 <?php } ?>
-                <ul class="navbar-nav ml-auto">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="routeur.php" method="get">
                         <input type="hidden" name="action" value="rechercher">
                         <input type="search" class="form-control form-control-dark" placeholder="Rechercher..." aria-label="Search" name="inputClient">
                     </form>
+                <ul class="navbar-nav ml-auto">
                     <?php if (isset($_SESSION['user'])) { ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navBarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">Mon Compte</a>
@@ -68,12 +68,11 @@ if (isset($_GET["numRecette"])) {
                                 </li>
                             </ul>
                         </li>
+                </ul>
                     <?php } else { ?>
                         <button onclick="window.location.href='routeur.php?action=seConnecter'" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Connexion</button>
                         <button onclick="window.location.href='routeur.php?action=inscription'" type="button" class="btn btn-warning my-2 my-lg-0">Inscription</button>
                     <?php } ?>
-
-                </ul>
             </div>
         </div>
     </nav>
