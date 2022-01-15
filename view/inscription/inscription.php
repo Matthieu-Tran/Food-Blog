@@ -51,8 +51,6 @@
                         <strong>Erreur</strong> Compte déjà existant
                     </div>
                 <?php
-
-
             }
         }
         ?>

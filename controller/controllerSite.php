@@ -18,18 +18,6 @@ class controllerSite
     }
     public static function create()
     {
-        $oubliUstensile = false;
-        $oubliIngredient = false;
-        if (isset($_GET["oubliUstensile"])) {
-            $oubliUstensile = true;
-        }
-        if (isset($_GET["oubliIngredient"])) {
-            $oubliIngredient = true;
-        }
-        if (isset($_GET["oubliIngredient"]) && isset($_GET["oubliUstensile"])) {
-            $oubliIngredient = true;
-            $oubliUstensile = true;
-        }
         $pseudo = $_SESSION['user'];
         $listeNumUtilisateur = Utilisateur::getNumUtilisateurbyPseudoUtilisateur($pseudo);
         $numUti = $listeNumUtilisateur['numUtilisateur'];
@@ -61,6 +49,8 @@ class controllerSite
             $leNumRecette = $leNumRecette['numRecette'];
             Recette::addRecetteAppartient($numCategorie, $leNumRecette);
             foreach ($numIngredient as $key => $value) {
+                if (($quantite[$key])== null)
+                    echo "test";
                 if ($numIngredient[$key] == 0 || is_null($quantite[$key]))
                     continue;
                 Recette::addRecetteCompose($leNumRecette, $numIngredient[$key], $quantite[$key]);
@@ -71,19 +61,21 @@ class controllerSite
                 Recette::addRecetteUstensile($leNumRecette, $numUstensile[$key]);
             }
             header("Location: routeur.php?action=afficherRecette&numRecette=$leNumRecette");
-            exit;
-        }if ($numUstensile[0] == 0 && $numIngredient[0] == 0) {
-            header("Location: routeur.php?action=create&oubliIngredient=true&oubliUstensile=true");
-            exit;
-        }if ($numUstensile[0] == 0) {
-            header("Location: routeur.php?action=create&oubliUstensile=true");
-            exit;
-        }if ($numIngredient[0] == 0) {
-            header("Location: routeur.php?action=create&oubliIngredient=true");
-            exit;
-        } else {
+            die();
+        }
+        else if ($numUstensile[0] == 0 && $numIngredient[0] == 0) {
+            header("Location: routeur.php?action=create&ajout_err=oubliUstensileIngredient");
+            die();
+        }else if ($numUstensile[0] == 0) {
+            header("Location: routeur.php?action=create&ajout_err=oubliUstensile");
+            die();
+        }else if ($numIngredient[0] == 0) {
+            header("Location: routeur.php?action=create&ajout_err=oubliIngredient");
+            die();
+        }
+        else {
             header("Location: routeur.php?action=afficherRecette&numRecette=$recette[0]&recetteExistante=true");
-            exit;
+            die();
         }
     }
 
