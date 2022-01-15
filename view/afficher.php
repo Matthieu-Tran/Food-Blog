@@ -10,13 +10,11 @@
         </div>
         <div class="card-body">
             <?php
-            if (isset($_SESSION['numUtilisateur']) && isset($_SESSION['Admin']) && isset($_SESSION['Moderateur'])) {
-                if ((($tabNomRecette['numUtilisateur']) == $_SESSION['numUtilisateur']) || $_SESSION['Admin'] || $_SESSION['Moderateur']) { ?>
+                if ((($tabNomRecette['numUtilisateur']) == $_SESSION['numUtilisateur']) || isset($_SESSION['Admin']) || isset($_SESSION['Moderateur'])) { ?>
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verification_modal" style="margin-bottom: 10px">
                         Supprimer Recette
                     </button>
                 <?php } ?>
-            <?php } ?>
             <h5 class="card-title"><?php echo $nomRecette ?></h5>
             <h6 class="card-subtitle mb-2 text-muted">Difficulté recette: <?php echo $difficulteRecette ?></h6>
             <ul class="nav nav-tabs nav-justified mb-3" id="pills-tab" role="tablist">
@@ -125,7 +123,7 @@
                     <?php if (isset($_SESSION['user'])) { ?>
                         <?php if (!$existeCommentaire) { ?>
                             <div class="text-center">
-                                <h3 class="mt-4 mb-3">Write Review Here</h3>
+                                <h3 class="mt-4 mb-3">Donnez votre avis</h3>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review_modal">
                                     Review
                                 </button>
@@ -170,7 +168,7 @@
                                                     <b> <?php echo $pseudo['pseudoUtilisateur'] ?> </b>
                                                 </div>
                                                 <div class="float-right">
-                                                    <?php if ($numUtilisateur == $commentaires[$key]['numUtilisateur']) { ?>
+                                                    <?php if ((($tabNomRecette['numUtilisateur']) == $_SESSION['numUtilisateur']) || isset($_SESSION['Admin']) || isset($_SESSION['Moderateur'])) { ?>
                                                         <button onclick="window.location.href='routeur.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
                                                             Supprimer
                                                         </button>

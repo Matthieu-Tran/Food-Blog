@@ -1,4 +1,4 @@
-    <div class="login-form" style="min-height: 60vh">
+    <div class="login-form" style="min-height: 60vh; margin-top: 150px;">
         <?php
         if(isset($_GET['login_err']))
         {
