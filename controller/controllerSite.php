@@ -39,16 +39,16 @@ class controllerSite
     public static function created()
     {
         extract($_POST);
-        $cptIngredient =0;
-        $cptQuantite =0;
-        foreach ($quantite as $key => $value){
-            if($numIngredient[$key] != 0 )
+        $cptIngredient = 0;
+        $cptQuantite = 0;
+        foreach ($quantite as $key => $value) {
+            if ($numIngredient[$key] != 0)
                 $cptIngredient++;
-            if ($quantite[$key]!=null)
+            if ($quantite[$key] != null)
                 $cptQuantite++;
         }
         $recette = Recette::getNumRecettebyNomRecette($nomRecette);
-        if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0 && $cptQuantite !=0 && $cptQuantite==$cptIngredient) {
+        if ($recette == null && $numIngredient[0] != 0 && $numUstensile[0] != 0 && $cptQuantite != 0 && $cptQuantite == $cptIngredient) {
             if (isset($_FILES['photo']['tmp_name'])) {
                 copy($_FILES['photo']['tmp_name'], 'view/image/' . $_FILES['photo']['name']);
                 $nomImage = $_FILES['photo']['name'];
@@ -69,22 +69,19 @@ class controllerSite
             }
             header("Location: routeur.php?action=afficherRecette&numRecette=$leNumRecette");
             die();
-        }
-        else if ($numUstensile[0] == 0 && $numIngredient[0] == 0) {
+        } else if ($numUstensile[0] == 0 && $numIngredient[0] == 0) {
             header("Location: routeur.php?action=create&ajout_err=oubliUstensileIngredient");
             die();
-        }else if ($numUstensile[0] == 0) {
+        } else if ($numUstensile[0] == 0) {
             header("Location: routeur.php?action=create&ajout_err=oubliUstensile");
             die();
-        }else if ($numIngredient[0] == 0) {
+        } else if ($numIngredient[0] == 0) {
             header("Location: routeur.php?action=create&ajout_err=oubliIngredient");
             die();
-        }
-        else if($cptQuantite==0 || $cptQuantite!=$cptIngredient){
+        } else if ($cptQuantite == 0 || $cptQuantite != $cptIngredient) {
             header("Location: routeur.php?action=create&ajout_err=oubliQuantite");
             die();
-        }
-        else {
+        } else {
             header("Location: routeur.php?action=afficherRecette&numRecette=$recette[0]&recetteExistante=true");
             die();
         }
@@ -121,9 +118,9 @@ class controllerSite
             // Si > à 0 alors l'utilisateur existe
             if ($row > 0) {
                 if (password_verify($password, $data['mdpUtilisateur'])) {
-                    if($data['estAdmin']==1)
+                    if ($data['estAdmin'] == 1)
                         $_SESSION['Admin'] = 1;
-                    else if($data['Moderateur']==1)
+                    if ($data['estModerateur'] == 1)
                         $_SESSION['Moderateur'] = 1;
                     $_SESSION['numUtilisateur'] = $data['numUtilisateur'];
                     $_SESSION['user'] = $data['pseudoUtilisateur'];
@@ -333,7 +330,7 @@ class controllerSite
             } else
                 //Sinon on lui redirige avec un message d'alerte
                 header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette&com_warning=ATTENTION");
-                die();
+            die();
         } else {
             //On ajoute le commentaire a la recette
             Commentaire::ajoutCommentaireByUser($user_review, $user_rating, $alerteCommentaire, $numRecette, $numUtili);

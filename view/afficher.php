@@ -143,7 +143,7 @@
                             </div>
                         <?php } ?>
                     <?php } else { ?>
-                        <div class="col-sm-4 text-center">
+                        <div class="text-center">
                             <h5 class="mt-4 mb-3">Veuillez vous connecter pour mettre un commentaire</h5>
                         </div>
                     <?php } ?>
