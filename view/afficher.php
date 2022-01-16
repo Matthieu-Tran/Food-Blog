@@ -190,7 +190,7 @@
                                                 </div>
                                                 <div class="float-right">
                                                     <?php if (isset($_SESSION['numUtilisateur'])) {
-                                                        if ((($tabNomRecette['numUtilisateur']) == $_SESSION['numUtilisateur']) || isset($_SESSION['Admin']) || isset($_SESSION['Moderateur'])) { ?>
+                                                        if ((($commentaires[$key]['numUtilisateur']) == $_SESSION['numUtilisateur']) || isset($_SESSION['Admin']) || isset($_SESSION['Moderateur'])) { ?>
                                                             <button onclick="window.location.href='index.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
                                                                 Supprimer
                                                             </button>
