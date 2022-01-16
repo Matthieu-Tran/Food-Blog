@@ -9,10 +9,9 @@
                     <div class="card mb-4 shadow-sm">
                         <img src="view/image/<?php echo $lesRecettes[$key]['imageRecette']; ?>" class="w-100 align" alt="photo">
                         <div class="card-body">
-                            <p class="card-title"> <h3><?php echo $lesRecettes[$key]['nomRecette']; ?></h3>
-                            </p>
+                            <h3 class="card-title" ><?php echo $lesRecettes[$key]['nomRecette']; ?></h3>
                             <div class="btn-group">
-                                <button onclick="window.location.href='routeur.php?action=afficherRecette&numRecette=<?php echo $lesRecettes[$key]['numRecette']; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                                <button onclick="window.location.href='index.php?action=afficherRecette&numRecette=<?php echo $lesRecettes[$key]['numRecette']; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
                                     Découvrir
                                 </button>
                             </div>

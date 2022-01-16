@@ -24,22 +24,22 @@
             }
         }
         ?>
-        <form action="routeur.php?action=connection_traitement" method="post">
+        <form action="index.php?action=connection_traitement" method="post">
             <h2 class="text-center">Connexion</h2>
             <div class="form-group">
-                <input type="Pseudo" name="Pseudo" class="form-control" placeholder="Pseudo" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } else if (isset($_COOKIE["mdpDif"])) { echo $_COOKIE["mdpDif"]; } ?>" required="required" autocomplete="off">
+                <input type="text" name="Pseudo" class="form-control" placeholder="Pseudo" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } else if (isset($_COOKIE["mdpDif"])) { echo $_COOKIE["mdpDif"]; } ?>" required="required" autocomplete="off">
             </div>
             <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="Mot de passe" required="required" autocomplete="off">
             </div>
             <div class="form-check mb-3">
                 <div>
-                    <input type="checkbox" name="rememberme" value="1" <?php if(isset($_COOKIE["username"])) { ?> checked="true" <?php }  ?> />&nbsp;Remember username
+                    <input type="checkbox" name="rememberme" value="1" <?php if(isset($_COOKIE["username"])) { ?> checked <?php }  ?> />&nbsp;Remember username
                 </div>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Connexion</button>
             </div>
         </form>
-        <p class="text-center"><a href="routeur.php?action=inscription">Inscription</a></p>
+        <p class="text-center"><a href="index.php?action=inscription">Inscription</a></p>
     </div>

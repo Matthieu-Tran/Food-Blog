@@ -40,7 +40,7 @@
                             </th>
                         <?php } ?>
                         <td>
-                            <button onclick="window.location.href='routeur.php?action=modifModo&numUtilisateur=<?php echo $listeNumUtilisateur[$key]['numUtilisateur'] ?>'" type="button" class="btn btn-sm btn-outline-primary ml-1 ">
+                            <button onclick="window.location.href='index.php?action=modifModo&numUtilisateur=<?php echo $listeNumUtilisateur[$key]['numUtilisateur'] ?>'" type="button" class="btn btn-sm btn-outline-primary ml-1 ">
                                 Valider
                             </button>
                         </td>

@@ -150,10 +150,27 @@
                     </div>
                     <div class="mt-5" id="review_content">
                         <?php
-                        if (isset($_GET['com_warning'])) { ?>
-                            <div class="alert alert-danger">
-                                <strong>ATTENTION</strong> Votre commentaire n'est pas conforme, vous avez reçu un avertissement, au bout de 3, votre compte sera banni et toutes vos recettes seront supprimées
-                            </div>
+                        if (isset($_GET['com_warning'])) {
+                            $err = htmlspecialchars($_GET['com_warning']);
+                            switch($err)
+                            {
+                                case 'ATTENTION':
+                                    ?>
+                                    <div class="alert alert-danger">
+                                        <strong>ATTENTION</strong> Votre commentaire n'est pas conforme, vous avez reçu un avertissement, au bout de 3, votre compte sera banni et toutes vos recettes seront supprimées
+                                    </div>
+                                    <?php
+                                    break;
+
+                                case 'warningModo':
+                                    ?>
+                                    <div class="alert alert-danger">
+                                        <strong>Attention..</strong> Même si vous êtes modérateurs ou admin cela ne nous empêche pas de rester poli...
+                                    </div>
+                                    <?php
+                                    break;
+                            }
+                            ?>
                         <?php }
                         ?>
                         <?php if (!$existeCommentaire) { ?>
@@ -174,7 +191,7 @@
                                                 <div class="float-right">
                                                     <?php if (isset($_SESSION['numUtilisateur'])) {
                                                         if ((($tabNomRecette['numUtilisateur']) == $_SESSION['numUtilisateur']) || isset($_SESSION['Admin']) || isset($_SESSION['Moderateur'])) { ?>
-                                                            <button onclick="window.location.href='routeur.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
+                                                            <button onclick="window.location.href='index.php?action=supprimerCommentaire&numCommentaire=<?php echo $commentaires[$key]['numCommentaire']; ?>&numRecette=<?php echo $numRecette; ?>'" type="button" class="btn btn-sm btn-outline-secondary ml-1">
                                                                 Supprimer
                                                             </button>
                                                         <?php } ?>
@@ -215,7 +232,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="routeur.php" method="get">
+                                    <form action="index.php" method="get">
                                         <input type='hidden' name='action' value='ajoutCommentaire'>
                                         <input type='hidden' name='numRecette' value='<?php echo $numRecette ?>'>
                                         <div class="form-group">
@@ -250,7 +267,7 @@
                                 <p>Voulez vous vraiment supprimer votre recette ?</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" onclick="window.location.href='routeur.php?action=supprimerRecette&numRecette=<?php echo $numRecette ?>'" class="btn btn-primary">Oui</button>
+                                <button type="button" onclick="window.location.href='index.php?action=supprimerRecette&numRecette=<?php echo $numRecette ?>'" class="btn btn-primary">Oui</button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Non</button>
                             </div>
                         </div>

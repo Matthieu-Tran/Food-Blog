@@ -46,7 +46,7 @@ const ustensileMax = 10;
     </div>
     <div class="card border-0 shadow rounded-3 w-75 my-5 mx-auto">
         <div class="card-body p-4">
-            <form action="routeur.php" method="post" enctype="multipart/form-data">
+            <form action="index.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="created">
                 <div class="form-row">
                     <div class="form-group col-md-8">

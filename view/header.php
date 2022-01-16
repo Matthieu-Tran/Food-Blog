@@ -31,7 +31,7 @@ if (isset($_GET["numRecette"])) {
 <header>
     <nav class="navbar fixed-top navbar-expand-xl navbar-dark" id="navbarHeader">
         <div class="container-md" id="containerHeader">
-            <a href="routeur.php" class="navbar-brand mb-0 h1">
+            <a href="index.php" class="navbar-brand mb-0 h1">
                 <img class="d-inline-block" src="view/image/icon.png" width="80" height="80" alt="icon"/>
                 Le quartier des plaisirs
             </a>
@@ -40,39 +40,40 @@ if (isset($_GET["numRecette"])) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <?php if (isset($_SESSION['user'])) { ?>
-                    <button onclick="window.location.href='routeur.php?action=create'" type="button" class="btn btn-sm btn-outline-primary ml-1">
+                    <button onclick="window.location.href='index.php?action=create'" type="button" class="btn btn-sm btn-outline-primary ml-1">
                         Ajouter une recette
                     </button>
-                <?php } else { ?>
-                    <a href="#debut" class="btn btn-outline-light my-2 mr-3 my-lg-0">Voir les recettes</a>
-                <?php } ?>
+                <?php }?>
                 <?php if (isset($_SESSION['Admin'])) { ?>
-                    <button onclick="window.location.href='routeur.php?action=ajoutMod'" type="button" class="btn btn-primary ml-2">
+                    <button onclick="window.location.href='index.php?action=ajoutMod'" type="button" class="btn btn-primary ml-2">
                         Ajouter un modérateur
                     </button>
                 <?php } ?>
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="routeur.php" method="get">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="index.php" method="get">
                         <input type="hidden" name="action" value="rechercher">
                         <input type="search" class="form-control form-control-dark" placeholder="Rechercher..." aria-label="Search" name="inputClient">
                     </form>
-                <ul class="navbar-nav ml-auto">
+                <div class="ml-auto">
                     <?php if (isset($_SESSION['user'])) { ?>
+                        <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navBarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">Mon Compte</a>
                             <ul class="dropdown-menu" aria-labelledby="navBarDropdown">
                                 <li>
-                                    <a href="routeur.php?action=deconnexion" class="dropdown-item">Déconnexion</a>
+                                    <a href="index.php?action=deconnexion" class="dropdown-item">Déconnexion</a>
                                 </li>
                                 <li>
-                                    <a href="routeur.php?action=afficherRecetteUtilisateur" class="dropdown-item">Mes recettes</a>
+                                    <a href="index.php?action=afficherRecetteUtilisateur" class="dropdown-item">Mes recettes</a>
                                 </li>
                             </ul>
                         </li>
                 </ul>
-                    <?php } else { ?>
-                        <button onclick="window.location.href='routeur.php?action=seConnecter'" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Connexion</button>
-                        <button onclick="window.location.href='routeur.php?action=inscription'" type="button" class="btn btn-warning my-2 my-lg-0">Inscription</button>
+                    <?php }
+                    else { ?>
+                        <button onclick="window.location.href='index.php?action=seConnecter'" type="button" class="btn btn-outline-light my-2 mr-3 my-lg-0">Connexion</button>
+                        <button onclick="window.location.href='index.php?action=inscription'" type="button" class="btn btn-warning my-2 my-lg-0">Inscription</button>
                     <?php } ?>
+                </div>
             </div>
         </div>
     </nav>

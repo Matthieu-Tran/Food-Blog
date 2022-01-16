@@ -54,7 +54,7 @@
             }
         }
         ?>
-        <form action="routeur.php?action=inscription_traitement" method="post">
+        <form action="index.php?action=inscription_traitement" method="post">
             <h2 class="text-center">Inscription</h2>
             <div class="form-group">
                 <input type="text" name="Prenom" class="form-control" placeholder="Prenom" value="<?php if(isset($_COOKIE["prenomUtilisateur"])) { echo $_COOKIE["prenomUtilisateur"]; }?>" required="required" autocomplete="off">
@@ -77,5 +77,5 @@
             </div>
         </form>
         <p class="text-center">Vous avez déja un compte ?</p>
-        <p class="text-center"><a href="routeur.php?action=seConnecter">Connectez vous</a></p>
+        <p class="text-center"><a href="index.php?action=seConnecter">Connectez vous</a></p>
     </div>

@@ -67,22 +67,22 @@ class controllerSite
                     continue;
                 Recette::addRecetteUstensile($leNumRecette, $numUstensile[$key]);
             }
-            header("Location: routeur.php?action=afficherRecette&numRecette=$leNumRecette");
+            header("Location: index.php?action=afficherRecette&numRecette=$leNumRecette");
             die();
         } else if ($numUstensile[0] == 0 && $numIngredient[0] == 0) {
-            header("Location: routeur.php?action=create&ajout_err=oubliUstensileIngredient");
+            header("Location: index.php?action=create&ajout_err=oubliUstensileIngredient");
             die();
         } else if ($numUstensile[0] == 0) {
-            header("Location: routeur.php?action=create&ajout_err=oubliUstensile");
+            header("Location: index.php?action=create&ajout_err=oubliUstensile");
             die();
         } else if ($numIngredient[0] == 0) {
-            header("Location: routeur.php?action=create&ajout_err=oubliIngredient");
+            header("Location: index.php?action=create&ajout_err=oubliIngredient");
             die();
         } else if ($cptQuantite == 0 || $cptQuantite != $cptIngredient) {
-            header("Location: routeur.php?action=create&ajout_err=oubliQuantite");
+            header("Location: index.php?action=create&ajout_err=oubliQuantite");
             die();
         } else {
-            header("Location: routeur.php?action=afficherRecette&numRecette=$recette[0]&recetteExistante=true");
+            header("Location: index.php?action=afficherRecette&numRecette=$recette[0]&recetteExistante=true");
             die();
         }
     }
@@ -124,18 +124,18 @@ class controllerSite
                         $_SESSION['Moderateur'] = 1;
                     $_SESSION['numUtilisateur'] = $data['numUtilisateur'];
                     $_SESSION['user'] = $data['pseudoUtilisateur'];
-                    header('Location: routeur.php?action=acceuil');
+                    header('Location: index.php?action=acceuil');
                 } else {
                     setcookie("mdpDif", $_POST["Pseudo"], time() + 5);    // si l'utilisateur se trompe de mot de passe mais que le pseudo est bon on initialise un cookie pour sauvegarder le pseudo de l'utilisateur
-                    header('Location: routeur.php?action=seConnecter&login_err=password');
+                    header('Location: index.php?action=seConnecter&login_err=password');
                     die();
                 }
             } else {
-                header('Location: routeur.php?action=seConnecter&login_err=Pseudo');
+                header('Location: index.php?action=seConnecter&login_err=Pseudo');
                 die();
             }
         } else {
-            header('Location: routeur.php?action=seConnecter&login_err=Pseudo');
+            header('Location: index.php?action=seConnecter&login_err=Pseudo');
             die();
         } // si le formulaire est envoyé sans aucune données
 
@@ -174,37 +174,37 @@ class controllerSite
                                 // On redirige avec le message de succès
                                 $_SESSION['numUtilisateur'] = $numUtiInscription['numUtilisateur'];
                                 $_SESSION['user'] = $pseudo;
-                                header('Location: routeur.php?action=acceuil');
+                                header('Location: index.php?action=acceuil');
                                 die();
                             } else {
                                 setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
                                 setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
                                 setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
-                                header('Location: routeur.php?action=inscription&reg_err=password');
+                                header('Location: index.php?action=inscription&reg_err=password');
                                 die();
                             }
                         } else {
                             setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
                             setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
-                            header('Location: routeur.php?action=inscription&reg_err=pseudo_length');
+                            header('Location: index.php?action=inscription&reg_err=pseudo_length');
                             die();
                         }
                     } else {
                         setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
                         setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
-                        header('Location: routeur.php?action=inscription&reg_err=nom_length');
+                        header('Location: index.php?action=inscription&reg_err=nom_length');
                         die();
                     }
                 } else {
                     setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
                     setcookie("pseudonyme", $_POST["pseudo"], time() + 5);
-                    header('Location: routeur.php?action=inscription&reg_err=prenom_length');
+                    header('Location: index.php?action=inscription&reg_err=prenom_length');
                     die();
                 }
             } else {
                 setcookie("nomUtilisateur", $_POST["Nom"], time() + 5);
                 setcookie("prenomUtilisateur", $_POST["Prenom"], time() + 5);
-                header('Location: routeur.php?action=inscription&reg_err=already');
+                header('Location: index.php?action=inscription&reg_err=already');
                 die();
             }
         }
@@ -212,7 +212,7 @@ class controllerSite
     public static function deconnexion()
     {
         session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
-        header('Location: routeur.php?action=acceuil'); // On redirige
+        header('Location: index.php?action=acceuil'); // On redirige
         die();
     }
     public static function afficherRecetteUtilisateur()
@@ -321,20 +321,28 @@ class controllerSite
         $alerteCommentaire = 0;
         //On filtre le commentaire de l'utilisateur
         if (Commentaire::filtrageCommentaire($user_review)) {
-            if (Utilisateur::alerteUtilisateur($listeNumUtilisateur['numUtilisateur'])) {
-                //Si l'utilisateur a depasse son nombre d'avertissement, on le supprime
-                Utilisateur::deleteUtilisateur($listeNumUtilisateur['numUtilisateur']);
-                session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
-                header('Location: routeur.php?action=acceuil&ban=aurevoir:)'); // On redirige
+            //Si c'est un moderateur ou un admin qui commente de maniere malveillante on lui met un message d'alerte
+            if (!((isset($_SESSION['Admin'])) || isset( $_SESSION['Moderateur']))){
+                if (Utilisateur::alerteUtilisateur($listeNumUtilisateur['numUtilisateur'])) {
+                    //Si l'utilisateur a depasse son nombre d'avertissement, on le supprime
+                    Utilisateur::deleteUtilisateur($listeNumUtilisateur['numUtilisateur']);
+                    session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
+                    header('Location: index.php?action=acceuil&ban=aurevoir:)'); // On redirige
+                    die();
+                } else {
+                    //Sinon on lui redirige avec un message d'alerte
+                    header("Location: index.php?action=afficherRecette&numRecette=$numRecette&com_warning=ATTENTION");
+                    die();
+                }
+            }
+            else{
+                header("Location: index.php?action=afficherRecette&numRecette=$numRecette&com_warning=warningModo");
                 die();
-            } else
-                //Sinon on lui redirige avec un message d'alerte
-                header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette&com_warning=ATTENTION");
-            die();
+            }
         } else {
             //On ajoute le commentaire a la recette
             Commentaire::ajoutCommentaireByUser($user_review, $user_rating, $alerteCommentaire, $numRecette, $numUtili);
-            header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
+            header("Location: index.php?action=afficherRecette&numRecette=$numRecette");
             die();
         }
     }
@@ -342,14 +350,14 @@ class controllerSite
     {
         extract($_GET);
         Commentaire::deleteCommentaire($numCommentaire);
-        header("Location: routeur.php?action=afficherRecette&numRecette=$numRecette");
+        header("Location: index.php?action=afficherRecette&numRecette=$numRecette");
         die();
     }
     public static function supprimerRecette()
     {
         extract($_GET);
         Recette::deleteRecette($numRecette);
-        header('Location: routeur.php?action=acceuil');
+        header('Location: index.php?action=acceuil');
         die();
     }
 
@@ -368,7 +376,7 @@ class controllerSite
         } else {
             Utilisateur::promoteUtilisateur($numUtilisateur);
         }
-        header('Location: routeur.php?action=ajoutMod');
+        header('Location: index.php?action=ajoutMod');
         die();
     }
 }
