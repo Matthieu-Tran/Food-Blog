@@ -1,0 +1,186 @@
+DROP TABLE verifie;
+DROP TABLE black_list;
+DROP TABLE Commentaire;
+DROP TABLE appartient;
+DROP TABLE Categorie;	
+DROP TABLE utilise;
+DROP TABLE Ustensile;
+DROP TABLE compose;
+DROP TABLE Ingredient;
+DROP TABLE Famille;
+DROP TABLE Recette;
+DROP TABLE Utilisateur;
+
+
+
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: Categorie
+#------------------------------------------------------------
+
+CREATE TABLE Categorie(
+        numCategorie      Int  Auto_increment  NOT NULL ,
+        nomCategorie       Varchar (50) NOT NULL ,
+        typeCategorie      Varchar (50) NOT NULL ,
+        coherenceCategorie Boolean NOT NULL
+	,CONSTRAINT Categorie_PK PRIMARY KEY (numCategorie)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Ustensile
+#------------------------------------------------------------
+
+CREATE TABLE Ustensile(
+        numUstensile Int  Auto_increment  NOT NULL ,
+        nomUstensile Varchar (50) NOT NULL
+	,CONSTRAINT Ustensile_PK PRIMARY KEY (numUstensile)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Utilisateur
+#------------------------------------------------------------
+
+CREATE TABLE Utilisateur(
+        numUtilisateur   Int  Auto_increment  NOT NULL ,
+        nomUtilisateur    Varchar (50) NOT NULL ,
+        prenomUtilisateur Varchar (50) NOT NULL ,
+        pseudoUtilisateur Varchar (50) NOT NULL ,
+        mdpUtilisateur     Varchar (100) NOT NULL ,
+        banUtilisateur    Boolean NOT NULL NOT NULL DEFAULT FALSE,
+	estAdmin 	BOOLEAN NOT NULL DEFAULT FALSE,
+	estModerateur 	BOOLEAN NOT NULL DEFAULT FALSE
+
+	,CONSTRAINT Utilisateur_PK PRIMARY KEY (numUtilisateur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Recette
+#------------------------------------------------------------
+
+CREATE TABLE Recette(
+        numRecette         Int  Auto_increment  NOT NULL ,
+        nomRecette         Varchar (50) NOT NULL ,
+        difficulteRecette  Varchar (50) NOT NULL ,
+        descriptionRecette Text (5000) NOT NULL ,
+        numUtilisateur    Int NOT NULL
+	,CONSTRAINT Recette_PK PRIMARY KEY (numRecette)
+
+	,CONSTRAINT Recette_Utilisateur_FK FOREIGN KEY (numUtilisateur) REFERENCES Utilisateur(numUtilisateur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Commentaire
+#------------------------------------------------------------
+
+CREATE TABLE Commentaire(
+        numCommentaire         Int  Auto_increment  NOT NULL ,
+        descriptionCommentaire Text (5000) NOT NULL ,
+        noteCommentaire        INT NOT NULL ,
+        alerteCommentaire      Boolean NOT NULL ,
+        numRecette             Int NOT NULL ,
+        numUtilisateur        Int NOT NULL,
+	dateCommentaire      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+	,CONSTRAINT Commentaire_PK PRIMARY KEY (numCommentaire)
+
+	,CONSTRAINT Commentaire_Recette_FK FOREIGN KEY (numRecette) REFERENCES Recette(numRecette)
+	,CONSTRAINT Commentaire_Utilisateur0_FK FOREIGN KEY (numUtilisateur) REFERENCES Utilisateur(numUtilisateur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Famille
+#------------------------------------------------------------
+
+CREATE TABLE Famille(
+        numFamille Int  Auto_increment  NOT NULL ,
+        nomFamille Varchar (50) NOT NULL
+	,CONSTRAINT Famille_PK PRIMARY KEY (numFamille)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Ingredient
+#------------------------------------------------------------
+
+CREATE TABLE Ingredient(
+        numIngredient Int  Auto_increment  NOT NULL ,
+        nomIngredient Varchar (50) NOT NULL ,
+        numFamille    Int NOT NULL
+	,CONSTRAINT Ingredient_PK PRIMARY KEY (numIngredient)
+
+	,CONSTRAINT Ingredient_Famille_FK FOREIGN KEY (numFamille) REFERENCES Famille(numFamille)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: compose
+#------------------------------------------------------------
+
+CREATE TABLE compose(
+        numRecette    Int NOT NULL ,
+        numIngredient Int NOT NULL ,
+        quantite      Float NOT NULL
+	,CONSTRAINT compose_PK PRIMARY KEY (numRecette,numIngredient)
+
+	,CONSTRAINT compose_Recette_FK FOREIGN KEY (numRecette) REFERENCES Recette(numRecette)
+	,CONSTRAINT compose_Ingredient0_FK FOREIGN KEY (numIngredient) REFERENCES Ingredient(numIngredient)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: appartient
+#------------------------------------------------------------
+
+CREATE TABLE appartient(
+        numCategorie Int NOT NULL ,
+        numRecette    Int NOT NULL
+	,CONSTRAINT appartient_PK PRIMARY KEY (numCategorie,numRecette)
+
+	,CONSTRAINT appartient_Categorie_FK FOREIGN KEY (numCategorie) REFERENCES Categorie(numCategorie)
+	,CONSTRAINT appartient_Recette0_FK FOREIGN KEY (numRecette) REFERENCES Recette(numRecette)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: utilise
+#------------------------------------------------------------
+
+CREATE TABLE utilise(
+        numRecette   Int NOT NULL ,
+        numUstensile Int NOT NULL
+	,CONSTRAINT utilise_PK PRIMARY KEY (numRecette,numUstensile)
+
+	,CONSTRAINT utilise_Recette_FK FOREIGN KEY (numRecette) REFERENCES Recette(numRecette)
+	,CONSTRAINT utilise_Ustensile0_FK FOREIGN KEY (numUstensile) REFERENCES Ustensile(numUstensile)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: black_list
+#------------------------------------------------------------
+
+CREATE TABLE black_list(
+        numInsulte   Int  Auto_increment  NOT NULL ,
+        nomInsulte Varchar(40) NOT NULL ,
+	CONSTRAINT Insulte_PK PRIMARY KEY (numInsulte)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: verifie
+#------------------------------------------------------------
+
+CREATE TABLE verifie(
+        numCommentaire Int NOT NULL ,
+        numInsulte Int NOT NULL ,
+        CONSTRAINT verifie_PK PRIMARY KEY (numCommentaire,numInsulte),
+        CONSTRAINT utilise_black_list_FK FOREIGN KEY (numInsulte) REFERENCES black_list(numInsulte),
+        CONSTRAINT utilise_Commentaire_FK FOREIGN KEY (numCommentaire) REFERENCES Commentaire(numCommentaire)
+)ENGINE=InnoDB;
+

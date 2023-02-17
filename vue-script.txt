@@ -1,0 +1,86 @@
+/* Script Vue */
+
+SET SERVEROUT ON;
+/* Vue qui permet d'afficher tout les utilisateurs qui ont créé une recette */
+CREATE OR REPLACE VIEW view_UtilisateurRecette
+(nomUtilisateur,prenomUtilsateur,pseudoUtilisateur) AS 
+Select DISTINCT Utilisateur.nomUtilisateur, Utilisateur.prenomUtilisateur, Utilisateur.pseudoUtilisateur
+FROM Recette
+JOIN Utilisateur ON(Utilisateur.numUtilisateur=Recette.numUtilisateur) 
+/
+/* Vue qui permet d'afficher tout les utilisateurs qui ont écrit un commentaire */
+CREATE VIEW view_UtilisateurCommentaire
+(nomUtilisateur,descriptionCommentaire, noteCommentaire) AS 
+SELECT DISTINCT Utilisateur.nomUtilisateur, descriptionCommentaire, noteCommentaire
+FROM Commentaire 
+JOIN Recette ON(Commentaire.numRecette=Recette.numRecette)
+JOIN Utilisateur ON(Utilisateur.numUtilisateur=Commentaire.numUtilisateur)
+/
+/* Vue qui permet d'afficher tout les ingredients en fonction de leurs famille */
+CREATE OR REPLACE VIEW view_Ingredient
+(nomIngredient,nomFamille) AS
+SELECT I.nomIngredient, F.nomFamille
+FROM Ingredient I JOIN Famille F ON(I.numFamille=F.numFamille)
+ORDER BY f.numfamille;
+/
+/* Vue qui permet d'afficher les recettes et les catégories auxquelles elles appartiennent */
+CREATE OR REPLACE VIEW view_Recette
+(nomRecette,nomCategorie,typeCategorie) AS
+SELECT R.nomRecette, C.nomCategorie, C.typeCategorie 
+FROM appartient A 
+JOIN Categorie C ON(A.numCategorie=C.numCategorie) 
+JOIN Recette R ON(R.numRecette=A.numRecette);
+/
+/* Vue qui permet d'afficher les ustensiles */
+ CREATE OR REPLACE VIEW view_Ustensile
+(nomUstensile) AS
+SELECT nomUstensile
+FROM Ustensile;
+/
+/* Vue qui permet d'afficher les ustensiles en fonction des recettes */
+ CREATE OR REPLACE VIEW view_UstensileRecette
+(nomRecette, nomUstensile) AS
+SELECT nomRecette, nomUstensile
+FROM Ustensile U 
+JOIN utilise UT ON(U.numUstensile=UT.numUstensile)
+JOIN Recette R ON(R.numRecette=UT.numRecette);
+/
+/*  Vue qui permet d'afficher les ingredients utiles aux recettes */
+CREATE OR REPLACE VIEW view_IngredientRecette
+(nomRecette,nomIngredient,nomFamille) AS
+SELECT R.nomRecette, I.nomIngredient, F.nomFamille
+FROM compose C 
+JOIN Ingredient I ON(C.numIngredient=I.numIngredient)
+JOIN Recette R ON(R.numRecette=C.numRecette)
+JOIN Famille F ON(I.numFamille=F.numFamille);
+/
+SELECT
+    *
+FROM view_utilisateurrecette;
+/
+SELECT
+    *
+FROM view_utilisateurcommentaire;
+/
+SELECT
+    *
+FROM view_ingredient;
+/
+SELECT
+    *
+FROM view_recette;
+/
+SELECT
+    *
+FROM view_ustensile;
+/
+SELECT
+    *
+FROM view_ustensilerecette;
+/
+SELECT
+    *
+FROM view_ingredientrecette;
+/
+
+

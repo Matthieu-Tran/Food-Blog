@@ -1,0 +1,1092 @@
+/* Script insertion */ 
+
+/
+INSERT INTO Famille VALUES (NULL,'Fruit');
+INSERT INTO Famille VALUES (NULL,'Legumes');
+INSERT INTO Famille VALUES (NULL,'Viande');
+INSERT INTO Famille VALUES (NULL,'Poisson');
+INSERT INTO Famille VALUES (NULL,'Oeuf');
+INSERT INTO Famille VALUES (NULL,'Produit laitier');
+INSERT INTO Famille VALUES (NULL,'Feculent');
+INSERT INTO Famille VALUES (NULL,'Sucre');
+INSERT INTO Famille VALUES (NULL,'Corps gras');
+INSERT INTO Famille VALUES (NULL,'Boisson');
+INSERT INTO Famille VALUES (NULL,'Fruit de mer');
+/
+/*Ingredients Viandes:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Os a moelle', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Poule', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Porc', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Cheval', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Mouton', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Boeuf', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Canard', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Foie', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Lapin', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Poulet', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Poitrine de porc', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Veau', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Volailles', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Pintade', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Agneau', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Dinde', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Caille', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Bifteck', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Blanc de poulet', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Boudin blanc', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Boudin noir', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Boeuf a bouillir', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Boeuf a braiser', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Boeuf hache', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Canard confit', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Canard entier', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Chair a saucisse', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Chorizo', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Coq', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Corned beef', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Foie gras', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Gelatine', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Jambon', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Magret de canard', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Magret seche', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Oie', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Petit sale', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Pigeon', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Porc hache', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Poulet entier', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Poulet en morceaux', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Roti de porc', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Saucisse', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Saucisse végétale', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Cuisse de poulet', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Merguez', '3');
+INSERT INTO Ingredient VALUES (NULL, 'Chipolata', '3');
+
+
+/*Ingredients Fruits:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Citron jaune', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Kiwi', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Pomme', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Prune', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Oranges', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Kaki', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Myrtille', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Kumquat', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Groseille', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Peche', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Chataigne', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Fraise', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Framboise', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Pomelo', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Sureau', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Goji', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Bergamote', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Grenade', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Carambole', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Goyave', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Figue', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Cedrat', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Mure', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Abricot', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Papaye', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Cidre', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Mangue', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Datte', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Cerise', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Physalis', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Raisin', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Mandarine', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Poire', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Canneberge', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Ananas', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Cassis', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Litchi', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Abricot sec', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Akee', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Anone', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Arbouse', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Argousier', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Canneberge sechee', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Caroube', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Cenelle', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Citron a presser', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Citron confit', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Citron vert', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Clementine', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Coing', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Combava', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Cynorrhodon', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Ecorce de citron', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Feijoa', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Figue seche', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Fruit a pain', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Fruit a coque', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Fruits rouge', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Maracuja', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Mendiants', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Mulberry', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Nashi', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Nefle', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Pamplemousse', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Pomme verte', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Pruneau', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Raisins secs', '1');
+INSERT INTO Ingredient VALUES (NULL, 'Yuzu', '1');
+
+/*Ingredients Légumes: */
+
+INSERT INTO Ingredient VALUES (NULL, 'Choux de Bruxelles', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou vert', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Epinard', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou blanc', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Fanes', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Betterave', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Biette', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou-fleur', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Poireau', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou chinois', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou rouge', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Panais', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Radis noir', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Endive', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Cardon', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Fenouil', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Artichaut', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Celeri rave', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Mache', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Navet', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Frisee', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Ail', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Carotte', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou rave', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Persil Tubereux', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Rutabaga', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Oignon', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Cresson', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Roquette', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Salade', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Céleri-branche', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Brocoli', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Daikon', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Rhubarbe', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Radis roses', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Asperge', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Sucrine', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou pointu', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Laitue', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Feuille de chene', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou kale', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Scarole', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Echalote', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Bok choy', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Salsifis', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Choux', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Choucroute', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Romaine', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Pourpier', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Batavia', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Ortie', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Oseille', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Coeur de palmier', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Pissenlit', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Bardane', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Bredes mafane', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Capres', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Carotte de garde', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Carotte primeur', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Carottes multicolores', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Chou cavalier', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Ciboule', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Citronnelle', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Crosse de fougere', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Epinard en branche', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Epinard hache', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Iceberg', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Lollo rosa', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Mibuna', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Mizuna', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Petit oignon blanc', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Pousses d''épinard', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Pousses de bambou', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Radicchio', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Radis', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Radis bleu', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Raifort', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Rapini', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Romanesco', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Scorsonere', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Tomate', '2');
+INSERT INTO Ingredient VALUES (NULL, 'Wasabi', '2');
+
+
+/*Ingredients Poisson:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Saumon', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Dorade', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Thon', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Limande', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Maquereau', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Cabillaud', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Anchois', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Hareng', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Anguille', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Haddock', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Hareng frais', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Hareng fume', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Lotte', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Morue', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Rouget', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Sardine en boite', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Sardine fraiche', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Saumon en boite', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Saumon frais', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Saumon fume', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Thon en boite', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Thon frais', '4');
+INSERT INTO Ingredient VALUES (NULL, 'Truite', '4');
+
+/*Ingredients Oeufs:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Oeuf', '5');
+INSERT INTO Ingredient VALUES (NULL, 'Oeuf de caille', '5');
+INSERT INTO Ingredient VALUES (NULL, 'Oeuf de poisson', '5');
+
+/*Ingredients Produits laitiers:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Maroilles', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Reblochon', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Lait', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Cheddar', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromages a pate ferme', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Yaourt grec', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Chevre frais', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromages a pate molle', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Yaourt', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromage blanc', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Mascarpone', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromages frais', '6') ;
+INSERT INTO Ingredient VALUES (NULL, 'Camembert', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Gruyere', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromages de chèvre', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Buchette de chèvre', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Feta', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Babeurre', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Cantal', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Comte', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Cottage cheese', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Creme sure', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Emmental', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromage frais aux herbes', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromages a pate dure', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromage a pate fondue', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromages bleus', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Fromages de brebis', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Halloumi', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Mimolette', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Mozzarella', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Ossau-Iraty', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Parmesan', '6');
+INSERT INTO Ingredient VALUES (NULL, 'Ricotta', '6');
+
+/*Ingredients Féculents:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Lentille verte', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Lentille corail', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Quinoa', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pois gourmand', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Topinambour', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Haricot vert', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pomme de terre', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Petit pois', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Patate douce', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Epeautre', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Mais', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Banane plantain', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Ble', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Farine de sarrasin', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pates', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Igname', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Haricot rouge', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Lentille blonde', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Ramen', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Arrow-root', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pain', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Boulghour', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Azuki', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Sarrasin', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Soba', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Flageolet', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Haricot blanc', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Chataigne', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Orge', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Udon', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Avoine', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Soja', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Haricot noir', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pois chiche', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Lentilles', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Crosne', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Feve fraiche', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Seitan', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Banane douce', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Taro', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pois du Cap', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Haricots', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Seigle', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Millet', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Amarante', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Arachide', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Baguette', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Biscotte', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Biscuit', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Ble entier', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Boudoir', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Châtaigne d''eau', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Chataigne fraiche', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Châtaigne cuite', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Chataignons', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Confiture de châtaigne', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Edamame', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Epis de mais', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Farine d''épeautre', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Farine de riz', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Farine de seigle', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Farro', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Feuilles de Brik', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Feuilles de riz', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Five seche', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Flocons d''avoine', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Fonio', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Gnocchi', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Graine de soja', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Grand épeautre', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Grenaille', '7');
+INSERT INTO Ingredient VALUES (NULL, 'haricot beurre', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Haricot borlotti', '7');
+INSERT INTO Ingredient VALUES (NULL, 'haricots secs', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Hominy', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Kasha', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Lait d''avoine', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Lentille noire', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Lentillon champenois', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Mais doux en grains', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Mais sec', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Malanga', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Manioc', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Masa', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Mungo', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Orzo', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pain d''epices', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pain de mie', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pain rassis', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pates feuilletées', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pétales de mais', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Petit épeautre', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pois casse jaune', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pois casse vert', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Pois d''Angole', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Polenta', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz arborio', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz basmati', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz bomba', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz complet', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz gluant', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz japonais', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz long', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz rond', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Riz thai', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Saucisse vegetale', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Semoule de couscous', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Semoule fine', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Son d''avoine', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Sorgho', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Speculoos', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Tapioca', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Tortilla', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Vermicelles', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Vermicelles de riz', '7');
+INSERT INTO Ingredient VALUES (NULL, 'Yacon', '7');
+
+/*Ingredients Sucre:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Candi', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Sucre blanc', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Sucre roux', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Chocolat', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Sirop d''érable', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Miel', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Vergeoise', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Cassonade', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Bonbons', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Canne a sucre', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Confiture de châtaigne', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Fruits confits', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Melasse', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Melasse de grenade', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Muscovado', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Piloncillo', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Pralines', '8');
+INSERT INTO Ingredient VALUES (NULL, 'Rapadura', '8');
+
+/*Ingredients Corps-Gras:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Graines de courge', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Sesame', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Amande', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Beurre', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Tournesol', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Noix de Grenoble', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Avocat', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Noisette', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Mascarpone', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Creme fraiche', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Lait d''amande', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Noix de pecan', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Chanvre', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Noix de cajou', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Huile de colza', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Huile d''olive', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Tahin', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Graines de lin', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Noix de coco', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Lait de coco', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Amande entière', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Beurre de cacahuète', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Cacao', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Cerneaux de noix', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Chia', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Cremes d''amandes', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Fenugrec', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Fruits a coque', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Ghee', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Graines', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Graines de pavot', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Guarana', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Huile d''arachide', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Huile d''argan', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Huile de noisette', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Huile de noix', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Huile de sesame', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Huile de tournesol', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Macadamia', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Margarine', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Noisette décortiquée', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Noix du Brésil', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Noix verte', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Okara', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Pate d''amande', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Pignons de pin', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Pistache', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Poudre d''amande', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Poudre de noisette', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Poudre de noix', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Pralin', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Pralines', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Puree d''amande', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Puree de noisette', '9');
+INSERT INTO Ingredient VALUES (NULL, 'Saindoux', '9');
+
+/*Ingredients Boisson:*/
+
+INSERT INTO Ingredient VALUES (NULL, 'Vin', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Eau', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Rhum', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Vin Rouge', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Vin blanc', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Alcool', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Lait vegetal', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Champagne', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Biere', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Lait de soja', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Lait d''amande', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Cidre', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Lait de coco', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Bouillon', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Creme soja', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Lait d''avoine', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Pastis', '10');
+INSERT INTO Ingredient VALUES (NULL, 'Whisky', '10');
+
+/*Ingredients Fruits de mers */
+
+INSERT INTO Ingredient VALUES (NULL, 'Moule', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Crevette', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Pouple', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Huitre', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Crabe', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Petoncle', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Oursin', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Calamar', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Homard', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Langoustine', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Palourde', '11');
+INSERT INTO Ingredient VALUES (NULL, 'Seiche', '11');
+/
+INSERT INTO UTILISATEUR VALUES (NULL, 'Schuler', 'Matthieu', 'lershu', 'a', '0');
+INSERT INTO UTILISATEUR VALUES (NULL, 'Mont', 'Matthieu', 'hMont', 'az', '0');
+INSERT INTO UTILISATEUR VALUES (NULL, 'Valogne', 'Aurelien', 'vAurelien', 'aze', '0');
+INSERT INTO UTILISATEUR VALUES (NULL, 'Regulier', 'Corentin', 'Raps', 'azer', '0');
+INSERT INTO UTILISATEUR VALUES (NULL, 'Cocagne', 'Theo', 'Comb', 'azert', '0');
+INSERT INTO UTILISATEUR VALUES (NULL, 'Tran', 'Matthieu', 'Aiern', 'azerty', '0');
+/
+INSERT INTO RECETTE VALUES (NULL, 'Tartes aux pommes','moyen','Faire cuire les pommes, les mettre dans la tarte et mettre au four pendant 30 minutes. Régalez vous','1');
+INSERT INTO RECETTE VALUES (NULL,'Gâteau au chocolat','moyen','Préchauffez votre four à 180°C (thermostat 6). 
+Dans une casserole, faites fondre le chocolat et le beurre coupé en morceaux à feu très doux. Dans un saladier, ajoutez le sucre, les oeufs, la farine.
+Mélangez. Ajoutez le mélange chocolat/beurre. Mélangez bien. 
+Beurrez à l''aide d''une feuille de papier essuie-tout et farinez votre moule puis y versez la pâte à gâteau.
+Faites cuire au four environ 20 minutes.
+A la sortie du four le gâteau ne paraît pas assez cuit. 
+C''est normal, laissez-le refroidir puis démoulez- le','2');
+INSERT INTO RECETTE VALUES (NULL,'Flan','difficile','
+Faire bouillir le lait avec la gousse de vanille fendue (dans le sens de la longueur).
+Pendant ce temps, mélanger la Maïzena (tamisée, c''est mieux) avec le sucre.
+et ajouter les oeufs bien battus.
+Mélanger le tout (bien homogène)
+et ajouter le lait bouillant (sans la gousse).
+Cuire la préparation à feu doux sans cesser de remuer pendant environ 1 à 2 min
+Préchauffer le four à 200°C (thermostat 6-7). Foncer un plat rectangulaire ou rond préalablement beurré avec la pâte brisée.
+Piquer le fond.
+Y verser la préparation.
+Lisser la surface.
+Cuire pendant environ 30 à 40 min.
+Laisser refroidir.
+Déguster.', '3');
+INSERT INTO RECETTE VALUES (NULL, 'Spaghetti bolognaise', 'moyen', '
+Hachez l''ail, l''oignon, puis coupez la carotte et le céleri en petits dés (enlevez les principales nervures du céleri).
+Faites chauffer l''huile dans une casserole assez grande. Faites revenir l''ail, l''oignon, la carotte et le céleri à feu doux pendant 5 min en remuant.
+Augmenter la flamme, puis ajoutez le boeuf. Faites brunir et remuez de façon à ce que la viande ne fasse pas de gros paquets
+Ajoutez le bouillon, le vin rouge, les tomates préalablement coupées assez grossièrement, le sucre et le persil haché. Portez à ébullition.
+Baisser ensuite le feu et laissez mijoter à couvert 1h à 1h30, de façon à ce que le vin s''évapore.
+Faites cuire les spaghetti, puis mettez-les dans un plat.
+Ajoutez la sauce bolognaise.', '4');
+INSERT INTO RECETTE VALUES (NULL, 'Boeuf bourguignon', 'difficile',' 
+Détailler la viande en cubes de 3 cm de côté, enlever les gros morceaux de gras.
+Couper l''oignon en morceaux. Le faire revenir dans une poêle au beurre. Une fois transparent, le verser dans une cocotte en fonte de préférence.
+Procéder de même avec la viande mais en plusieurs fois, jusqu''à ce que tous les morceaux soient cuits. Les ajouter au fur et à mesure dans la cocotte. Ne pas avoir peur d''ajouter du beurre entre chaque fournée.
+Quand toute la viande est dans la cocotte, déglacer la poêle avec de l''eau ou du vin et faire bouillir en raclant pour récupérer le suc. Saler, poivrer, ajouter au reste.
+Recouvrir le tout avec une partie du vin et faire mijoter quelques heures avec le bouquet garni et les carottes en rondelles.
+Le lendemain, faire mijoter au moins 2 heures en plusieurs fois, ajouter du vin ou de l''eau si nécessaire.', '5');
+INSERT INTO RECETTE VALUES (NULL, 'Poulet Tandoori (Masala)', 'moyen', '
+Entailler les blancs de poulet. Badigeonner le poulet de jus de citron, d''ail émincé puis de paprika.
+Préparer une marinade avec le yaourt et les 3 cuillères de Tandoori. Mettre les blancs dans la marinade, et laissez mariner dans le frigo de 30 min à 12h. (Plus le poulet marine, meilleur il est).
+Quand le poulet a fini de mariner, préchauffer le four à 250°c (thermostat 8). Mettre une feuille d''aluminium sur la plaque du four. Laisser cuire le poulet 30 min pour des blancs épais. (Le temps de cuisson varie en fonction de l''épaisseur des blancs) en retournant à mi-cuisson.
+Pendant ce temps, préparer la sauce:
+Dans une poêle, mettre un filet d''huile puis les tomates en boite, le Tandoori, le miel, le beurre et la crème fraîche.
+Quand le poulet est cuit, le couper en lamelles et l''incorporer à la sauce. Laisser mijoter quelque minutes.
+C''est prêt !', '6');
+/
+INSERT INTO Categorie VALUES (NULL, 'Hors-d''œuvre', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Hors-d''œuvre', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Hors-d''œuvre', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Entrées', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Entrées', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Entrées', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Plats principaux', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Plats principaux', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL,'Plats principaux', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'A-côtés', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'A-côtés', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'A-côtés', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Desserts', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Desserts', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Desserts', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Brunchs et déjeuners', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Brunchs et déjeuners', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Brunchs et déjeuners', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Soupes et Potages', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Soupes et Potages', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Soupes et Potages', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Sauces et Vinaigrettes', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Sauces et Vinaigrettes', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Sauces et Vinaigrettes', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Boissons et Cocktails', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Boissons et Cocktails', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Boissons et Cocktails', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Sandwitchs', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Sandwitchs', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Sandwitchs', 'chaud/froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Collations', 'froid', '1');
+INSERT INTO Categorie VALUES (NULL, 'Collations', 'chaud', '1');
+INSERT INTO Categorie VALUES (NULL, 'Collations', 'chaud/froid', '1');
+/
+INSERT INTO Ustensile VALUES (NULL, 'Couteau d''office');
+INSERT INTO Ustensile VALUES (NULL, 'Filet de sole');
+INSERT INTO Ustensile VALUES (NULL, 'Eminceur');
+INSERT INTO Ustensile VALUES (NULL, 'Couteau a pain');
+INSERT INTO Ustensile VALUES (NULL, 'Epluche legumes');
+INSERT INTO Ustensile VALUES (NULL, 'Fusil');
+INSERT INTO Ustensile VALUES (NULL, 'Planche a decouper');
+INSERT INTO Ustensile VALUES (NULL, 'Poeles');
+INSERT INTO Ustensile VALUES (NULL, 'Casseroles');
+INSERT INTO Ustensile VALUES (NULL, 'Sauteuse');
+INSERT INTO Ustensile VALUES (NULL, 'Faitout');
+INSERT INTO Ustensile VALUES (NULL, 'Couvercle');
+INSERT INTO Ustensile VALUES (NULL, 'Plat a four');
+INSERT INTO Ustensile VALUES (NULL, 'Maryse');
+INSERT INTO Ustensile VALUES (NULL, 'Fouet');
+INSERT INTO Ustensile VALUES (NULL, 'Louche');
+INSERT INTO Ustensile VALUES (NULL, 'Rape');
+INSERT INTO Ustensile VALUES (NULL, 'Araignée');
+INSERT INTO Ustensile VALUES (NULL, 'Passoire');
+INSERT INTO Ustensile VALUES (NULL, 'Passe-bouillon');
+INSERT INTO Ustensile VALUES (NULL, 'Balance');
+INSERT INTO Ustensile VALUES (NULL, 'Cul de poule');
+INSERT INTO Ustensile VALUES (NULL, 'Rouleau');
+INSERT INTO Ustensile VALUES (NULL, 'Ciseaux');
+INSERT INTO Ustensile VALUES (NULL, 'Pinceau');
+INSERT INTO Ustensile VALUES (NULL, 'Tablier');
+INSERT INTO Ustensile VALUES (NULL, 'Torchon');
+/
+/* Tartes aux pommes */
+INSERT INTO appartient VALUES ('15','1');
+/* Gateau au chocolat*/
+INSERT INTO appartient VALUES ('15','2');
+/* Flan */
+INSERT INTO appartient VALUES ('13','3');
+/* Spaghetti bolognaise */
+INSERT INTO appartient VALUES ('8','4');
+/* Boeuf bourguignon */
+INSERT INTO appartient VALUES ('8','5');
+/* Poulet Tandoori (Masala) */
+INSERT INTO appartient VALUES ('8','6');
+/
+/* Tartes aux pommes */
+INSERT INTO utilise VALUES ('1','7');
+INSERT INTO utilise VALUES ('1','13');
+INSERT INTO utilise VALUES ('1','26');
+/* Gateau au chocolat*/
+INSERT INTO utilise VALUES ('2', '7');
+INSERT INTO utilise VALUES ('2', '9');
+INSERT INTO utilise VALUES ('2', '13');
+INSERT INTO utilise VALUES ('2', '15');
+INSERT INTO utilise VALUES ('2', '16');
+/* Flan */
+INSERT INTO utilise VALUES ('3', '7');
+INSERT INTO utilise VALUES ('3', '9');
+INSERT INTO utilise VALUES ('3', '13');
+INSERT INTO utilise VALUES ('3', '15');
+INSERT INTO utilise VALUES ('3', '16');
+/* Spaghetti bolognaise */
+INSERT INTO utilise VALUES('4', '16');
+INSERT INTO utilise VALUES('4', '17');
+INSERT INTO utilise VALUES('4', '1');
+INSERT INTO utilise VALUES('4', '7');
+INSERT INTO utilise VALUES('4', '11');
+INSERT INTO utilise VALUES('4', '9');
+/* Boeuf bourguignon */
+INSERT INTO utilise VALUES('5', '16');
+INSERT INTO utilise VALUES('5', '17');
+INSERT INTO utilise VALUES('5', '1');
+INSERT INTO utilise VALUES('5', '7');
+INSERT INTO utilise VALUES('5', '11');
+INSERT INTO utilise VALUES('5', '9');
+/* Poulet Tandoori (Masala) */
+INSERT INTO utilise VALUES('6', '16');
+INSERT INTO utilise VALUES('6', '17');
+INSERT INTO utilise VALUES('6', '1');
+INSERT INTO utilise VALUES('6', '7');
+INSERT INTO utilise VALUES('6', '11');
+INSERT INTO utilise VALUES('6', '9');
+/
+/* Tartes aux pommes */
+INSERT INTO compose VALUES ('1','50','500');
+INSERT INTO compose VALUES ('1','376','100');
+INSERT INTO compose VALUES ('1','348','100');
+INSERT INTO compose VALUES ('1','396','100');
+/* Gateau au chocolat*/
+INSERT INTO compose VALUES ('2', '378', '200');
+INSERT INTO compose VALUES ('2', '396', '100');
+INSERT INTO compose VALUES ('2', '272', '50');
+INSERT INTO compose VALUES ('2', '221', '3');
+INSERT INTO compose VALUES ('2', '376', '100');
+/* Flan */
+INSERT INTO compose VALUES ('3', '221', '4');
+INSERT INTO compose VALUES ('3', '376', '150');
+INSERT INTO compose VALUES ('3', '273', '1');
+INSERT INTO compose VALUES ('3', '226', '100');
+/* Spaghetti bolognaise */
+INSERT INTO compose VALUES ('4', '24', '500');
+INSERT INTO compose VALUES ('4', '196', '850');
+INSERT INTO compose VALUES ('4', '451', '37,5');
+INSERT INTO compose VALUES ('4', '273', '500');
+/* Boeuf bourguignon */
+INSERT INTO compose VALUES ('5', '6', '600');
+INSERT INTO compose VALUES ('5', '396', '100');
+INSERT INTO compose VALUES ('5', '451', '100');
+INSERT INTO compose VALUES ('5', '142', '4');
+/* Poulet Tandoori (Masala) */
+INSERT INTO compose VALUES ('6', '402', '20');
+INSERT INTO compose VALUES ('6', '396', '10');
+INSERT INTO compose VALUES ('6', '380', '10');
+/
+INSERT INTO COMMENTAIRE VALUES (NULL,'Très bon, je me suis régallé','5','0', '5', '1');
+INSERT INTO COMMENTAIRE VALUES (NULL,'Avec un peu plus d''épices, cela serait meilleur','4','0', '4', '3');
+INSERT INTO COMMENTAIRE VALUES (NULL,'Je conseille. Merci pour cette recette','2','0', '5', '6');
+/
+INSERT INTO black_list VALUES (NULL, 'Abruti');
+INSERT INTO black_list VALUES (NULL, 'Ahuri');
+INSERT INTO black_list VALUES (NULL, 'Aigrefin');
+INSERT INTO black_list VALUES (NULL, 'Anachorète');
+INSERT INTO black_list VALUES (NULL, 'Analphabète');
+INSERT INTO black_list VALUES (NULL, 'Andouille');
+INSERT INTO black_list VALUES (NULL, 'Anus De Poulpe');
+INSERT INTO black_list VALUES (NULL, 'Arsouille');
+INSERT INTO black_list VALUES (NULL, 'Aspirateur A Muscadet');
+INSERT INTO black_list VALUES (NULL, 'Assisté');
+INSERT INTO black_list VALUES (NULL, 'Asticot');
+INSERT INTO black_list VALUES (NULL, 'Attardé');
+INSERT INTO black_list VALUES (NULL, 'Avorton');
+INSERT INTO black_list VALUES (NULL, 'Babache');
+INSERT INTO black_list VALUES (NULL, 'Bachibouzouk');
+INSERT INTO black_list VALUES (NULL, 'Balai de Chiottes');
+INSERT INTO black_list VALUES (NULL, 'Baltringue');
+INSERT INTO black_list VALUES (NULL, 'Banane');
+INSERT INTO black_list VALUES (NULL, 'Bandit');
+INSERT INTO black_list VALUES (NULL, 'Barjot');
+INSERT INTO black_list VALUES (NULL, 'Batârd');
+INSERT INTO black_list VALUES (NULL, 'Bigleux');
+INSERT INTO black_list VALUES (NULL, 'Blaireau');
+INSERT INTO black_list VALUES (NULL, 'Boloss');
+INSERT INTO black_list VALUES (NULL, 'Bordel');
+INSERT INTO black_list VALUES (NULL, 'Bordel à Cul');
+INSERT INTO black_list VALUES (NULL, 'Boudin');
+INSERT INTO black_list VALUES (NULL, 'Bouffon');
+INSERT INTO black_list VALUES (NULL, 'Bougre D’âne');
+INSERT INTO black_list VALUES (NULL, 'Bougre D’imbécile');
+INSERT INTO black_list VALUES (NULL, 'Bougre De Congre');
+INSERT INTO black_list VALUES (NULL, 'Bougre De Conne');
+INSERT INTO black_list VALUES (NULL, 'Boule De Pus');
+INSERT INTO black_list VALUES (NULL, 'Boulet');
+INSERT INTO black_list VALUES (NULL, 'Bouricot');
+INSERT INTO black_list VALUES (NULL, 'Bourique');
+INSERT INTO black_list VALUES (NULL, 'Bourrin');
+INSERT INTO black_list VALUES (NULL, 'Boursemolle');
+INSERT INTO black_list VALUES (NULL, 'Boursouflure');
+INSERT INTO black_list VALUES (NULL, 'Bouseux');
+INSERT INTO black_list VALUES (NULL, 'Boutonneux');
+INSERT INTO black_list VALUES (NULL, 'Branleur');
+INSERT INTO black_list VALUES (NULL, 'Branlotin');
+INSERT INTO black_list VALUES (NULL, 'Branque');
+INSERT INTO black_list VALUES (NULL, 'Branquignole');
+INSERT INTO black_list VALUES (NULL, 'Brigand');
+INSERT INTO black_list VALUES (NULL, 'Brêle');
+INSERT INTO black_list VALUES (NULL, 'Brosse à Chiottes');
+INSERT INTO black_list VALUES (NULL, 'Bubon Puant');
+INSERT INTO black_list VALUES (NULL, 'Burne');
+INSERT INTO black_list VALUES (NULL, 'Butor');
+INSERT INTO black_list VALUES (NULL, 'Bécasse');
+INSERT INTO black_list VALUES (NULL, 'Bégueule');
+INSERT INTO black_list VALUES (NULL, 'Bélitre');
+INSERT INTO black_list VALUES (NULL, 'Béotien');
+INSERT INTO black_list VALUES (NULL, 'Bête');
+INSERT INTO black_list VALUES (NULL, 'Cageot');
+INSERT INTO black_list VALUES (NULL, 'Cagole');
+INSERT INTO black_list VALUES (NULL, 'Calice');
+INSERT INTO black_list VALUES (NULL, 'Canaille');
+INSERT INTO black_list VALUES (NULL, 'Canaillou');
+INSERT INTO black_list VALUES (NULL, 'Cancrelat');
+INSERT INTO black_list VALUES (NULL, 'Caprinophile');
+INSERT INTO black_list VALUES (NULL, 'Carburateur à Beaujolais');
+INSERT INTO black_list VALUES (NULL, 'Caribou');
+INSERT INTO black_list VALUES (NULL, 'Casse-pieds');
+INSERT INTO black_list VALUES (NULL, 'Cassos');
+INSERT INTO black_list VALUES (NULL, 'Catin');
+INSERT INTO black_list VALUES (NULL, 'Cave');
+INSERT INTO black_list VALUES (NULL, 'Cervelle D’huitre');
+INSERT INTO black_list VALUES (NULL, 'Chacal');
+INSERT INTO black_list VALUES (NULL, 'Chacal Puant');
+INSERT INTO black_list VALUES (NULL, 'Chafouin');
+INSERT INTO black_list VALUES (NULL, 'Chameau');
+INSERT INTO black_list VALUES (NULL, 'Chancreux');
+INSERT INTO black_list VALUES (NULL, 'Chancre puant');
+INSERT INTO black_list VALUES (NULL, 'Chaoui');
+INSERT INTO black_list VALUES (NULL, 'Charogne');
+INSERT INTO black_list VALUES (NULL, 'Chenapan');
+INSERT INTO black_list VALUES (NULL, 'Chiassard');
+INSERT INTO black_list VALUES (NULL, 'Chiasse De Caca Fondu');
+INSERT INTO black_list VALUES (NULL, 'Chieur');
+INSERT INTO black_list VALUES (NULL, 'Chiure De Pigeon');
+INSERT INTO black_list VALUES (NULL, 'Cinglé');
+INSERT INTO black_list VALUES (NULL, 'Clampin');
+INSERT INTO black_list VALUES (NULL, 'Cloaque');
+INSERT INTO black_list VALUES (NULL, 'Cloche');
+INSERT INTO black_list VALUES (NULL, 'Clodo');
+INSERT INTO black_list VALUES (NULL, 'Cloporte');
+INSERT INTO black_list VALUES (NULL, 'Clown');
+INSERT INTO black_list VALUES (NULL, 'Cochon');
+INSERT INTO black_list VALUES (NULL, 'Cocu');
+INSERT INTO black_list VALUES (NULL, 'Con');
+INSERT INTO black_list VALUES (NULL, 'Conard');
+INSERT INTO black_list VALUES (NULL, 'Conchieur');
+INSERT INTO black_list VALUES (NULL, 'Concombre');
+INSERT INTO black_list VALUES (NULL, 'Connard');
+INSERT INTO black_list VALUES (NULL, 'Connasse');
+INSERT INTO black_list VALUES (NULL, 'Conne');
+INSERT INTO black_list VALUES (NULL, 'Coprolithe');
+INSERT INTO black_list VALUES (NULL, 'Coprophage');
+INSERT INTO black_list VALUES (NULL, 'Cornard');
+INSERT INTO black_list VALUES (NULL, 'Cornegidouille');
+INSERT INTO black_list VALUES (NULL, 'Corniaud');
+INSERT INTO black_list VALUES (NULL, 'Cornichon');
+INSERT INTO black_list VALUES (NULL, 'Couard');
+INSERT INTO black_list VALUES (NULL, 'Couille De Tétard');
+INSERT INTO black_list VALUES (NULL, 'Couille Molle');
+INSERT INTO black_list VALUES (NULL, 'Couillon');
+INSERT INTO black_list VALUES (NULL, 'Crapaud De Pissotière');
+INSERT INTO black_list VALUES (NULL, 'Crapule');
+INSERT INTO black_list VALUES (NULL, 'Crassard');
+INSERT INTO black_list VALUES (NULL, 'Crasseuse');
+INSERT INTO black_list VALUES (NULL, 'Crasspouillard');
+INSERT INTO black_list VALUES (NULL, 'Crevard');
+INSERT INTO black_list VALUES (NULL, 'Crevure');
+INSERT INTO black_list VALUES (NULL, 'Crotte De Moineau');
+INSERT INTO black_list VALUES (NULL, 'Cryptorchide');
+INSERT INTO black_list VALUES (NULL, 'Crâne D’obus');
+INSERT INTO black_list VALUES (NULL, 'Crétin');
+INSERT INTO black_list VALUES (NULL, 'Crétin Des Alpes');
+INSERT INTO black_list VALUES (NULL, 'Crétin Des Iles');
+INSERT INTO black_list VALUES (NULL, 'Crétin Goîtreux');
+INSERT INTO black_list VALUES (NULL, 'Cuistre');
+INSERT INTO black_list VALUES (NULL, 'Cul De Babouin');
+INSERT INTO black_list VALUES (NULL, 'Cul Terreux');
+INSERT INTO black_list VALUES (NULL, 'Dégueulasse');
+INSERT INTO black_list VALUES (NULL, 'Don Juan De Pissotière');
+INSERT INTO black_list VALUES (NULL, 'Ducon');
+INSERT INTO black_list VALUES (NULL, 'Dugenou');
+INSERT INTO black_list VALUES (NULL, 'Dugland');
+INSERT INTO black_list VALUES (NULL, 'Dypterosodomite');
+INSERT INTO black_list VALUES (NULL, 'Débile');
+INSERT INTO black_list VALUES (NULL, 'Décamerde');
+INSERT INTO black_list VALUES (NULL, 'Décérébré');
+INSERT INTO black_list VALUES (NULL, 'Dégueulis');
+INSERT INTO black_list VALUES (NULL, 'Dégénéré Chromozomique');
+INSERT INTO black_list VALUES (NULL, 'Dégénéré Du Bulbe');
+INSERT INTO black_list VALUES (NULL, 'Dépravé');
+INSERT INTO black_list VALUES (NULL, 'Détritus');
+INSERT INTO black_list VALUES (NULL, 'Ecervelé');
+INSERT INTO black_list VALUES (NULL, 'Ectoplasme');
+INSERT INTO black_list VALUES (NULL, 'Emmerdeur');
+INSERT INTO black_list VALUES (NULL, 'Empaffé');
+INSERT INTO black_list VALUES (NULL, 'Emplâtre');
+INSERT INTO black_list VALUES (NULL, 'Empoté');
+INSERT INTO black_list VALUES (NULL, 'Enculeur De Mouches');
+INSERT INTO black_list VALUES (NULL, 'Enculé');
+INSERT INTO black_list VALUES (NULL, 'Enflure');
+INSERT INTO black_list VALUES (NULL, 'Enfoiré');
+INSERT INTO black_list VALUES (NULL, 'Erreur De La Nature');
+INSERT INTO black_list VALUES (NULL, 'Eunuque');
+INSERT INTO black_list VALUES (NULL, 'Face De Cul');
+INSERT INTO black_list VALUES (NULL, 'Face De Pet');
+INSERT INTO black_list VALUES (NULL, 'Face De Rat');
+INSERT INTO black_list VALUES (NULL, 'Faquin');
+INSERT INTO black_list VALUES (NULL, 'Faraud');
+INSERT INTO black_list VALUES (NULL, 'Faux Jeton');
+INSERT INTO black_list VALUES (NULL, 'Fesse D’huitre');
+INSERT INTO black_list VALUES (NULL, 'Fesse De Moule');
+INSERT INTO black_list VALUES (NULL, 'Fesses Molles');
+INSERT INTO black_list VALUES (NULL, 'Fiente');
+INSERT INTO black_list VALUES (NULL, 'Filou');
+INSERT INTO black_list VALUES (NULL, 'Fini à L’urine');
+INSERT INTO black_list VALUES (NULL, 'Fion');
+INSERT INTO black_list VALUES (NULL, 'Fiote');
+INSERT INTO black_list VALUES (NULL, 'Flaque De Pus');
+INSERT INTO black_list VALUES (NULL, 'Foireux');
+INSERT INTO black_list VALUES (NULL, 'Foldingue');
+INSERT INTO black_list VALUES (NULL, 'Fonctionnaire');
+INSERT INTO black_list VALUES (NULL, 'Fouille Merde');
+INSERT INTO black_list VALUES (NULL, 'Four à Merde');
+INSERT INTO black_list VALUES (NULL, 'Fourbe');
+INSERT INTO black_list VALUES (NULL, 'Foutriquet');
+INSERT INTO black_list VALUES (NULL, 'Frapadingue');
+INSERT INTO black_list VALUES (NULL, 'Frappe');
+INSERT INTO black_list VALUES (NULL, 'Freluquet');
+INSERT INTO black_list VALUES (NULL, 'Fricoteur');
+INSERT INTO black_list VALUES (NULL, 'Frigide');
+INSERT INTO black_list VALUES (NULL, 'Fripouille');
+INSERT INTO black_list VALUES (NULL, 'Frippon');
+INSERT INTO black_list VALUES (NULL, 'Frustré');
+INSERT INTO black_list VALUES (NULL, 'Fumier');
+INSERT INTO black_list VALUES (NULL, 'Fumiste');
+INSERT INTO black_list VALUES (NULL, 'Furoncle');
+INSERT INTO black_list VALUES (NULL, 'Félon');
+INSERT INTO black_list VALUES (NULL, 'Ganache');
+INSERT INTO black_list VALUES (NULL, 'Gangrène');
+INSERT INTO black_list VALUES (NULL, 'Garage A Bite');
+INSERT INTO black_list VALUES (NULL, 'Gibier De Potence');
+INSERT INTO black_list VALUES (NULL, 'Gland');
+INSERT INTO black_list VALUES (NULL, 'Glandeur');
+INSERT INTO black_list VALUES (NULL, 'Glandus');
+INSERT INTO black_list VALUES (NULL, 'Globicéphale');
+INSERT INTO black_list VALUES (NULL, 'Gnome');
+INSERT INTO black_list VALUES (NULL, 'Godiche');
+INSERT INTO black_list VALUES (NULL, 'Gogol');
+INSERT INTO black_list VALUES (NULL, 'Goinfre');
+INSERT INTO black_list VALUES (NULL, 'Gommeux');
+INSERT INTO black_list VALUES (NULL, 'Gougnafier');
+INSERT INTO black_list VALUES (NULL, 'Goujat');
+INSERT INTO black_list VALUES (NULL, 'Goulu');
+INSERT INTO black_list VALUES (NULL, 'Gourdasse');
+INSERT INTO black_list VALUES (NULL, 'Gourgandin');
+INSERT INTO black_list VALUES (NULL, 'Gourgandine');
+INSERT INTO black_list VALUES (NULL, 'Grand Cornichon');
+INSERT INTO black_list VALUES (NULL, 'Grand Dépandeur D’andouilles');
+INSERT INTO black_list VALUES (NULL, 'Gras Du Bide');
+INSERT INTO black_list VALUES (NULL, 'Graveleux');
+INSERT INTO black_list VALUES (NULL, 'Gredin');
+INSERT INTO black_list VALUES (NULL, 'Grenouille');
+INSERT INTO black_list VALUES (NULL, 'Gringalet');
+INSERT INTO black_list VALUES (NULL, 'Grognasse');
+INSERT INTO black_list VALUES (NULL, 'Gros Caca Poilu');
+INSERT INTO black_list VALUES (NULL, 'Gros Con');
+INSERT INTO black_list VALUES (NULL, 'Gros Lard');
+INSERT INTO black_list VALUES (NULL, 'Grosse Merde Puante');
+INSERT INTO black_list VALUES (NULL, 'Grosse Truie Violette');
+INSERT INTO black_list VALUES (NULL, 'Grue');
+INSERT INTO black_list VALUES (NULL, 'Gueulard');
+INSERT INTO black_list VALUES (NULL, 'Gueule De Fion');
+INSERT INTO black_list VALUES (NULL, 'Gueule De Raie');
+INSERT INTO black_list VALUES (NULL, 'Gueux');
+INSERT INTO black_list VALUES (NULL, 'Gugus');
+INSERT INTO black_list VALUES (NULL, 'Guignol');
+INSERT INTO black_list VALUES (NULL, 'Has-been');
+INSERT INTO black_list VALUES (NULL, 'Hérétique');
+INSERT INTO black_list VALUES (NULL, 'Histrion');
+INSERT INTO black_list VALUES (NULL, 'Homoncule');
+INSERT INTO black_list VALUES (NULL, 'Hostie D’épais');
+INSERT INTO black_list VALUES (NULL, 'Hurluberlu');
+INSERT INTO black_list VALUES (NULL, 'Hérétique');
+INSERT INTO black_list VALUES (NULL, 'Iconoclaste');
+INSERT INTO black_list VALUES (NULL, 'Idiot');
+INSERT INTO black_list VALUES (NULL, 'Ignare');
+INSERT INTO black_list VALUES (NULL, 'Illettré');
+INSERT INTO black_list VALUES (NULL, 'Imbibé');
+INSERT INTO black_list VALUES (NULL, 'Imbécile');
+INSERT INTO black_list VALUES (NULL, 'Impuissant');
+INSERT INTO black_list VALUES (NULL, 'Infâme Raie De Cul');
+INSERT INTO black_list VALUES (NULL, 'Ironie De La Création');
+INSERT INTO black_list VALUES (NULL, 'Ivrogne');
+INSERT INTO black_list VALUES (NULL, 'Jaune');
+INSERT INTO black_list VALUES (NULL, 'Jean-foutre');
+INSERT INTO black_list VALUES (NULL, 'Jobard');
+INSERT INTO black_list VALUES (NULL, 'Jobastre');
+INSERT INTO black_list VALUES (NULL, 'Judas');
+INSERT INTO black_list VALUES (NULL, 'Kroumir');
+INSERT INTO black_list VALUES (NULL, 'Kéké');
+INSERT INTO black_list VALUES (NULL, 'Laideron');
+INSERT INTO black_list VALUES (NULL, 'Larve');
+INSERT INTO black_list VALUES (NULL, 'Lavedu');
+INSERT INTO black_list VALUES (NULL, 'Lépreux');
+INSERT INTO black_list VALUES (NULL, 'Loboto');
+INSERT INTO black_list VALUES (NULL, 'Loutre Analphabète');
+INSERT INTO black_list VALUES (NULL, 'Lèche-cul');
+INSERT INTO black_list VALUES (NULL, 'Malandrin');
+INSERT INTO black_list VALUES (NULL, 'Malotru');
+INSERT INTO black_list VALUES (NULL, 'Malpropre');
+INSERT INTO black_list VALUES (NULL, 'Manant');
+INSERT INTO black_list VALUES (NULL, 'Manche à Couille');
+INSERT INTO black_list VALUES (NULL, 'Mange Merde');
+INSERT INTO black_list VALUES (NULL, 'Maraud');
+INSERT INTO black_list VALUES (NULL, 'Marchand De Tapis');
+INSERT INTO black_list VALUES (NULL, 'Margoulin');
+INSERT INTO black_list VALUES (NULL, 'Merdaillon');
+INSERT INTO black_list VALUES (NULL, 'Merdasse');
+INSERT INTO black_list VALUES (NULL, 'Merde');
+INSERT INTO black_list VALUES (NULL, 'Merdophile');
+INSERT INTO black_list VALUES (NULL, 'Microcéphale');
+INSERT INTO black_list VALUES (NULL, 'Minable');
+INSERT INTO black_list VALUES (NULL, 'Minus');
+INSERT INTO black_list VALUES (NULL, 'Miteux');
+INSERT INTO black_list VALUES (NULL, 'Moins Que Rien');
+INSERT INTO black_list VALUES (NULL, 'Molasson');
+INSERT INTO black_list VALUES (NULL, 'Mongol');
+INSERT INTO black_list VALUES (NULL, 'Mononeuronal');
+INSERT INTO black_list VALUES (NULL, 'Mont De Brin');
+INSERT INTO black_list VALUES (NULL, 'Morbleu');
+INSERT INTO black_list VALUES (NULL, 'Morfale');
+INSERT INTO black_list VALUES (NULL, 'Morille');
+INSERT INTO black_list VALUES (NULL, 'Morpion');
+INSERT INTO black_list VALUES (NULL, 'Mortecouille');
+INSERT INTO black_list VALUES (NULL, 'Morue');
+INSERT INTO black_list VALUES (NULL, 'Morveux');
+INSERT INTO black_list VALUES (NULL, 'Motherfucker');
+INSERT INTO black_list VALUES (NULL, 'Mou Du Bulbe');
+INSERT INTO black_list VALUES (NULL, 'Mou Du Gland');
+INSERT INTO black_list VALUES (NULL, 'Moudlabite');
+INSERT INTO black_list VALUES (NULL, 'Moule à Gauffre');
+INSERT INTO black_list VALUES (NULL, 'Méchant');
+INSERT INTO black_list VALUES (NULL, 'Mécréant');
+INSERT INTO black_list VALUES (NULL, 'Mérule');
+INSERT INTO black_list VALUES (NULL, 'Nabot');
+INSERT INTO black_list VALUES (NULL, 'Nain De Jardin');
+INSERT INTO black_list VALUES (NULL, 'Nanar');
+INSERT INTO black_list VALUES (NULL, 'Naze');
+INSERT INTO black_list VALUES (NULL, 'Nazillon');
+INSERT INTO black_list VALUES (NULL, 'Necropédophile');
+INSERT INTO black_list VALUES (NULL, 'Neuneu');
+INSERT INTO black_list VALUES (NULL, 'Nigaud');
+INSERT INTO black_list VALUES (NULL, 'Niguedouille');
+INSERT INTO black_list VALUES (NULL, 'Noob');
+INSERT INTO black_list VALUES (NULL, 'Nounouille');
+INSERT INTO black_list VALUES (NULL, 'Nécrophile');
+INSERT INTO black_list VALUES (NULL, 'Obsédé');
+INSERT INTO black_list VALUES (NULL, 'Olibrius');
+INSERT INTO black_list VALUES (NULL, 'Ordure Purulente');
+INSERT INTO black_list VALUES (NULL, 'Outrecuidant');
+INSERT INTO black_list VALUES (NULL, 'Pachyderme');
+INSERT INTO black_list VALUES (NULL, 'Paltoquet');
+INSERT INTO black_list VALUES (NULL, 'Panaris');
+INSERT INTO black_list VALUES (NULL, 'Parasite');
+INSERT INTO black_list VALUES (NULL, 'Parbleu');
+INSERT INTO black_list VALUES (NULL, 'Parvenu');
+INSERT INTO black_list VALUES (NULL, 'Patate');
+INSERT INTO black_list VALUES (NULL, 'Paumé');
+INSERT INTO black_list VALUES (NULL, 'Paysan');
+INSERT INTO black_list VALUES (NULL, 'Peau De Bite');
+INSERT INTO black_list VALUES (NULL, 'Pecore');
+INSERT INTO black_list VALUES (NULL, 'PD');
+INSERT INTO black_list VALUES (NULL, 'Pervers');
+INSERT INTO black_list VALUES (NULL, 'Petzouille');
+INSERT INTO black_list VALUES (NULL, 'Pigeon');
+INSERT INTO black_list VALUES (NULL, 'Pignolo');
+INSERT INTO black_list VALUES (NULL, 'Pisseuse');
+INSERT INTO black_list VALUES (NULL, 'Plouc');
+INSERT INTO black_list VALUES (NULL, 'Pouffe');
+INSERT INTO black_list VALUES (NULL, 'Pouffiasse');
+INSERT INTO black_list VALUES (NULL, 'Raclure De Chiotte');
+INSERT INTO black_list VALUES (NULL, 'Taré');
+INSERT INTO black_list VALUES (NULL, 'Tétârd');
+INSERT INTO black_list VALUES (NULL, 'Tête De Bite');
+INSERT INTO black_list VALUES (NULL, 'Va Nu Pieds');
+/
+
+SELECT
+    *
+FROM Categorie;
+/
+SELECT
+    *
+FROM Ustensile;
+/
+SELECT
+    *
+FROM Utilisateur;
+/
+SELECT
+    *
+FROM Recette;
+/
+SELECT
+    *
+FROM Commentaire;
+/
+SELECT
+    *
+FROM Famille;
+/
+SELECT
+    *
+FROM Ingredient;
+/
