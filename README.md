@@ -13,7 +13,7 @@ To run the Food Blog website, you will need to have the following software insta
 - Apache
 
 ## Installation
-Once you have cloned the repository and installed the necessary software, move the project directory to the appropriate directory for your web server. For example, if you are using XAMPP on Windows or MAMP on Mac, you can move the project directory to the htdocs directory of your XAMPP/MAMP installation.
+Once you have cloned the repository and installed the necessary software, move the project directory to the appropriate directory for your web server. For example, if you are using XAMPP on Windows or MAMP on Mac, you can move the project directory to the htdocs directory of your XAMPP/MAMP installation. You will then need to **create** the database with the differents scripts provided. You will first need to **create** the data base, then **insert** values in it, and then create **vues**.
 
 ## Usage
 To start the server and launch the website, start your web server and navigate to the project directory in your web browser. For example, if you are using XAMPP on Windows and you have moved the project directory to the htdocs directory of your XAMPP installation, you can access the website by navigating to http://localhost/Food-Blog in your web browser.
